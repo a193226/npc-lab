@@ -1,11 +1,170 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>NPC Lab</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>二瓶研究室 - NPC Lab</title>
+  <style>
+    /* --- ベース --- */
+    body {
+      margin: 0;
+      font-family: 'Yu Gothic', 'ヒラギノ角ゴ ProN', sans-serif;
+      background-color: #FFFDF5;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* --- ヘッダー --- */
+    header {
+      background-color: #FAF3E0;
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    header .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    header .nav a {
+      margin-left: 20px;
+      font-weight: bold;
+      color: #6B8E23;
+    }
+
+    /* --- ヒーロー --- */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=1350') center/cover no-repeat;
+      height: 60vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      flex-direction: column;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      margin: 0;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+
+    /* --- セクション --- */
+    .section {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+    .section h2 {
+      font-size: 2rem;
+      color: #6B8E23;
+      margin-bottom: 20px;
+    }
+
+    /* --- カード --- */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #FAF3E0;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .card .text {
+      padding: 15px;
+    }
+    .card .text h3 {
+      margin-top: 0;
+      color: #6B8E23;
+    }
+
+    /* --- フッター --- */
+    footer {
+      background: #FAF3E0;
+      color: #333;
+      padding: 30px;
+      text-align: center;
+      margin-top: 50px;
+      border-top: 1px solid #DDD;
+    }
+  </style>
 </head>
 <body>
-    <h1>NPC Lab</h1>
-    <p>新しい研究室HPの準備中です。</p>
+
+<header>
+  <div class="nav">
+    <div class="logo">二瓶研究室 - NPC Lab</div>
+    <div>
+      <a href="#research">研究内容</a>
+      <a href="#members">メンバー</a>
+      <a href="#equipment">設備</a>
+      <a href="#news">ニュース</a>
+      <a href="#contact">アクセス</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>天然物の力で未来を創る</h1>
+  <p>Natural Products Chemistry Laboratory</p>
+</section>
+
+<section id="research" class="section">
+  <h2>研究内容</h2>
+  <div class="cards">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1581091870627-3d2a1134c828?auto=format&fit=crop&w=800" />
+      <div class="text">
+        <h3>天然物の全合成</h3>
+        <p>自然由来分子を人工的に合成し、その構造・活性を探求します。</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1581093458791-9f3cdd9bb705?auto=format&fit=crop&w=800" />
+      <div class="text">
+        <h3>構造解析</h3>
+        <p>NMR・MS・X線解析を用いて未知化合物の構造を特定します。</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=800" />
+      <div class="text">
+        <h3>機能性評価</h3>
+        <p>生物活性評価を通じて機能性物質の発見につなげます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <p>宇都宮大学 二瓶研究室</p>
+  <p>〒321-8505 栃木県宇都宮市峰町350</p>
+  <p>Email: info@example.com</p>
+  <p>© 2025 NPC Lab</p>
+</footer>
+
 </body>
 </html>
