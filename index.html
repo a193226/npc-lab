@@ -4,50 +4,42 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>二瓶研究室 - Natural Products Chemistry</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 <style>
-/* Reset */
 * { margin:0; padding:0; box-sizing:border-box; }
-
-/* Body & Fonts */
 body { font-family:'Yu Gothic','ヒラギノ角ゴ ProN',sans-serif; line-height:1.6; color:#333; background:#FFFDF5; }
-
-/* Header */
 header { background:#6B8E23; padding:15px 20px; position:sticky; top:0; z-index:1000; box-shadow:0 4px 6px rgba(0,0,0,0.1); }
 header .nav { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; }
 header .nav .logo { font-size:1.5rem; font-weight:bold; color:#FFF; }
-header .nav a { margin-left:15px; font-weight:bold; color:#FFF; transition:0.3s; }
+header .nav a { margin-left:15px; font-weight:bold; color:#FFF; text-decoration:none; transition:0.3s; }
 header .nav a:hover { text-decoration:underline; }
-
-/* Hero Section */
 .hero { background:#6B8E23 url('https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=1350') center/cover no-repeat; height:60vh; display:flex; justify-content:center; align-items:center; text-align:center; color:white; text-shadow:0 2px 10px rgba(0,0,0,0.5); flex-direction:column; padding:0 20px; }
 .hero h1 { font-size:2.8rem; margin-bottom:10px; }
 .hero p { font-size:1.2rem; }
-
-/* Sections */
 .section { max-width:1200px; margin:50px auto; padding:0 20px; }
 .section h2 { font-size:2rem; color:#6B8E23; margin-bottom:30px; text-align:center; }
-
-/* Cards */
 .cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:20px; }
-.card, .member-card, .alumni-card, .publication-item { background:#FAF3E0; padding:20px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); transition:0.3s; }
+.card, .member-card, .alumni-card, .publication-item { background:#FAF3E0; padding:20px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); transition:0.3s; cursor:pointer; position:relative; }
 .card:hover, .member-card:hover, .alumni-card:hover, .publication-item:hover { transform:translateY(-6px); box-shadow:0 8px 20px rgba(0,0,0,0.15); }
-.card h3, .member-card h4, .alumni-card h4, .publication-item h4 { margin-bottom:10px; color:#6B8E23; }
+.card h3, .member-card h4, .alumni-card h4, .publication-item h4 { margin-bottom:10px; color:#4B6B1B; display:flex; align-items:center; }
+.card h3 i, .member-card h4 i, .alumni-card h4 i, .publication-item h4 i { margin-right:8px; color:#6B8E23; }
 .card p, .member-card p, .alumni-card p, .publication-item p { font-size:0.95rem; }
-
-/* Footer */
+.accordion-content { display:none; margin-top:10px; font-size:0.9rem; line-height:1.5; }
+.accordion.active .accordion-content { display:block; }
+.search-bar { max-width:600px; margin:0 auto 30px auto; display:flex; }
+.search-bar input { flex:1; padding:10px 15px; font-size:1rem; border:2px solid #6B8E23; border-radius:8px; outline:none; }
+.search-bar input:focus { border-color:#4B6B1B; }
 footer { background:#6B8E23; color:#FFF; padding:30px 20px; text-align:center; margin-top:50px; }
 footer p { margin:5px 0; font-size:0.95rem; }
-
-/* Responsive */
 @media(max-width:768px){ .hero h1 { font-size:2.2rem; } .hero p { font-size:1rem; } }
 @media(max-width:480px){ header .nav { flex-direction:column; align-items:flex-start; } header .nav a { margin:10px 0 0 0; } }
 </style>
 </head>
 <body>
-  
+
 <header>
 <div class="nav">
-<div class="logo">二瓶研究室 - NPC Lab</div>
+<div class="logo"><i class="fas fa-flask"></i> 二瓶研究室 - NPC Lab</div>
 <div>
 <a href="#home">HOME</a>
 <a href="#research">概要</a>
@@ -60,119 +52,181 @@ footer p { margin:5px 0; font-size:0.95rem; }
 </header>
 
 <section id="home" class="hero">
-<h1>宇都宮大学農学部応用生命化学科</h1>
+<h1><i class="fas fa-vials"></i> 宇都宮大学農学部応用生命化学科</h1>
 <p>有機化学を通して，天然物の可能性を探る</p>
 <p>(2025.5.更新)</p>
 <div class="lang-toggle"><a href="#">日本語</a> / <a href="#">English</a></div>
 </section>
 
 <section id="research" class="section">
-<h2>概要</h2>
+<h2><i class="fas fa-book"></i> 概要</h2>
+<div class="search-bar">
+<input type="text" id="searchInput" placeholder="キーワードで検索...">
+</div>
 <div class="cards">
-<div class="card"><h3>研究について</h3><p>天然物有機化学分野では，有機化学を通して，天然物の可能性を探ることを目的に，天然物の有機合成と生理活性評価を中心に研究活動を行っています．有機合成は化合物を人工的に作り出す学問で，化学の領域に分類されます．地方の国立大学の農学部で有機合成を行っている研究室は希少ですが，生物，自然や環境などをより身近に感じながら研究できることが特徴です．化合物の生理活性を調べるため，生物よりの化学に関する研究を中心に行っています．</p></div>
+<div class="card accordion">
+<h3><i class="fas fa-microscope"></i> 研究について</h3>
+<div class="accordion-content">
+<p>天然物有機化学分野では，有機化学を通して，天然物の可能性を探ることを目的に，天然物の有機合成と生理活性評価を中心に研究活動を行っています．有機合成は，化合物を人工的に作り出す学問で，化学の領域に分類されます．地方の国立大学の農学部で有機合成を行っている研究室は希少ですが，生物，自然や環境などをより身近に感じながら研究できることが特徴です．化合物の生理活性を調べるため，生物よりの化学に関する研究を中心に行っています．</p>
+</div>
+</div>
 
-<div class="card"><h3>教育について</h3><p>平日の日中は研究に集中すること。当分野ではTLC，HPLC，NMRおよびMSなどの分析手法を日常的に使用し，有機化合物の合成，検出，精製や構造解析などの化学実験の進め方を習得できます。</p></div>
+<div class="card accordion">
+<h3><i class="fas fa-chalkboard-teacher"></i> 教育について</h3>
+<div class="accordion-content">
+<p>平日の日中は研究に集中すること。当分野ではTLC，HPLC，NMRおよびMSなどの分析手法を日常的に使用し，有機化合物の合成，検出，精製や構造解析などの化学実験の進め方を習得できます。</p>
+</div>
+</div>
 
-<div class="card"><h3>進路について</h3><p>大学院に進学する学生が多く，博士課程と修士課程の修了生は主に研究・開発職に就いています。化粧品，香料，製薬や試薬など関連する化学メーカーに就職したり，公務員になったりしています。</p></div>
+<div class="card accordion">
+<h3><i class="fas fa-briefcase"></i> 進路について</h3>
+<div class="accordion-content">
+<p>大学院に進学する学生が多く，博士課程と修士課程の修了生は主に研究・開発職に就いています。化粧品，香料，製薬や試薬など関連する化学メーカーに就職したり，公務員になったりしています。</p>
+</div>
+</div>
 </div>
 </section>
 
 <section id="members" class="section">
-<h2>メンバー</h2>
-<div class="cards">
-<div class="member-card"><h4>Kae Horio (D3)</h4><p>高度対称性ポリフェノールの全合成</p></div>
-<div class="member-card"><h4>Mizuki Makita (M2)</h4><p>希少糖を含む天然物の全合成</p></div>
-<div class="member-card"><h4>Mao Okamura (M1)</h4><p>環状リグナンの全合成</p></div>
-<div class="member-card"><h4>Yuta Chohnan (M1)</h4><p>生長調節物質の化学合成</p></div>
-<div class="member-card"><h4>Kotomi Tsukamoto (M1)</h4><p>樹液成分の全合成</p></div>
-<div class="member-card"><h4>Kohei Shimizu (B4)</h4><p>ナフタレン配糖体の全合成</p></div>
-<div class="member-card"><h4>Kenta Tezuka (B4)</h4><p>酵素阻害剤の化学合成</p></div>
-<div class="member-card"><h4>Nana Nakamori (B4)</h4><p>ポリフェノール配糖体の短段階合成</p></div>
-<div class="member-card"><h4>Sakiwa Masuda (B4)</h4><p>新規バニロイドの化学合成</p></div>
-<div class="member-card"><h4>Ken-ichi Nihei (PI)</h4><p>お問い合わせはnihei98アットcc.utsunomiya-u.ac.jp</p></div>
-</div>
+<h2><i class="fas fa-users"></i> メンバー</h2>
+<div class="cards" id="membersContainer"></div>
 </section>
 
 <section id="alumni" class="section">
-<h2>卒業生</h2>
-<div class="cards">
-<!-- 卒業生リスト全部 -->
-<div class="alumni-card"><h4>KS (学士)</h4><p>化粧品つくってる</p></div>
-<div class="alumni-card"><h4>MU (修士)</h4><p>北海のシーサン</p></div>
-<div class="alumni-card"><h4>SS (修士)</h4><p>試薬うってる</p></div>
-<div class="alumni-card"><h4>YT (修士)</h4><p>北北東で合成</p></div>
-<div class="alumni-card"><h4>AA (学士)</h4><p>関東圏で販売</p></div>
-<div class="alumni-card"><h4>RI (学士)</h4><p>乳化剤ヒロイン二代目</p></div>
-<div class="alumni-card"><h4>CE (学士)</h4><p>東洋で分析</p></div>
-<div class="alumni-card"><h4>SI (修士)</h4><p>初代乳化剤ヒロイン</p></div>
-<div class="alumni-card"><h4>MK (学士)</h4><p>湿布づくりの天使</p></div>
-<div class="alumni-card"><h4>MI (学士)</h4><p>ハイテクの韋駄天</p></div>
-<div class="alumni-card"><h4>YN (修士)</h4><p>香料開発の巨星(寿)</p></div>
-<div class="alumni-card"><h4>KH (修士)</h4><p>試薬研究のホープ(寿)</p></div>
-<div class="alumni-card"><h4>SAK (学士)</h4><p>化粧品製造のキー</p></div>
-<div class="alumni-card"><h4>RS (修士)</h4><p>ハワイ近くで研究</p></div>
-<div class="alumni-card"><h4>MWT (修士)</h4><p>インド洋で奮闘</p></div>
-<div class="alumni-card"><h4>YG (学士)</h4><p>日本海から首都圏</p></div>
-<div class="alumni-card"><h4>YY (学士)</h4><p>マヨドレ製造中</p></div>
-<div class="alumni-card"><h4>HS (修士)</h4><p>外資系で活躍(寿)</p></div>
-<div class="alumni-card"><h4>TAM (修士)</h4><p>分析のヒーロー</p></div>
-<div class="alumni-card"><h4>KI (学士)</h4><p>事務職の妖精</p></div>
-<div class="alumni-card"><h4>NA (修士)</h4><p>ピグメント開発中</p></div>
-<div class="alumni-card"><h4>WI (博士)</h4><p>化粧品開発中(寿)</p></div>
-<div class="alumni-card"><h4>KK (学士)</h4><p>電力つくってる</p></div>
-<div class="alumni-card"><h4>URT (修士)</h4><p>製薬会社で研究中</p></div>
-<div class="alumni-card"><h4>HR (学士)</h4><p>香料作ってます</p></div>
-<div class="alumni-card"><h4>MIT (修士)</h4><p>有機合成研究職(寿)</p></div>
-<div class="alumni-card"><h4>AM (修士)</h4><p>関東で蒸留中</p></div>
-<div class="alumni-card"><h4>SH (修士)</h4><p>有機合成の社会人</p></div>
-<div class="alumni-card"><h4>JL (学士)</h4><p>続薬学系大学院へ</p></div>
-<div class="alumni-card"><h4>TI (博士)</h4><p>研究チームのお頭(寿)</p></div>
-<div class="alumni-card"><h4>CO (修士)</h4><p>市役所の星</p></div>
-<div class="alumni-card"><h4>TM (修士)</h4><p>酒類分析のスター</p></div>
-<div class="alumni-card"><h4>MS (学士)</h4><p>湖畔でがんばる</p></div>
-<div class="alumni-card"><h4>KM (学士)</h4><p>薬学系大学院へ</p></div>
-<div class="alumni-card"><h4>MO (学士)</h4><p>惣菜開発のプロ(寿)</p></div>
-<div class="alumni-card"><h4>CM (学士)</h4><p>小中学校の要</p></div>
-<div class="alumni-card"><h4>YO (修士)</h4><p>珈琲の鉄人</p></div>
-<div class="alumni-card"><h4>SO (修士)</h4><p>研究職です(寿)</p></div>
-<div class="alumni-card"><h4>SK (学士)</h4><p>台湾に行きます</p></div>
-<div class="alumni-card"><h4>YK (学士)</h4><p>技術職してます</p></div>
-<div class="alumni-card"><h4>TAK (学士)</h4><p>県庁の稼ぎ頭</p></div>
-<div class="alumni-card"><h4>JK (修士)</h4><p>JAの賢人</p></div>
-<div class="alumni-card"><h4>TN (修士)</h4><p>肥料の神様</p></div>
-<div class="alumni-card"><h4>HK (学士)</h4><p>種苗の鬼(寿)</p></div>
-<div class="alumni-card"><h4>UT (学士)</h4><p>薬屋で働いてます</p></div>
-<div class="alumni-card"><h4>MM (学士)</h4><p>スーパー幹部候補</p></div>
-<div class="alumni-card"><h4>KT (修士)</h4><p>薬の分析してます</p></div>
-<div class="alumni-card"><h4>AK (学士)</h4><p>抗体博士(寿)</p></div>
-<div class="alumni-card"><h4>YH (学士)</h4><p>医薬学術業務</p></div>
-<div class="alumni-card"><h4>RK (学士)</h4><p>市役所の良識</p></div>
-<div class="alumni-card"><h4>CG (学士)</h4><p>茨城にいます</p></div>
-<div class="alumni-card"><h4>EN (学士)</h4><p>製薬会社勤務</p></div>
-<div class="alumni-card"><h4>RT (修士)</h4><p>関東にいます</p></div>
-<div class="alumni-card"><h4>SM (修士)</h4><p>研究開発中</p></div>
-<div class="alumni-card"><h4>RT600 (学士)</h4><p>薬つくってます</p></div>
-</div>
+<h2><i class="fas fa-user-graduate"></i> 卒業生</h2>
+<div class="cards" id="alumniContainer"></div>
 </section>
 
 <section id="publications" class="section">
-<h2>業績</h2>
-<div class="cards">
-<div class="publication-item"><p>Horio, K.; Maeda, H.; Horie, K.; Nanashima, N.; Nihei, K.* Total synthesis of quasi-symmetric dihydrofuran lignans (−)-ribesin A and B isolated from Ribes nigrum leaves. Tetrahedron 2025, 181, 134675.</p></div>
-<div class="publication-item"><p>Makita, M.; Nihei, K.* Total synthesis of nepodin and torachrysone glucosides: Evidence for naturally occurring L-glucosides. Tetrahedron Lett. 2024, 146, 155191.</p></div>
-<div class="publication-item"><p>Shimakage, R.; Iwadate, T.; Nihei, K.* A natural diphenolic glucoside, sonnerphenolic C: Chemical synthesis, structural revision, redox transformation, and identification as an antioxidant. Tetrahedron 2024, 158, 134001.</p></div>
-<div class="publication-item"><p>Horio, K.; Nihei, K.* Total synthesis of (-)-ribesin B and its structural revision. Tetrahedron Lett. 2023, 114, 154285.</p></div>
-<div class="publication-item"><p>Ishioka, W.; Nihei, K.* Chemical synthesis and tyrosinase inhibitory activity of resorcinol alkyl glucosides, hydroxyalkyl resorcinols, and alkyl resorcinols. J. Mol. Struct. 2022, 1268, 133668.</p></div>
-<div class="publication-item"><p>Shimakage, R.; Nihei, K.* Synthesis, structural revision, and tyrosinase inhibitory activity of proposed phloretin-4-O-β-D-glucopyranoside from Homalium stenophyllum. Nat. Prod. Res. 2022, 36, 1803-1811.</p></div>
-<div class="publication-item"><p>Nihei, K.; Peigneur, S.; Tytgat, J.; Lange, A.B.; Konno, K.* Isolation and characterization of FMRFamide-like peptides in the venoms of solitary sphecid wasps. Peptides 2021, 142, 170575.</p></div>
-<div class="publication-item"><p>Matsumoto, T.; Harima, S.; Weng, J.; Nihei, K.* Systematic approach to the chemical synthesis of arabidopyrones, the unique α-pyrones of Arabidopsis metabolites. Synth. Commun. 2020, 50, 2981-2987.</p></div>
-</div>
+<h2><i class="fas fa-book-open"></i> 業績</h2>
+<div class="cards" id="publicationsContainer"></div>
 </section>
 
-<footer id="contact" class="section">
-<p>宇都宮大学 二瓶研究室</p>
+<footer id="contact">
+<p><i class="fas fa-envelope"></i> 宇都宮大学 二瓶研究室</p>
 <p>Email: nihei98アットcc.utsunomiya-u.ac.jp</p>
 <p>© 2025 NPC Lab</p>
 </footer>
+
+<script>
+// アコーディオン開閉
+document.querySelectorAll('.accordion').forEach(acc => {
+    acc.addEventListener('click', () => { acc.classList.toggle('active'); });
+});
+
+// 統合検索
+document.getElementById('searchInput').addEventListener('input', function(){
+    const keyword = this.value.toLowerCase();
+    const cards = document.querySelectorAll('.card, .member-card, .alumni-card, .publication-item');
+    cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        card.style.display = text.includes(keyword) ? 'block' : 'none';
+    });
+});
+
+// メンバー
+const membersData = [
+{ name:"Kae Horio", degree:"D3", info:"高度対称性ポリフェノールの全合成" },
+{ name:"Mizuki Makita", degree:"M2", info:"希少糖を含む天然物の全合成" },
+{ name:"Mao Okamura", degree:"M1", info:"環状リグナンの全合成" },
+{ name:"Yuta Chohnan", degree:"M1", info:"生長調節物質の化学合成" },
+{ name:"Kotomi Tsukamoto", degree:"M1", info:"樹液成分の全合成" },
+{ name:"Kohei Shimizu", degree:"B4", info:"ナフタレン配糖体の全合成" },
+{ name:"Kenta Tezuka", degree:"B4", info:"酵素阻害剤の化学合成" },
+{ name:"Nana Nakamori", degree:"B4", info:"ポリフェノール配糖体の短段階合成" },
+{ name:"Sakiwa Masuda", degree:"B4", info:"新規バニロイドの化学合成" },
+{ name:"Ken-ichi Nihei", degree:"PI", info:"お問い合わせはnihei98アットcc.utsunomiya-u.ac.jp" }
+];
+const membersContainer = document.getElementById('membersContainer');
+membersData.forEach(m=>{
+    const div = document.createElement('div');
+    div.className = "member-card accordion";
+    div.innerHTML = `<h4><i class="fas fa-user"></i> ${m.name} (${m.degree})</h4><div class="accordion-content"><p>${m.info}</p></div>`;
+    membersContainer.appendChild(div);
+});
+
+// 卒業生
+const alumniData = [
+{ name:"KS", degree:"学士", info:"化粧品つくってる" },
+{ name:"MU", degree:"修士", info:"北海のシーサン" },
+{ name:"SS", degree:"修士", info:"試薬うってる" },
+{ name:"YT", degree:"修士", info:"北北東で合成" },
+{ name:"AA", degree:"学士", info:"関東圏で販売" },
+{ name:"RI", degree:"学士", info:"乳化剤ヒロイン二代目" },
+{ name:"CE", degree:"学士", info:"東洋で分析" },
+{ name:"SI", degree:"修士", info:"初代乳化剤ヒロイン" },
+{ name:"MK", degree:"学士", info:"湿布づくりの天使" },
+{ name:"MI", degree:"学士", info:"ハイテクの韋駄天" },
+{ name:"YN", degree:"修士", info:"香料開発の巨星(寿)" },
+{ name:"KH", degree:"修士", info:"試薬研究のホープ(寿)" },
+{ name:"SAK", degree:"学士", info:"化粧品製造のキー" },
+{ name:"RS", degree:"修士", info:"ハワイ近くで研究" },
+{ name:"MWT", degree:"修士", info:"インド洋で奮闘" },
+{ name:"YG", degree:"学士", info:"日本海から首都圏" },
+{ name:"YY", degree:"学士", info:"マヨドレ製造中" },
+{ name:"HS", degree:"修士", info:"外資系で活躍(寿)" },
+{ name:"TAM", degree:"修士", info:"分析のヒーロー" },
+{ name:"KI", degree:"学士", info:"事務職の妖精" },
+{ name:"NA", degree:"修士", info:"ピグメント開発中" },
+{ name:"WI", degree:"博士", info:"化粧品開発中(寿)" },
+{ name:"KK", degree:"学士", info:"電力つくってる" },
+{ name:"URT", degree:"修士", info:"製薬会社で研究中" },
+{ name:"HR", degree:"学士", info:"香料作ってます" },
+{ name:"MIT", degree:"修士", info:"有機合成研究職(寿)" },
+{ name:"AM", degree:"修士", info:"関東で蒸留中" },
+{ name:"SH", degree:"修士", info:"有機合成の社会人" },
+{ name:"JL", degree:"学士", info:"続薬学系大学院へ" },
+{ name:"TI", degree:"博士", info:"研究チームのお頭(寿)" },
+{ name:"CO", degree:"修士", info:"市役所の星" },
+{ name:"TM", degree:"修士", info:"酒類分析のスター" },
+{ name:"MS", degree:"学士", info:"湖畔でがんばる" },
+{ name:"KM", degree:"学士", info:"薬学系大学院へ" },
+{ name:"MO", degree:"学士", info:"惣菜開発のプロ(寿)" },
+{ name:"CM", degree:"学士", info:"小中学校の要" },
+{ name:"YO", degree:"修士", info:"珈琲の鉄人" },
+{ name:"SO", degree:"修士", info:"研究職です(寿)" },
+{ name:"SK", degree:"学士", info:"台湾に行きます" },
+{ name:"YK", degree:"学士", info:"技術職してます" },
+{ name:"TAK", degree:"学士", info:"県庁の稼ぎ頭" },
+{ name:"JK", degree:"修士", info:"JAの賢人" },
+{ name:"TN", degree:"修士", info:"肥料の神様" },
+{ name:"HK", degree:"学士", info:"種苗の鬼(寿)" },
+{ name:"UT", degree:"学士", info:"薬屋で働いてます" },
+{ name:"MM", degree:"学士", info:"スーパー幹部候補" },
+{ name:"KT", degree:"修士", info:"薬の分析してます" },
+{ name:"AK", degree:"学士", info:"抗体博士(寿)" },
+{ name:"YH", degree:"学士", info:"医薬学術業務" },
+{ name:"RK", degree:"学士", info:"市役所の良識" },
+{ name:"CG", degree:"学士", info:"茨城にいます" },
+{ name:"EN", degree:"学士", info:"製薬会社勤務" },
+{ name:"RT", degree:"修士", info:"関東にいます" },
+{ name:"SM", degree:"修士", info:"研究開発中" },
+{ name:"RT600", degree:"学士", info:"薬つくってます" }
+];
+const alumniContainer = document.getElementById('alumniContainer');
+alumniData.forEach(a=>{
+    const div = document.createElement('div');
+    div.className = "alumni-card accordion";
+    div.innerHTML = `<h4><i class="fas fa-user"></i> ${a.name} (${a.degree})</h4><div class="accordion-content"><p>${a.info}</p></div>`;
+    alumniContainer.appendChild(div);
+});
+
+// 論文
+const publicationData = [
+"Horio, K.; Maeda, H.; Horie, K.; Nanashima, N.; Nihei, K.* Total synthesis of quasi-symmetric dihydrofuran lignans (−)-ribesin A and B isolated from Ribes nigrum leaves. Tetrahedron 2025, 181, 134675.",
+"Makita, M.; Nihei, K.* Total synthesis of nepodin and torachrysone glucosides: Evidence for naturally occurring L-glucosides. Tetrahedron Lett. 2024, 146, 155191.",
+"Shimakage, R.; Iwadate, T.; Nihei, K.* A natural diphenolic glucoside, sonnerphenolic C: Chemical synthesis, structural revision, redox transformation, and identification as an antioxidant. Tetrahedron 2024, 158, 134001.",
+"Horio, K.; Nihei, K.* Total synthesis of (-)-ribesin B and its structural revision. Tetrahedron Lett. 2023, 114, 154285.",
+"Ishioka, W.; Nihei, K.* Chemical synthesis and tyrosinase inhibitory activity of resorcinol alkyl glucosides, hydroxyalkyl resorcinols, and alkyl resorcinols. J. Mol. Struct. 2023, 1272, 134074."
+];
+const pubContainer = document.getElementById('publicationsContainer');
+publicationData.forEach(p=>{
+    const div = document.createElement('div');
+    div.className = "publication-item accordion";
+    div.innerHTML = `<h4><i class="fas fa-file-alt"></i> 論文タイトル</h4><div class="accordion-content"><p>${p}</p></div>`;
+    pubContainer.appendChild(div);
+});
+</script>
+
 </body>
 </html>
