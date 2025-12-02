@@ -1,11 +1,271 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>NPC Lab</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宇都宮大学NPC研究室</title>
+<style>
+/* 共通スタイル */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+h1, h2, h3 { margin: 0.5em 0; }
+.container { max-width: 1000px; margin: auto; padding: 20px; }
+
+/* メンバー・ニュース・論文 */
+.news-card, .publication-item {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.latest {
+    border: 2px solid #ff6f61;
+    background-color: #fff0f0;
+    box-shadow: 0 2px 8px rgba(255, 111, 97, 0.3);
+}
+.latest .news-header, .latest .pub-header {
+    color: #d32f2f;
+}
+
+/* アコーディオン */
+.news-content, .pub-content {
+    display: none;
+    padding: 5px 10px;
+    background-color: #f9f9f9;
+}
+.news-content.open, .pub-content.open { display: block; }
+.arrow { display: inline-block; transition: transform 0.3s; }
+
+/* 言語切替ボタン */
+#languageSwitch { margin-bottom: 20px; }
+#languageSwitch button { margin-right: 10px; padding: 5px 10px; }
+
+/* 検索入力 */
+#searchInput { margin-bottom: 20px; width: 100%; padding: 5px; }
+
+/* レスポンシブ対応 */
+@media (max-width: 600px) {
+    .container { padding: 10px; }
+    .news-card, .publication-item { font-size: 14px; }
+}
+</style>
 </head>
 <body>
-    <h1>NPC Lab</h1>
-    <p>新しい研究室HPの準備中です。</p>
+
+<div class="container">
+<h1>宇都宮大学NPC研究室</h1>
+
+<!-- 言語切替 -->
+<div id="languageSwitch">
+    <button id="jpBtn">日本語</button>
+    <button id="enBtn">English</button>
+</div>
+
+<!-- 日本語コンテンツ -->
+<div id="contentJP">
+    <input type="text" id="searchInput" placeholder="ニュース・論文を検索">
+
+    <!-- HOME -->
+    <section id="home">
+        <h2>HOME</h2>
+        <p>宇都宮大学農学部応用生命化学科<br>Natural Products Chemistry<br>(2025.5.更新)</p>
+        <p>有機化学を通して，天然物の可能性を探る</p>
+        <p>当分野では，天然有機化合物の有機合成，誘導体合成，構造解析および生理活性評価により，化粧品，農薬や医薬品などに利用できる新しい機能性分子の開発を目指し，スパイラル型の研究を行っています．詳しくは nihei98アットcc.utsunomiya-u.ac.jp までお問い合わせください．</p>
+    </section>
+
+    <!-- 概要 -->
+    <section id="overview">
+        <h2>概要</h2>
+        <p>研究について...</p>
+        <p>教育について...</p>
+        <p>進路について...</p>
+    </section>
+
+    <!-- メンバー -->
+    <section id="members">
+        <h2>メンバー</h2>
+        <ul>
+            <li>Kae Horio (D3) 高度対称性ポリフェノールの全合成</li>
+            <li>Mizuki Makita (M2) 希少糖を含む天然物の全合成</li>
+            <li>Mao Okamura (M1) 環状リグナンの全合成</li>
+            <li>Yuta Chohnan (M1) 生長調節物質の化学合成</li>
+            <li>Kotomi Tsukamoto (M1) 樹液成分の全合成</li>
+            <li>Kohei Shimizu (B4) ナフタレン配糖体の全合成</li>
+            <li>Kenta Tezuka (B4) 酵素阻害剤の化学合成</li>
+            <li>Nana Nakamori (B4) ポリフェノール配糖体の短段階合成</li>
+            <li>Sakiwa Masuda (B4) 新規バニロイドの化学合成</li>
+            <li>Ken-ichi Nihei (PI) お問い合わせは nihei98アットcc.utsunomiya-u.ac.jp</li>
+        </ul>
+    </section>
+
+    <!-- ニュース -->
+    <section id="newsContainer">
+        <h2>ニュース</h2>
+        <div class="news-card" data-date="2025-05-01">
+            <div class="news-header"><span class="arrow">▶</span> 研究室ニュースタイトル</div>
+            <div class="news-content">詳細内容</div>
+        </div>
+        <div class="news-card" data-date="2025-04-01">
+            <div class="news-header"><span class="arrow">▶</span> 研究室ニュースタイトル2</div>
+            <div class="news-content">詳細内容2</div>
+        </div>
+    </section>
+
+    <!-- 論文 -->
+    <section id="pubContainer">
+        <h2>業績</h2>
+        <div class="publication-item" data-date="2025-05-01">
+            <div class="pub-header"><span class="arrow">▶</span> Horio, K.; Maeda, H.; Nihei, K.* Total synthesis of quasi-symmetric dihydrofuran lignans...</div>
+            <div class="pub-content">Tetrahedron 2025, 181, 134675</div>
+        </div>
+        <div class="publication-item" data-date="2024-12-01">
+            <div class="pub-header"><span class="arrow">▶</span> Makita, M.; Nihei, K.* Total synthesis of nepodin and torachrysone glucosides...</div>
+            <div class="pub-content">Tetrahedron Lett. 2024, 146, 155191</div>
+        </div>
+    </section>
+</div>
+
+<!-- 英語コンテンツ -->
+<div id="contentEN" style="display:none;">
+    <input type="text" id="searchInputEN" placeholder="Search News & Publications">
+
+    <section id="homeEN">
+        <h2>HOME</h2>
+        <p>Natural Products Chemistry, Faculty of Agriculture, Utsunomiya University</p>
+        <p>Exploring the potential of natural products through organic chemistry</p>
+        <p>Contact: nihei98ATcc.utsunomiya-u.ac.jp</p>
+    </section>
+
+    <section id="overviewEN">
+        <h2>Overview</h2>
+        <p>About Research...</p>
+        <p>About Education...</p>
+        <p>Career Path...</p>
+    </section>
+
+    <section id="membersEN">
+        <h2>Members</h2>
+        <ul>
+            <li>Kae Horio (D3) Total synthesis of highly symmetric polyphenols</li>
+            <li>Mizuki Makita (M2) Total synthesis of natural products containing rare sugars</li>
+            <li>Mao Okamura (M1) Total synthesis of cyclic lignans</li>
+            <li>Yuta Chohnan (M1) Chemical synthesis of growth regulators</li>
+            <li>Kotomi Tsukamoto (M1) Total synthesis of sap components</li>
+            <li>Kohei Shimizu (B4) Total synthesis of naphthalene glycosides</li>
+            <li>Kenta Tezuka (B4) Chemical synthesis of enzyme inhibitors</li>
+            <li>Nana Nakamori (B4) Short-step synthesis of polyphenol glycosides</li>
+            <li>Sakiwa Masuda (B4) Chemical synthesis of new vanilloids</li>
+            <li>Ken-ichi Nihei (PI) Contact: nihei98ATcc.utsunomiya-u.ac.jp</li>
+        </ul>
+    </section>
+
+    <section id="newsContainerEN">
+        <h2>News</h2>
+        <div class="news-card" data-date="2025-05-01">
+            <div class="news-header"><span class="arrow">▶</span> Lab News Title</div>
+            <div class="news-content">Details</div>
+        </div>
+    </section>
+
+    <section id="pubContainerEN">
+        <h2>Publications</h2>
+        <div class="publication-item" data-date="2025-05-01">
+            <div class="pub-header"><span class="arrow">▶</span> Horio, K.; Maeda, H.; Nihei, K.* Total synthesis of quasi-symmetric dihydrofuran lignans...</div>
+            <div class="pub-content">Tetrahedron 2025, 181, 134675</div>
+        </div>
+    </section>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // 言語切替
+    const jpBtn = document.getElementById('jpBtn');
+    const enBtn = document.getElementById('enBtn');
+    const contentJP = document.getElementById('contentJP');
+    const contentEN = document.getElementById('contentEN');
+
+    function setupAccordion(cards, headerClass, contentClass) {
+        cards.forEach(card => {
+            const header = card.querySelector(headerClass);
+            const content = card.querySelector(contentClass);
+            const arrow = header.querySelector('.arrow');
+
+            header.addEventListener('click', () => {
+                content.classList.toggle('open');
+                arrow.style.transform = content.classList.contains('open') ? 'rotate(90deg)' : 'rotate(0deg)';
+            });
+        });
+    }
+
+    function highlightLatest(cards) {
+        cards.forEach(card => card.classList.remove('latest'));
+        const visibleCards = cards.filter(card => card.style.display !== 'none');
+        visibleCards.slice(0,3).forEach(card => card.classList.add('latest'));
+    }
+
+    // JPコンテンツ
+    const newsCardsJP = Array.from(contentJP.querySelectorAll('.news-card'));
+    const pubCardsJP = Array.from(contentJP.querySelectorAll('.publication-item'));
+    setupAccordion(newsCardsJP, '.news-header', '.news-content');
+    setupAccordion(pubCardsJP, '.pub-header', '.pub-content');
+    highlightLatest(newsCardsJP);
+    highlightLatest(pubCardsJP);
+
+    // ENコンテンツ
+    const newsCardsEN = Array.from(contentEN.querySelectorAll('.news-card'));
+    const pubCardsEN = Array.from(contentEN.querySelectorAll('.publication-item'));
+    setupAccordion(newsCardsEN, '.news-header', '.news-content');
+    setupAccordion(pubCardsEN, '.pub-header', '.pub-content');
+    highlightLatest(newsCardsEN);
+    highlightLatest(pubCardsEN);
+
+    // 言語切替イベント
+    jpBtn.addEventListener('click', () => {
+        contentJP.style.display = 'block';
+        contentEN.style.display = 'none';
+        highlightLatest(newsCardsJP);
+        highlightLatest(pubCardsJP);
+    });
+    enBtn.addEventListener('click', () => {
+        contentJP.style.display = 'none';
+        contentEN.style.display = 'block';
+        highlightLatest(newsCardsEN);
+        highlightLatest(pubCardsEN);
+    });
+
+    // 検索機能 JP
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', () => {
+        const query = searchInput.value.toLowerCase();
+        function filterCards(cards) {
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                card.style.display = text.includes(query) ? 'block' : 'none';
+            });
+            const visibleCards = cards.filter(card => card.style.display !== 'none');
+            highlightLatest(visibleCards);
+        }
+        filterCards(newsCardsJP);
+        filterCards(pubCardsJP);
+    });
+
+    // トップページ自動スクロール
+    function scrollToElement(element) {
+        if (!element) return;
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        element.style.transition = 'background-color 0.5s ease';
+        element.style.backgroundColor = '#fff5f5';
+        setTimeout(() => { element.style.backgroundColor = ''; }, 2000);
+    }
+
+    const latestNews = newsCardsJP.find(c => c.classList.contains('latest'));
+    const latestPub = pubCardsJP.find(c => c.classList.contains('latest'));
+    if (latestNews) scrollToElement(latestNews);
+    else if (latestPub) scrollToElement(latestPub);
+});
+</script>
 </body>
 </html>
