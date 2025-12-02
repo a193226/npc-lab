@@ -7,14 +7,52 @@
 <link rel="stylesheet" href="css/style.css">
 <script src="js/main.js" defer></script>
 <style>
-body { font-family: Arial, sans-serif; margin:0; padding:0; }
-nav { background:#004080; color:#fff; padding:0.5rem; display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; }
-nav a { color:#fff; text-decoration:none; margin-right:1rem; }
-nav button { margin-left:auto; }
-.container { padding:1rem; }
-#news-container { overflow:hidden; height:3em; position:relative; background:#f8f8f8; padding:0.5rem; }
-#news-list { margin:0; padding:0; list-style:none; position:absolute; top:0; width:100%; }
-#news-list li { padding:0.5rem 0; }
+body {
+    background: #ffffff;
+    color: #333333;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+nav a, nav button {
+    margin-right: 1rem;
+    text-decoration: none;
+    padding: 0.3rem 0.6rem;
+    border: none;
+    background: #007ACC;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+nav button {
+    background: #555555;
+}
+section {
+    margin-bottom: 2rem;
+}
+#news-container {
+    background: #f8f8f8;
+    padding: 1rem;
+    border-radius: 6px;
+    overflow: hidden;
+    height: 120px;
+    position: relative;
+}
+#news-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+#news-list li {
+    padding: 0.5rem 0;
+}
 </style>
 </head>
 <body>
