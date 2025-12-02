@@ -3,33 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>宇都宮大学 NPC研究室</title>
+<title>宇都宮大学農学部応用生命化学科 NPC研究室</title>
 <link rel="stylesheet" href="css/style.css">
 <script src="js/main.js" defer></script>
 <style>
+/* 共通レイアウト */
 body {
     background: #ffffff;
     color: #333333;
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    margin: 0;
+    padding: 0;
 }
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 1rem;
+nav {
+    background: #007ACC;
+    padding: 0.5rem 1rem;
 }
 nav a, nav button {
     margin-right: 1rem;
     text-decoration: none;
-    padding: 0.3rem 0.6rem;
+    padding: 0.4rem 0.8rem;
     border: none;
-    background: #007ACC;
-    color: white;
     border-radius: 4px;
+    color: white;
     cursor: pointer;
+}
+nav a {
+    background: #005EA3;
 }
 nav button {
     background: #555555;
+}
+.container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+h1, h2 {
+    margin: 0.5rem 0 1rem 0;
 }
 section {
     margin-bottom: 2rem;
@@ -151,13 +163,10 @@ section {
 // 言語切替
 function switchLang(lang) {
     document.querySelectorAll('[data-lang]').forEach(el => {
-        el.style.display = (el.getAttribute('data-lang') === lang) ? '' : 'none';
-    });
-    document.querySelectorAll('#news-list li').forEach(li => {
-        if(li.classList.contains(lang)) {
-            li.style.display = '';
+        if(el.getAttribute('data-lang') === lang){
+            el.style.display = '';
         } else {
-            li.style.display = 'none';
+            el.style.display = 'none';
         }
     });
 }
@@ -165,12 +174,12 @@ function switchLang(lang) {
 // ニュース自動スクロール
 const newsList = document.getElementById('news-list');
 let top = 0;
-const itemHeight = 40;
+const itemHeight = 40; // liの高さ(px)
+const totalItems = newsList.children.length;
+
 function scrollNews() {
-    const totalItems = Array.from(newsList.children).filter(li => li.style.display !== 'none').length;
-    if(totalItems === 0) return;
     top -= 1;
-    if(-top >= itemHeight * totalItems) top = 0;
+    if (-top >= itemHeight * totalItems) top = 0;
     newsList.style.top = top + 'px';
 }
 setInterval(scrollNews, 50);
