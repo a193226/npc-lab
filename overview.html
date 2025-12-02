@@ -1,67 +1,126 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>概要 - NPC研究室</title>
-<link rel="stylesheet" href="css/style.css">
-<script src="js/main.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NPC Lab 概要</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; }
+        header { background: #004080; color: white; padding: 1rem; }
+        header h1 { margin: 0; font-size: 1.5rem; }
+        nav a { color: white; margin-right: 1rem; text-decoration: none; }
+        main { padding: 1rem; }
+        footer { background: #eee; padding: 1rem; text-align: center; }
+
+        .lang-tabs { margin-bottom: 1rem; }
+        .lang-tabs button {
+            padding: 0.5rem 1rem;
+            border: none;
+            cursor: pointer;
+            background: #ccc;
+            margin-right: 0.5rem;
+        }
+        .lang-tabs button.active { background: #004080; color: white; }
+
+        .lang-section { display: none; }
+        .lang-section.active { display: block; }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.2rem; }
+            nav a { display: block; margin-bottom: 0.5rem; }
+        }
+    </style>
 </head>
 <body>
-<nav>
-    <a href="index.html">HOME</a>
-    <a href="overview.html">概要</a>
-    <a href="members.html">メンバー</a>
-    <a href="publications.html">業績</a>
-    <button onclick="switchLang('ja')">日本語</button>
-    <button onclick="switchLang('en')">English</button>
-</nav>
 
-<div class="container">
+<header>
+    <h1>Natural Products Chemistry Lab - 宇都宮大学</h1>
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="overview.html">概要</a>
+        <a href="members.html">メンバー</a>
+        <a href="publications.html">業績</a>
+    </nav>
+</header>
 
-<section data-lang="ja">
-<h1>概要</h1>
+<main>
+    <div class="lang-tabs">
+        <button class="active" onclick="switchLang('ja')">日本語</button>
+        <button onclick="switchLang('en')">English</button>
+    </div>
 
-<button class="accordion">研究について</button>
-<div class="panel">
-<p>天然物有機化学分野では，有機化学を通して，天然物の可能性を探ることを目的に，天然物の有機合成と生理活性評価を中心に研究活動を行っています．</p>
-<p>…（ここに送ってくれた日本語の研究説明全文を入れる）</p>
-</div>
+    <section id="ja" class="lang-section active">
+        <h2>概要</h2>
+        <h3>研究について</h3>
+        <p>天然物有機化学分野では，有機化学を通して，天然物の可能性を探ることを目的に，
+            天然物の有機合成と生理活性評価を中心に研究活動を行っています．
+            有機合成は，化合物を人工的に作り出す学問で，化学の領域に分類されます．
+            地方の国立大学の農学部で有機合成を行っている研究室は希少ですが，
+            生物，自然や環境などをより身近に感じながら研究できることが，
+            農学系の有機合成の大きな特徴です．</p>
+        <p>有機合成のターゲットとなる化合物は，複雑な構造を持つものではなく，
+            生理活性を示すことが予測される小分子です．
+            基本的な生理活性の評価は当分野内で行っています．
+            化合物をつくる，生理活性を調べる，さらに活性を強めるために化合物の構造をかえる，
+            というスパイラル型の研究スタイルで新しい生理活性物質を生み出しています．</p>
+        <p>天然物有機化学の歴史は18世紀後半まで遡ることができます．
+            特に20世紀の中頃はこの学問の最盛期といっても過言ではなく，
+            重要な抗生物質やホルモンなどが発見され，人間の生活は一変し，寿命も飛躍的に伸びました．
+            今でも菌類，植物および海洋生物から新しい天然有機化合物が次々と見つかっています．
+            有機化合物の必要性は，生化学，分子生物学や微生物学などの学問の発展とともに変化し続けるのです．</p>
+        <p>さらに詳しくは <a href="mailto:nihei98@cc.utsunomiya-u.ac.jp">nihei98@cc.utsunomiya-u.ac.jp</a> までお尋ねください．</p>
 
-<button class="accordion">教育について</button>
-<div class="panel">
-<p>「平日の日中は研究に集中すること」当分野の規則はそれだけです．反応，精製，分析および活性測定の繰り返しにより，新しい機能性分子が生まれます．</p>
-<p>…（教育説明全文）</p>
-</div>
+        <h3>教育について</h3>
+        <p>「平日の日中は研究に集中すること」当分野の規則はそれだけです．
+            反応，精製，分析および活性測定の繰り返しにより，新しい機能性分子が生まれます．</p>
 
-<button class="accordion">進路について</button>
-<div class="panel">
-<p>大学院に進学する学生が多く，博士課程と修士課程の修了生は主に，研究・開発職に就いています．</p>
-<p>…（進路説明全文）</p>
-</div>
-</section>
+        <h3>進路について</h3>
+        <p>大学院に進学する学生が多く，博士課程と修士課程の修了生は主に，
+            研究・開発職に就いています．
+            化粧品，香料，製薬や試薬など関連する化学メーカーに就職したり，
+            公務員になったりして活躍しています．</p>
+    </section>
 
-<section data-lang="en" style="display:none;">
-<h1>Outline</h1>
-<button class="accordion">About Research</button>
-<div class="panel">
-<p>The purpose of our research is to develop new functional molecules that can be used for pharmaceuticals, cosmetics, agricultural chemicals, etc. through structural analysis of natural products created by living organisms, organic synthesis, derivative synthesis, and biological evaluation.</p>
-<p>…（英語版研究説明全文）</p>
-</div>
+    <section id="en" class="lang-section">
+        <h2>Overview</h2>
+        <h3>About Research</h3>
+        <p>The purpose of our research is to develop new functional molecules useful in pharmaceuticals,
+            cosmetics, and agricultural chemicals through organic synthesis, structural determination,
+            derivative synthesis, and biological evaluation of natural products.</p>
+        <p>The target compounds are small molecules predicted to have biological activity.
+            We synthesize compounds, evaluate their activity, and modify structures to enhance function
+            in a spiral research style.</p>
+        <p>The history of natural products chemistry dates back to the late 18th century.
+            It peaked in the mid-20th century with the discovery of antibiotics and hormones.
+            Even today, new compounds are continuously discovered from fungi, plants, and marine organisms.</p>
+        <p>For further details, please contact <a href="mailto:nihei98@cc.utsunomiya-u.ac.jp">nihei98@cc.utsunomiya-u.ac.jp</a>.</p>
 
-<button class="accordion">About Education</button>
-<div class="panel">
-<p>Focus on research during the day on weekdays. That is only one rule for our unit. The repetition of reaction, purification, analysis, and evaluation of biological activity create new functional molecules.</p>
-<p>…（英語版教育説明全文）</p>
-</div>
+        <h3>About Education</h3>
+        <p>The only rule is to focus on research during weekdays.
+            Through repeated reactions, purification, analysis, and activity measurements,
+            new functional molecules are created.</p>
 
-<button class="accordion">About Career Path</button>
-<div class="panel">
-<p>Many students progress to graduate school. Those who graduate from the masters or doctoral program are mainly in the field of research and development.</p>
-<p>…（英語版進路説明全文）</p>
-</div>
-</section>
+        <h3>Career Path</h3>
+        <p>Many students progress to graduate school.
+            Graduates of our master's and doctoral programs mainly work in R&D
+            in cosmetics, pharmaceuticals, chemicals, food products, environmental analysis,
+            or as government officers.</p>
+    </section>
+</main>
 
-</div>
+<footer>
+    <p>宇都宮大学大学院　地域創生科学研究科</p>
+</footer>
+
+<script>
+function switchLang(lang) {
+    document.querySelectorAll('.lang-section').forEach(sec => sec.classList.remove('active'));
+    document.getElementById(lang).classList.add('active');
+
+    document.querySelectorAll('.lang-tabs button').forEach(btn => btn.classList.remove('active'));
+    document.querySelector(`.lang-tabs button[onclick="switchLang('${lang}')"]`).classList.add('active');
+}
+</script>
+
 </body>
 </html>
