@@ -4,10 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NPC Lab メンバー</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/main.js" defer></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; }
+        header { background: #004080; color: white; padding: 1rem; }
+        header h1 { margin: 0; font-size: 1.5rem; }
+        nav a { color: white; margin-right: 1rem; text-decoration: none; }
+        main { padding: 1rem; }
+        footer { background: #eee; padding: 1rem; text-align: center; }
+
+        .lang-tabs { margin-bottom: 1rem; }
+        .lang-tabs button {
+            padding: 0.5rem 1rem;
+            border: none;
+            cursor: pointer;
+            background: #ccc;
+            margin-right: 0.5rem;
+        }
+        .lang-tabs button.active { background: #004080; color: white; }
+
+        .lang-section { display: none; }
+        .lang-section.active { display: block; }
+
+        table { border-collapse: collapse; width: 100%; margin-bottom: 1rem; }
+        th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+        th { background: #f0f0f0; }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.2rem; }
+            nav a { display: block; margin-bottom: 0.5rem; }
+            table, th, td { font-size: 0.9rem; }
+        }
+    </style>
 </head>
 <body>
+
 <header>
     <h1>Natural Products Chemistry Lab - 宇都宮大学</h1>
     <nav>
@@ -19,95 +49,125 @@
 </header>
 
 <main>
-    <section>
+    <div class="lang-tabs">
+        <button class="active" onclick="switchLang('ja')">日本語</button>
+        <button onclick="switchLang('en')">English</button>
+    </div>
+
+    <!-- 日本語 -->
+    <section id="ja" class="lang-section active">
         <h2>メンバー</h2>
-        <div class="accordion">
-            <h3>教員・PI</h3>
-            <div class="panel">
-                <p>Ken-ichi Nihei (PI) - お問い合わせ: nihei98アットcc.utsunomiya-u.ac.jp</p>
-            </div>
+        <h3>現メンバー</h3>
+        <table>
+            <tr><th>名前</th><th>学年</th><th>研究テーマ</th></tr>
+            <tr><td>Kae Horio</td><td>D3</td><td>高度対称性ポリフェノールの全合成</td></tr>
+            <tr><td>Mizuki Makita</td><td>M2</td><td>希少糖を含む天然物の全合成</td></tr>
+            <tr><td>Mao Okamura</td><td>M1</td><td>環状リグナンの全合成</td></tr>
+            <tr><td>Yuta Chohnan</td><td>M1</td><td>生長調節物質の化学合成</td></tr>
+            <tr><td>Kotomi Tsukamoto</td><td>M1</td><td>樹液成分の全合成</td></tr>
+            <tr><td>Kohei Shimizu</td><td>B4</td><td>ナフタレン配糖体の全合成</td></tr>
+            <tr><td>Kenta Tezuka</td><td>B4</td><td>酵素阻害剤の化学合成</td></tr>
+            <tr><td>Nana Nakamori</td><td>B4</td><td>ポリフェノール配糖体の短段階合成</td></tr>
+            <tr><td>Sakiwa Masuda</td><td>B4</td><td>新規バニロイドの化学合成</td></tr>
+            <tr><td>Ken-ichi Nihei</td><td>PI</td><td>お問い合わせはnihei98アットcc.utsunomiya-u.ac.jp</td></tr>
+        </table>
 
-            <h3>大学院生</h3>
-            <div class="panel">
-                <p>Kae Horio (D3) - 高度対称性ポリフェノールの全合成</p>
-                <p>Mizuki Makita (M2) - 希少糖を含む天然物の全合成</p>
-                <p>Mao Okamura (M1) - 環状リグナンの全合成</p>
-                <p>Yuta Chohnan (M1) - 生長調節物質の化学合成</p>
-                <p>Kotomi Tsukamoto (M1) - 樹液成分の全合成</p>
-            </div>
+        <h3>Alumni</h3>
+        <table>
+            <tr><th>イニシャル</th><th>学位</th><th>現在の活動</th></tr>
+            <tr><td>KS</td><td>学士</td><td>化粧品つくってる</td></tr>
+            <tr><td>MU</td><td>修士</td><td>北海のシーサン</td></tr>
+            <tr><td>SS</td><td>修士</td><td>試薬うってる</td></tr>
+            <tr><td>YT</td><td>修士</td><td>北北東で合成</td></tr>
+            <tr><td>AA</td><td>学士</td><td>関東圏で販売</td></tr>
+            <tr><td>RI</td><td>学士</td><td>乳化剤ヒロイン二代目</td></tr>
+            <tr><td>CE</td><td>学士</td><td>東洋で分析</td></tr>
+            <tr><td>SI</td><td>修士</td><td>初代乳化剤ヒロイン</td></tr>
+            <tr><td>MK</td><td>学士</td><td>湿布づくりの天使</td></tr>
+            <tr><td>MI</td><td>学士</td><td>ハイテクの韋駄天</td></tr>
+            <tr><td>YN</td><td>修士</td><td>香料開発の巨星(寿)</td></tr>
+            <tr><td>KH</td><td>修士</td><td>試薬研究のホープ(寿)</td></tr>
+            <tr><td>SAK</td><td>学士</td><td>化粧品製造のキー</td></tr>
+            <tr><td>RS</td><td>修士</td><td>ハワイ近くで研究</td></tr>
+            <tr><td>MWT</td><td>修士</td><td>インド洋で奮闘</td></tr>
+            <tr><td>YG</td><td>学士</td><td>日本海から首都圏</td></tr>
+            <tr><td>YY</td><td>学士</td><td>マヨドレ製造中</td></tr>
+            <tr><td>HS</td><td>修士</td><td>外資系で活躍(寿)</td></tr>
+            <tr><td>TAM</td><td>修士</td><td>分析のヒーロー</td></tr>
+            <tr><td>KI</td><td>学士</td><td>事務職の妖精</td></tr>
+            <tr><td>NA</td><td>修士</td><td>ピグメント開発中</td></tr>
+            <tr><td>WI</td><td>博士</td><td>化粧品開発中(寿)</td></tr>
+            <tr><td>KK</td><td>学士</td><td>電力つくってる</td></tr>
+            <tr><td>URT</td><td>修士</td><td>製薬会社で研究中</td></tr>
+            <tr><td>HR</td><td>学士</td><td>香料作ってます</td></tr>
+            <tr><td>MIT</td><td>修士</td><td>有機合成研究職(寿)</td></tr>
+            <tr><td>AM</td><td>修士</td><td>関東で蒸留中</td></tr>
+            <tr><td>SH</td><td>修士</td><td>有機合成の社会人</td></tr>
+            <tr><td>JL</td><td>学士</td><td>続薬学系大学院へ</td></tr>
+            <tr><td>TI</td><td>博士</td><td>研究チームのお頭(寿)</td></tr>
+            <tr><td>CO</td><td>修士</td><td>市役所の星</td></tr>
+            <tr><td>TM</td><td>修士</td><td>酒類分析のスター</td></tr>
+            <tr><td>MS</td><td>学士</td><td>湖畔でがんばる</td></tr>
+            <tr><td>KM</td><td>学士</td><td>薬学系大学院へ</td></tr>
+            <tr><td>MO</td><td>学士</td><td>惣菜開発のプロ(寿)</td></tr>
+            <tr><td>CM</td><td>学士</td><td>小中学校の要</td></tr>
+            <tr><td>YO</td><td>修士</td><td>珈琲の鉄人</td></tr>
+            <tr><td>SO</td><td>修士</td><td>研究職です(寿)</td></tr>
+            <tr><td>SK</td><td>学士</td><td>台湾に行きます</td></tr>
+            <tr><td>YK</td><td>学士</td><td>技術職してます</td></tr>
+            <tr><td>TAK</td><td>学士</td><td>県庁の稼ぎ頭</td></tr>
+            <tr><td>JK</td><td>修士</td><td>JAの賢人</td></tr>
+            <tr><td>TN</td><td>修士</td><td>肥料の神様</td></tr>
+            <tr><td>HK</td><td>学士</td><td>種苗の鬼(寿)</td></tr>
+            <tr><td>UT</td><td>学士</td><td>薬屋で働いてます</td></tr>
+            <tr><td>MM</td><td>学士</td><td>スーパー幹部候補</td></tr>
+            <tr><td>KT</td><td>修士</td><td>薬の分析してます</td></tr>
+            <tr><td>AK</td><td>学士</td><td>抗体博士(寿)</td></tr>
+            <tr><td>YH</td><td>学士</td><td>医薬学術業務</td></tr>
+            <tr><td>RK</td><td>学士</td><td>市役所の良識</td></tr>
+            <tr><td>CG</td><td>学士</td><td>茨城にいます</td></tr>
+            <tr><td>EN</td><td>学士</td><td>製薬会社勤務</td></tr>
+            <tr><td>RT</td><td>修士</td><td>関東にいます</td></tr>
+            <tr><td>SM</td><td>修士</td><td>研究開発中</td></tr>
+            <tr><td>RT600</td><td>学士</td><td>薬つくってます</td></tr>
+        </table>
+    </section>
 
-            <h3>学部生</h3>
-            <div class="panel">
-                <p>Kohei Shimizu (B4) - ナフタレン配糖体の全合成</p>
-                <p>Kenta Tezuka (B4) - 酵素阻害剤の化学合成</p>
-                <p>Nana Nakamori (B4) - ポリフェノール配糖体の短段階合成</p>
-                <p>Sakiwa Masuda (B4) - 新規バニロイドの化学合成</p>
-            </div>
-
-            <h3>Alumni</h3>
-            <div class="panel">
-                <p>KS(学士) 化粧品つくってる</p>
-                <p>MU(修士) 北海のシーサン</p>
-                <p>SS(修士) 試薬うってる</p>
-                <p>YT(修士) 北北東で合成</p>
-                <p>AA(学士) 関東圏で販売</p>
-                <p>RI(学士) 乳化剤ヒロイン二代目</p>
-                <p>CE(学士) 東洋で分析</p>
-                <p>SI(修士) 初代乳化剤ヒロイン</p>
-                <p>MK(学士) 湿布づくりの天使</p>
-                <p>MI(学士) ハイテクの韋駄天</p>
-                <p>YN(修士) 香料開発の巨星(寿)</p>
-                <p>KH(修士) 試薬研究のホープ(寿)</p>
-                <p>SAK(学士) 化粧品製造のキー</p>
-                <p>RS(修士) ハワイ近くで研究</p>
-                <p>MWT(修士) インド洋で奮闘</p>
-                <p>YG(学士) 日本海から首都圏</p>
-                <p>YY(学士) マヨドレ製造中</p>
-                <p>HS(修士) 外資系で活躍(寿)</p>
-                <p>TAM(修士) 分析のヒーロー</p>
-                <p>KI(学士) 事務職の妖精</p>
-                <p>NA(修士) ピグメント開発中</p>
-                <p>WI(博士) 化粧品開発中(寿)</p>
-                <p>KK(学士) 電力つくってる</p>
-                <p>URT(修士) 製薬会社で研究中</p>
-                <p>HR(学士) 香料作ってます</p>
-                <p>MIT(修士) 有機合成研究職(寿)</p>
-                <p>AM(修士) 関東で蒸留中</p>
-                <p>SH(修士) 有機合成の社会人</p>
-                <p>JL(学士) 続薬学系大学院へ</p>
-                <p>TI(博士) 研究チームのお頭(寿)</p>
-                <p>CO(修士) 市役所の星</p>
-                <p>TM(修士) 酒類分析のスター</p>
-                <p>MS(学士) 湖畔でがんばる</p>
-                <p>KM(学士) 薬学系大学院へ</p>
-                <p>MO(学士) 惣菜開発のプロ(寿)</p>
-                <p>CM(学士) 小中学校の要</p>
-                <p>YO(修士) 珈琲の鉄人</p>
-                <p>SO(修士) 研究職です(寿)</p>
-                <p>SK(学士) 台湾に行きます</p>
-                <p>YK(学士) 技術職してます</p>
-                <p>TAK(学士) 県庁の稼ぎ頭</p>
-                <p>JK(修士) JAの賢人</p>
-                <p>TN(修士) 肥料の神様</p>
-                <p>HK(学士) 種苗の鬼(寿)</p>
-                <p>UT(学士) 薬屋で働いてます</p>
-                <p>MM(学士) スーパー幹部候補</p>
-                <p>KT(修士) 薬の分析してます</p>
-                <p>AK(学士) 抗体博士(寿)</p>
-                <p>YH(学士) 医薬学術業務</p>
-                <p>RK(学士) 市役所の良識</p>
-                <p>CG(学士) 茨城にいます</p>
-                <p>EN(学士) 製薬会社勤務</p>
-                <p>RT(修士) 関東にいます</p>
-                <p>SM(修士) 研究開発中</p>
-                <p>RT600(学士) 薬つくってます</p>
-            </div>
-        </div>
+    <!-- English -->
+    <section id="en" class="lang-section">
+        <h2>Members</h2>
+        <h3>Current Members</h3>
+        <table>
+            <tr><th>Name</th><th>Grade</th><th>Research Topic</th></tr>
+            <tr><td>Kae Horio</td><td>D3</td><td>Total synthesis of quasi-symmetric polyphenols</td></tr>
+            <tr><td>Mizuki Makita</td><td>M2</td><td>Total synthesis of natural products containing rare sugars</td></tr>
+            <tr><td>Mao Okamura</td><td>M1</td><td>Total synthesis of cyclic lignans</td></tr>
+            <tr><td>Yuta Chohnan</td><td>M1</td><td>Chemical synthesis of growth regulators</td></tr>
+            <tr><td>Kotomi Tsukamoto</td><td>M1</td><td>Total synthesis of sap components</td></tr>
+            <tr><td>Kohei Shimizu</td><td>B4</td><td>Total synthesis of naphthalene glycosides</td></tr>
+            <tr><td>Kenta Tezuka</td><td>B4</td><td>Chemical synthesis of enzyme inhibitors</td></tr>
+            <tr><td>Nana Nakamori</td><td>B4</td><td>Short-step synthesis of polyphenol glycosides</td></tr>
+            <tr><td>Sakiwa Masuda</td><td>B4</td><td>Chemical synthesis of new vanilloids</td></tr>
+            <tr><td>Ken-ichi Nihei</td><td>PI</td><td>Contact: nihei98ATcc.utsunomiya-u.ac.jp</td></tr>
+        </table>
+        <h3>Alumni</h3>
+        <p>Same as Japanese list (can be translated if needed).</p>
     </section>
 </main>
 
 <footer>
     <p>宇都宮大学大学院　地域創生科学研究科</p>
 </footer>
+
+<script>
+function switchLang(lang) {
+    document.querySelectorAll('.lang-section').forEach(sec => sec.classList.remove('active'));
+    document.getElementById(lang).classList.add('active');
+
+    document.querySelectorAll('.lang-tabs button').forEach(btn => btn.classList.remove('active'));
+    document.querySelector(`.lang-tabs button[onclick="switchLang('${lang}')"]`).classList.add('active');
+}
+</script>
+
 </body>
 </html>
