@@ -1,27 +1,39 @@
-/* Reset & basic */
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: Arial, sans-serif; line-height:1.6; background:#f9f9f9; color:#333; }
-a { text-decoration:none; color:#0077cc; }
-nav { background:#004080; color:white; padding:10px; display:flex; justify-content:space-around; flex-wrap:wrap;}
-nav a, nav button { color:white; margin:5px; cursor:pointer; border:none; background:none; font-size:1em; }
-nav button:hover { text-decoration:underline; }
+<style>
+body { font-family: Arial, sans-serif; margin:0; padding:0; }
+nav { background:#004080; color:#fff; padding:0.5rem; display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; }
+nav a { color:#fff; text-decoration:none; margin-right:1rem; }
+nav button { margin-left:auto; }
+.container { padding:1rem; background:#ffffff; color:#000; }
+#news-container { overflow:hidden; height:3em; position:relative; background:#f0f0f0; padding:0.5rem; color:#000; }
+#news-list { margin:0; padding:0; list-style:none; position:absolute; top:0; width:100%; }
+#news-list li { padding:0.5rem 0; }
+</style>
 
-.container { max-width:1200px; margin:20px auto; padding:0 20px; }
-
-/* Sections */
-section { margin-bottom:40px; }
-
-/* Accordion */
-.accordion { cursor:pointer; padding:10px; background:#eee; border:none; text-align:left; outline:none; transition:0.3s; margin-bottom:5px;}
-.active, .accordion:hover { background:#ccc; }
-.panel { padding:0 10px; display:none; background:white; overflow:hidden; }
-
-/* Table */
-table { width:100%; border-collapse:collapse; margin-top:10px;}
-th, td { border:1px solid #ccc; padding:5px; text-align:left; }
-th { background:#f0f0f0; }
-
-/* Responsive */
-@media screen and (max-width:768px){
-    nav { flex-direction:column; align-items:center; }
+<script>
+// 言語切替
+function switchLang(lang) {
+    document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = (el.getAttribute('data-lang') === lang) ? '' : 'none';
+    });
+    document.querySelectorAll('#news-list li').forEach(li => {
+        li.style.display = li.classList.contains(lang) ? '' : 'none';
+    });
+    // スクロール位置リセット
+    newsList.style.top = '0px';
+    top = 0;
 }
+
+// ニュース自動スクロール
+const newsList = document.getElementById('news-list');
+let top = 0;
+const itemHeight = 40;
+function scrollNews() {
+    const visibleItems = Array.from(newsList.children).filter(li => li.style.display !== 'none');
+    const totalItems = visibleItems.length;
+    if(totalItems === 0) return;
+    top -= 1;
+    if(-top >= itemHeight * totalItems) top = 0;
+    newsList.style.top = top + 'px';
+}
+setInterval(scrollNews, 50);
+</script>
