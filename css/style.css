@@ -1,0 +1,27 @@
+/* Reset & basic */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: Arial, sans-serif; line-height:1.6; background:#f9f9f9; color:#333; }
+a { text-decoration:none; color:#0077cc; }
+nav { background:#004080; color:white; padding:10px; display:flex; justify-content:space-around; flex-wrap:wrap;}
+nav a, nav button { color:white; margin:5px; cursor:pointer; border:none; background:none; font-size:1em; }
+nav button:hover { text-decoration:underline; }
+
+.container { max-width:1200px; margin:20px auto; padding:0 20px; }
+
+/* Sections */
+section { margin-bottom:40px; }
+
+/* Accordion */
+.accordion { cursor:pointer; padding:10px; background:#eee; border:none; text-align:left; outline:none; transition:0.3s; margin-bottom:5px;}
+.active, .accordion:hover { background:#ccc; }
+.panel { padding:0 10px; display:none; background:white; overflow:hidden; }
+
+/* Table */
+table { width:100%; border-collapse:collapse; margin-top:10px;}
+th, td { border:1px solid #ccc; padding:5px; text-align:left; }
+th { background:#f0f0f0; }
+
+/* Responsive */
+@media screen and (max-width:768px){
+    nav { flex-direction:column; align-items:center; }
+}
