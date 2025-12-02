@@ -3,11 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NPC Lab 業績</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/main.js" defer></script>
+    <title>NPC Lab 論文業績</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; }
+        header { background: #004080; color: white; padding: 1rem; }
+        header h1 { margin: 0; font-size: 1.5rem; }
+        nav a { color: white; margin-right: 1rem; text-decoration: none; }
+        main { padding: 1rem; }
+        footer { background: #eee; padding: 1rem; text-align: center; }
+
+        .lang-tabs { margin-bottom: 1rem; }
+        .lang-tabs button {
+            padding: 0.5rem 1rem;
+            border: none;
+            cursor: pointer;
+            background: #ccc;
+            margin-right: 0.5rem;
+        }
+        .lang-tabs button.active { background: #004080; color: white; }
+
+        .lang-section { display: none; }
+        .lang-section.active { display: block; }
+
+        table { border-collapse: collapse; width: 100%; margin-bottom: 1rem; }
+        th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+        th { background: #f0f0f0; }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.2rem; }
+            nav a { display: block; margin-bottom: 0.5rem; }
+            table, th, td { font-size: 0.9rem; }
+        }
+    </style>
 </head>
 <body>
+
 <header>
     <h1>Natural Products Chemistry Lab - 宇都宮大学</h1>
     <nav>
@@ -19,39 +49,62 @@
 </header>
 
 <main>
-    <section>
+    <div class="lang-tabs">
+        <button class="active" onclick="switchLang('ja')">日本語</button>
+        <button onclick="switchLang('en')">English</button>
+    </div>
+
+    <!-- 日本語 -->
+    <section id="ja" class="lang-section active">
+        <h2>選択論文 (Selected Publications)</h2>
+        <table>
+            <tr><th>著者</th><th>タイトル</th><th>誌名</th><th>年</th></tr>
+            <tr><td>Horio, K.; Maeda, H.; Horie, K.; Nanashima, N.; Nihei, K.*</td><td>Total synthesis of quasi-symmetric dihydrofuran lignans (−)-ribesin A and B isolated from Ribes nigrum leaves</td><td>Tetrahedron</td><td>2025</td></tr>
+            <tr><td>Makita, M.; Nihei, K.*</td><td>Total synthesis of nepodin and torachrysone glucosides: Evidence for naturally occurring L-glucosides</td><td>Tetrahedron Lett.</td><td>2024</td></tr>
+            <tr><td>Shimakage, R.; Iwadate, T.; Nihei, K.*</td><td>A natural diphenolic glucoside, sonnerphenolic C: Chemical synthesis, structural revision, redox transformation, and identification as an antioxidant</td><td>Tetrahedron</td><td>2024</td></tr>
+            <tr><td>Horio, K.; Nihei, K.*</td><td>Total synthesis of (-)-ribesin B and its structural revision</td><td>Tetrahedron Lett.</td><td>2023</td></tr>
+            <tr><td>Ishioka, W.; Nihei, K.*</td><td>Chemical synthesis and tyrosinase inhibitory activity of resorcinol alkyl glucosides, hydroxyalkyl resorcinols, and alkyl resorcinols</td><td>J. Mol. Struct.</td><td>2022</td></tr>
+            <tr><td>Shimakage, R.; Nihei, K.*</td><td>Synthesis, structural revision, and tyrosinase inhibitory activity of proposed phloretin-4-O-β-D-glucopyranoside from Homalium stenophyllum</td><td>Nat. Prod. Res.</td><td>2022</td></tr>
+            <tr><td>Nihei, K.; Peigneur, S.; Tytgat, J.; Lange, A.B.; Konno, K.*</td><td>Isolation and characterization of FMRFamide-like peptides in the venoms of solitary sphecid wasps</td><td>Peptides</td><td>2021</td></tr>
+            <tr><td>Matsumoto, T.; Harima, S.; Weng, J.; Nihei, K.*</td><td>Systematic approach to the chemical synthesis of arabidopyrones, the unique α-pyrones of Arabidopsis metabolites</td><td>Synth. Commun.</td><td>2020</td></tr>
+            <tr><td>Nihei, K.*; Kubo, I.</td><td>Tyrosinase inhibition by 4-substituted benzaldehydes with electron-withdrawing groups</td><td>Appl. Biochem. Biotechnol.</td><td>2020</td></tr>
+            <tr><td>Asebi, N.; Nihei, K.*</td><td>Total synthesis of apios isoflavones and investigation of their tyrosinase inhibitory activity</td><td>Tetrahedron</td><td>2019</td></tr>
+            <tr><td>Nihei, K.*; Kubo, I.</td><td>Benzonitriles as tyrosinase inhibitors with hyperbolic inhibition manner</td><td>Int. J. Biol. Macromol.</td><td>2019</td></tr>
+            <tr><td>Ishioka, W.; Oonuki, S.; Iwadate, T.; Nihei, K.*</td><td>Resorcinol alkyl glucosides as potent tyrosinase inhibitors</td><td>Bioorg. Med. Chem. Lett.</td><td>2019</td></tr>
+            <tr><td>Tanaka, Y.; Suzuki, M.; Kodachi, Y.; Nihei, K.*</td><td>Molecular design of potent, hydrophilic tyrosinase inhibitors based on the natural dihydrooxyresveratrol skeleton</td><td>Carbohydr. Res.</td><td>2019</td></tr>
+            <tr><td>Matsumoto, T.; Nakajima, T.; Iwadate, T.; Nihei, K.*</td><td>Chemical synthesis and tyrosinase-inhibitory activity of isotachioside and its related glycosides</td><td>Carbohydr. Res.</td><td>2018</td></tr>
+            <tr><td>Iwadate, T.; Nihei, K.*</td><td>Chemical synthesis, redox transformation, and identification of sonnerphenolic C, an antioxidant in Acer nikoense</td><td>Bioorg. Med. Chem. Lett.</td><td>2017</td></tr>
+            <tr><td>Nihei, K.*; Kubo, I.</td><td>Substituent effect of benzaldehydes on tyrosinase inhibition</td><td>Plant Physiol. Biochem.</td><td>2017</td></tr>
+            <tr><td>Oode, C.; Shimada, W.; Yokota, M.; Yamada, Y.; Nihei, K.*</td><td>Dihydroresveratrol cellobioside and xylobioside as effective melanogenesis activators</td><td>Carbohydr. Res.</td><td>2016</td></tr>
+            <tr><td>Iwadate, T.; Nihei, K.*</td><td>Rhododendrol glycosides as stereospecific tyrosinase inhibitors</td><td>Bioorg. Med. Chem.</td><td>2015</td></tr>
+            <tr><td>Oode, C.; Shimada, W.; Izutsu, Y.; Yokota, M.; Iwadate, T.; Nihei, K.*</td><td>Synthesis of dihydroresveratrol glycosides and evaluation of their activity against melanogenesis in B16F0 melanoma cells</td><td>Eur. J. Med. Chem.</td><td>2014</td></tr>
+            <tr><td>Kamatani, J.; Iwadate, T.; Tajima, R.; Kimoto, H.; Yamada, Y.; Masuoka, N.; Kubo, I.; Nihei, K.*</td><td>Stereochemical investigation and total synthesis of inuloidin, a biologically active sesquiterpenoid from Heterotheca inuloides</td><td>Tetrahedron</td><td>2014</td></tr>
+            <tr><td>Iwadate, T.; Kashiwakura, Y.; Masuoka, N.; Yamada, Y.; Nihei, K.*</td><td>Chemical synthesis and tyrosinase inhibitory activity of rhododendrol glycosides</td><td>Bioorg. Med. Chem. Lett.</td><td>2014</td></tr>
+            <tr><td>Tajima, R.; Oozeki, H.; Muraoka, S.; Tanaka, S.; Motegi, Y.; Nihei, H.; Yamada, Y.; Masuoka, N.; Nihei, K.*</td><td>Synthesis and evaluation of bibenzyl glycosides as potent tyrosinase inhibitors</td><td>Eur. J. Med. Chem.</td><td>2011</td></tr>
+            <tr><td>Oozeki, H.; Tajima, R.; Nihei, K.*</td><td>Molecular design of potent tyrosinase inhibitors having the bibenzyl skeleton</td><td>Bioorg. Med. Chem. Lett.</td><td>2008</td></tr>
+        </table>
+    </section>
+
+    <!-- English -->
+    <section id="en" class="lang-section">
         <h2>Selected Publications</h2>
-        <ul>
-            <li>Horio, K.; Maeda, H.; Horie, K.; Nanashima, N.; Nihei, K.* Total synthesis of quasi-symmetric dihydrofuran lignans (−)-ribesin A and B isolated from Ribes nigrum leaves. Tetrahedron 2025, 181, 134675.</li>
-            <li>Makita, M.; Nihei, K.* Total synthesis of nepodin and torachrysone glucosides: Evidence for naturally occurring L-glucosides. Tetrahedron Lett. 2024, 146, 155191.</li>
-            <li>Shimakage, R.; Iwadate, T.; Nihei, K.* A natural diphenolic glucoside, sonnerphenolic C: Chemical synthesis, structural revision, redox transformation, and identification as an antioxidant. Tetrahedron 2024, 158, 134001.</li>
-            <li>Horio, K.; Nihei, K.* Total synthesis of (-)-ribesin B and its structural revision. Tetrahedron Lett. 2023, 114, 154285.</li>
-            <li>Ishioka, W.; Nihei, K.* Chemical synthesis and tyrosinase inhibitory activity of resorcinol alkyl glucosides, hydroxyalkyl resorcinols, and alkyl resorcinols. J. Mol. Struct. 2022, 1268, 133668.</li>
-            <li>Shimakage, R.; Nihei, K.* Synthesis, structural revision, and tyrosinase inhibitory activity of proposed phloretin-4-O-β-D-glucopyranoside from Homalium stenophyllum. Nat. Prod. Res. 2022, 36, 1803-1811.</li>
-            <li>Nihei, K.; Peigneur, S.; Tytgat, J.; Lange, A.B.; Konno, K.* Isolation and characterization of FMRFamide-like peptides in the venoms of solitary sphecid wasps. Peptides 2021, 142, 170575.</li>
-            <li>Matsumoto, T.; Harima, S.; Weng, J.; Nihei, K.* Systematic approach to the chemical synthesis of arabidopyrones, the unique α-pyrones of Arabidopsis metabolites. Synth. Commun. 2020, 50, 2981-2987.</li>
-            <li>Nihei, K.*; Kubo, I. Tyrosinase inhibition by 4-substituted benzaldehydes with electron-withdrawing groups. Appl. Biochem. Biotechnol. 2020, 191, 1711-1716.</li>
-            <li>Asebi, N.; Nihei, K.* Total synthesis of apios isoflavones and investigation of their tyrosinase inhibitory activity. Tetrahedron 2019, 75, 130589.</li>
-            <li>Nihei, K.*; Kubo, I. Benzonitriles as tyrosinase inhibitors with hyperbolic inhibition manner. Int. J. Biol. Macromol. 2019, 133, 929-932.</li>
-            <li>Ishioka, W.; Oonuki, S.; Iwadate, T.; Nihei, K.* Resorcinol alkyl glucosides as potent tyrosinase inhibitors. Bioorg. Med. Chem. Lett. 2019, 29, 313-316.</li>
-            <li>Tanaka, Y.; Suzuki, M.; Kodachi, Y.; Nihei, K.* Molecular design of potent, hydrophilic tyrosinase inhibitors based on the natural dihydrooxyresveratrol skeleton. Carbohydr. Res. 2019, 472, 42-49.</li>
-            <li>Matsumoto, T.; Nakajima, T.; Iwadate, T.; Nihei, K.* Chemical synthesis and tyrosinase-inhibitory activity of isotachioside and its related glycosides. Carbohydr. Res. 2018, 465, 22-28.</li>
-            <li>Iwadate, T.; Nihei, K.* Chemical synthesis, redox transformation, and identification of sonnerphenolic C, an antioxidant in Acer nikoense. Bioorg. Med. Chem. Lett. 2017, 27, 1799-1802.</li>
-            <li>Nihei, K.*; Kubo, I. Substituent effect of benzaldehydes on tyrosinase inhibition. Plant Physiol. Biochem. 2017, 112, 278-282.</li>
-            <li>Oode, C.; Shimada, W.; Yokota, M.; Yamada, Y.; Nihei, K.* Dihydroresveratrol cellobioside and xylobioside as effective melanogenesis activators. Carbohydr. Res. 2016, 436, 45-49.</li>
-            <li>Iwadate, T.; Nihei, K.* Rhododendrol glycosides as stereospecific tyrosinase inhibitors. Bioorg. Med. Chem. 2015, 23, 6650-6658.</li>
-            <li>Oode, C.; Shimada, W.; Izutsu, Y.; Yokota, M.; Iwadate, T.; Nihei, K.* Synthesis of dihydroresveratrol glycosides and evaluation of their activity against melanogenesis in B16F0 melanoma cells. Eur. J. Med. Chem. 2014, 87, 862-867.</li>
-            <li>Kamatani, J.; Iwadate, T.; Tajima, R.; Kimoto, H.; Yamada, Y.; Masuoka, N.; Kubo, I.; Nihei, K.* Stereochemical investigation and total synthesis of inuloidin, a biologically active sesquiterpenoid from Heterotheca inuloides. Tetrahedron 2014, 70, 3141-3145.</li>
-            <li>Iwadate, T.; Kashiwakura, Y.; Masuoka, N.; Yamada, Y.; Nihei, K.* Chemical synthesis and tyrosinase inhibitory activity of rhododendrol glycosides. Bioorg. Med. Chem. Lett. 2014, 24, 122-125.</li>
-            <li>Tajima, R.; Oozeki, H.; Muraoka, S.; Tanaka, S.; Motegi, Y.; Nihei, H.; Yamada, Y.; Masuoka, N.; Nihei, K.* Synthesis and evaluation of bibenzyl glycosides as potent tyrosinase inhibitors. Eur. J. Med. Chem. 2011, 46, 1374-1381.</li>
-            <li>Oozeki, H.; Tajima, R.; Nihei, K.* Molecular design of potent tyrosinase inhibitors having the bibenzyl skeleton. Bioorg. Med. Chem. Lett. 2008, 18, 5252-5254.</li>
-        </ul>
-        <p>For more information, please see <a href="https://researchmap.jp/">researchmap</a>.</p>
+        <p>All publications listed above are available in English. Titles and authors remain the same.</p>
     </section>
 </main>
 
 <footer>
     <p>宇都宮大学大学院　地域創生科学研究科</p>
 </footer>
+
+<script>
+function switchLang(lang) {
+    document.querySelectorAll('.lang-section').forEach(sec => sec.classList.remove('active'));
+    document.getElementById(lang).classList.add('active');
+
+    document.querySelectorAll('.lang-tabs button').forEach(btn => btn.classList.remove('active'));
+    document.querySelector(`.lang-tabs button[onclick="switchLang('${lang}')"]`).classList.add('active');
+}
+</script>
+
 </body>
 </html>
