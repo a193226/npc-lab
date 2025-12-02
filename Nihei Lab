@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>二瓶研究室（NPC Lab）</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Helvetica', 'Arial', sans-serif;
+      background: #ffffff;
+      color: #222;
+      line-height: 1.6;
+    }
+    header {
+      background: rgba(0, 40, 0, 0.8);
+      color: #fff;
+      padding: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    header a {
+      color: #fff;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .hero {
+      background: url('https://images.unsplash.com/photo-1581091870577-2d145fdbf82f?auto=format&fit=crop&w=1350') center/cover;
+      height: 60vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+      flex-direction: column;
+      text-align: center;
+    }
+    .hero h1 { font-size: 2.8rem; margin: 0; }
+    .hero p { font-size: 1.3rem; margin-top: 10px; }
+    .section {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #f5f5f5;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .card .text {
+      padding: 15px;
+    }
+    footer {
+      background: #003300;
+      color: #fff;
+      padding: 30px;
+      text-align: center;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="logo">NPC Lab - Utsunomiya University</div>
+      <div>
+        <a href="#research">研究内容</a>
+        <a href="#members">メンバー</a>
+        <a href="#equipment">設備</a>
+        <a href="#news">ニュース</a>
+        <a href="#contact">アクセス</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>天然物の力で未来を創る</h1>
+    <p>Natural Products Chemistry Laboratory - NPC Lab</p>
+  </section>
+
+  <section id="research" class="section">
+    <h2>研究内容</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1581091870627-3d2a1134c828?auto=format&fit=crop&w=800" />
+        <div class="text">
+          <h3>天然物の全合成</h3>
+          <p>自然由来分子を人工的に合成し、その構造・活性を探求します。</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1581093458791-9f3cdd9bb705?auto=format&fit=crop&w=800" />
+        <div class="text">
+          <h3>構造解析</h3>
+          <p>NMR, MS, X線解析を用いて未知化合物の構造を特定します。</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=800" />
+        <div class="text">
+          <h3>機能性評価</h3>
+          <p>生物活性評価を通じて機能性物質の発見につなげます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <p>宇都宮大学 農学部 二瓶研究室</p>
+    <p>〒321-8505 栃木県宇都宮市峰町350</p>
+    <p>Email: info@example.com</p>
+    <p>© 2025 NPC Lab</p>
+  </footer>
+</body>
+</html>
