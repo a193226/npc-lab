@@ -3,230 +3,269 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>二瓶研究室 - Natural Products Chemistry</title>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<title>宇都宮大学NPC研究室</title>
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Yu Gothic','ヒラギノ角ゴ ProN',sans-serif; line-height:1.6; color:#333; background:#FFFDF5; }
-header { background:#6B8E23; padding:15px 20px; position:sticky; top:0; z-index:1000; box-shadow:0 4px 6px rgba(0,0,0,0.1); }
-header .nav { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; }
-header .nav .logo { font-size:1.5rem; font-weight:bold; color:#FFF; }
-header .nav a { margin-left:15px; font-weight:bold; color:#FFF; text-decoration:none; transition:0.3s; }
-header .nav a:hover { text-decoration:underline; }
-.hero { background:#6B8E23 url('https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=1350') center/cover no-repeat; height:60vh; display:flex; justify-content:center; align-items:center; text-align:center; color:white; text-shadow:0 2px 10px rgba(0,0,0,0.5); flex-direction:column; padding:0 20px; }
-.hero h1 { font-size:2.8rem; margin-bottom:10px; }
-.hero p { font-size:1.2rem; }
-.section { max-width:1200px; margin:50px auto; padding:0 20px; }
-.section h2 { font-size:2rem; color:#6B8E23; margin-bottom:30px; text-align:center; }
-.cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:20px; }
-.card, .member-card, .alumni-card, .publication-item { background:#FAF3E0; padding:20px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); transition:0.3s; cursor:pointer; position:relative; }
-.card:hover, .member-card:hover, .alumni-card:hover, .publication-item:hover { transform:translateY(-6px); box-shadow:0 8px 20px rgba(0,0,0,0.15); }
-.card h3, .member-card h4, .alumni-card h4, .publication-item h4 { margin-bottom:10px; color:#4B6B1B; display:flex; align-items:center; }
-.card h3 i, .member-card h4 i, .alumni-card h4 i, .publication-item h4 i { margin-right:8px; color:#6B8E23; }
-.card p, .member-card p, .alumni-card p, .publication-item p { font-size:0.95rem; }
-.accordion-content { display:none; margin-top:10px; font-size:0.9rem; line-height:1.5; }
-.accordion.active .accordion-content { display:block; }
-.search-bar { max-width:600px; margin:0 auto 30px auto; display:flex; }
-.search-bar input { flex:1; padding:10px 15px; font-size:1rem; border:2px solid #6B8E23; border-radius:8px; outline:none; }
-.search-bar input:focus { border-color:#4B6B1B; }
-footer { background:#6B8E23; color:#FFF; padding:30px 20px; text-align:center; margin-top:50px; }
-footer p { margin:5px 0; font-size:0.95rem; }
-@media(max-width:768px){ .hero h1 { font-size:2.2rem; } .hero p { font-size:1rem; } }
-@media(max-width:480px){ header .nav { flex-direction:column; align-items:flex-start; } header .nav a { margin:10px 0 0 0; } }
+/* 共通スタイル */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+h1, h2, h3 { margin: 0.5em 0; }
+.container { max-width: 1000px; margin: auto; padding: 20px; }
+
+/* メンバー・ニュース・論文 */
+.news-card, .publication-item {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.latest {
+    border: 2px solid #ff6f61;
+    background-color: #fff0f0;
+    box-shadow: 0 2px 8px rgba(255, 111, 97, 0.3);
+}
+.latest .news-header, .latest .pub-header {
+    color: #d32f2f;
+}
+
+/* アコーディオン */
+.news-content, .pub-content {
+    display: none;
+    padding: 5px 10px;
+    background-color: #f9f9f9;
+}
+.news-content.open, .pub-content.open { display: block; }
+.arrow { display: inline-block; transition: transform 0.3s; }
+
+/* 言語切替ボタン */
+#languageSwitch { margin-bottom: 20px; }
+#languageSwitch button { margin-right: 10px; padding: 5px 10px; }
+
+/* 検索入力 */
+#searchInput { margin-bottom: 20px; width: 100%; padding: 5px; }
+
+/* レスポンシブ対応 */
+@media (max-width: 600px) {
+    .container { padding: 10px; }
+    .news-card, .publication-item { font-size: 14px; }
+}
 </style>
 </head>
 <body>
 
-<header>
-<div class="nav">
-<div class="logo"><i class="fas fa-flask"></i> 二瓶研究室 - NPC Lab</div>
-<div>
-<a href="#home">HOME</a>
-<a href="#research">概要</a>
-<a href="#members">メンバー</a>
-<a href="#alumni">卒業生</a>
-<a href="#publications">業績</a>
-<a href="#contact">お問い合わせ</a>
-</div>
-</div>
-</header>
+<div class="container">
+<h1>宇都宮大学NPC研究室</h1>
 
-<section id="home" class="hero">
-<h1><i class="fas fa-vials"></i> 宇都宮大学農学部応用生命化学科</h1>
-<p>有機化学を通して，天然物の可能性を探る</p>
-<p>(2025.5.更新)</p>
-<div class="lang-toggle"><a href="#">日本語</a> / <a href="#">English</a></div>
-</section>
-
-<section id="research" class="section">
-<h2><i class="fas fa-book"></i> 概要</h2>
-<div class="search-bar">
-<input type="text" id="searchInput" placeholder="キーワードで検索...">
-</div>
-<div class="cards">
-<div class="card accordion">
-<h3><i class="fas fa-microscope"></i> 研究について</h3>
-<div class="accordion-content">
-<p>天然物有機化学分野では，有機化学を通して，天然物の可能性を探ることを目的に，天然物の有機合成と生理活性評価を中心に研究活動を行っています．有機合成は，化合物を人工的に作り出す学問で，化学の領域に分類されます．地方の国立大学の農学部で有機合成を行っている研究室は希少ですが，生物，自然や環境などをより身近に感じながら研究できることが特徴です．化合物の生理活性を調べるため，生物よりの化学に関する研究を中心に行っています．</p>
-</div>
+<!-- 言語切替 -->
+<div id="languageSwitch">
+    <button id="jpBtn">日本語</button>
+    <button id="enBtn">English</button>
 </div>
 
-<div class="card accordion">
-<h3><i class="fas fa-chalkboard-teacher"></i> 教育について</h3>
-<div class="accordion-content">
-<p>平日の日中は研究に集中すること。当分野ではTLC，HPLC，NMRおよびMSなどの分析手法を日常的に使用し，有機化合物の合成，検出，精製や構造解析などの化学実験の進め方を習得できます。</p>
-</div>
+<!-- 日本語コンテンツ -->
+<div id="contentJP">
+    <input type="text" id="searchInput" placeholder="ニュース・論文を検索">
+
+    <!-- HOME -->
+    <section id="home">
+        <h2>HOME</h2>
+        <p>宇都宮大学農学部応用生命化学科<br>Natural Products Chemistry<br>(2025.5.更新)</p>
+        <p>有機化学を通して，天然物の可能性を探る</p>
+        <p>当分野では，天然有機化合物の有機合成，誘導体合成，構造解析および生理活性評価により，化粧品，農薬や医薬品などに利用できる新しい機能性分子の開発を目指し，スパイラル型の研究を行っています．詳しくは nihei98アットcc.utsunomiya-u.ac.jp までお問い合わせください．</p>
+    </section>
+
+    <!-- 概要 -->
+    <section id="overview">
+        <h2>概要</h2>
+        <p>研究について...</p>
+        <p>教育について...</p>
+        <p>進路について...</p>
+    </section>
+
+    <!-- メンバー -->
+    <section id="members">
+        <h2>メンバー</h2>
+        <ul>
+            <li>Kae Horio (D3) 高度対称性ポリフェノールの全合成</li>
+            <li>Mizuki Makita (M2) 希少糖を含む天然物の全合成</li>
+            <li>Mao Okamura (M1) 環状リグナンの全合成</li>
+            <li>Yuta Chohnan (M1) 生長調節物質の化学合成</li>
+            <li>Kotomi Tsukamoto (M1) 樹液成分の全合成</li>
+            <li>Kohei Shimizu (B4) ナフタレン配糖体の全合成</li>
+            <li>Kenta Tezuka (B4) 酵素阻害剤の化学合成</li>
+            <li>Nana Nakamori (B4) ポリフェノール配糖体の短段階合成</li>
+            <li>Sakiwa Masuda (B4) 新規バニロイドの化学合成</li>
+            <li>Ken-ichi Nihei (PI) お問い合わせは nihei98アットcc.utsunomiya-u.ac.jp</li>
+        </ul>
+    </section>
+
+    <!-- ニュース -->
+    <section id="newsContainer">
+        <h2>ニュース</h2>
+        <div class="news-card" data-date="2025-05-01">
+            <div class="news-header"><span class="arrow">▶</span> 研究室ニュースタイトル</div>
+            <div class="news-content">詳細内容</div>
+        </div>
+        <div class="news-card" data-date="2025-04-01">
+            <div class="news-header"><span class="arrow">▶</span> 研究室ニュースタイトル2</div>
+            <div class="news-content">詳細内容2</div>
+        </div>
+    </section>
+
+    <!-- 論文 -->
+    <section id="pubContainer">
+        <h2>業績</h2>
+        <div class="publication-item" data-date="2025-05-01">
+            <div class="pub-header"><span class="arrow">▶</span> Horio, K.; Maeda, H.; Nihei, K.* Total synthesis of quasi-symmetric dihydrofuran lignans...</div>
+            <div class="pub-content">Tetrahedron 2025, 181, 134675</div>
+        </div>
+        <div class="publication-item" data-date="2024-12-01">
+            <div class="pub-header"><span class="arrow">▶</span> Makita, M.; Nihei, K.* Total synthesis of nepodin and torachrysone glucosides...</div>
+            <div class="pub-content">Tetrahedron Lett. 2024, 146, 155191</div>
+        </div>
+    </section>
 </div>
 
-<div class="card accordion">
-<h3><i class="fas fa-briefcase"></i> 進路について</h3>
-<div class="accordion-content">
-<p>大学院に進学する学生が多く，博士課程と修士課程の修了生は主に研究・開発職に就いています。化粧品，香料，製薬や試薬など関連する化学メーカーに就職したり，公務員になったりしています。</p>
+<!-- 英語コンテンツ -->
+<div id="contentEN" style="display:none;">
+    <input type="text" id="searchInputEN" placeholder="Search News & Publications">
+
+    <section id="homeEN">
+        <h2>HOME</h2>
+        <p>Natural Products Chemistry, Faculty of Agriculture, Utsunomiya University</p>
+        <p>Exploring the potential of natural products through organic chemistry</p>
+        <p>Contact: nihei98ATcc.utsunomiya-u.ac.jp</p>
+    </section>
+
+    <section id="overviewEN">
+        <h2>Overview</h2>
+        <p>About Research...</p>
+        <p>About Education...</p>
+        <p>Career Path...</p>
+    </section>
+
+    <section id="membersEN">
+        <h2>Members</h2>
+        <ul>
+            <li>Kae Horio (D3) Total synthesis of highly symmetric polyphenols</li>
+            <li>Mizuki Makita (M2) Total synthesis of natural products containing rare sugars</li>
+            <li>Mao Okamura (M1) Total synthesis of cyclic lignans</li>
+            <li>Yuta Chohnan (M1) Chemical synthesis of growth regulators</li>
+            <li>Kotomi Tsukamoto (M1) Total synthesis of sap components</li>
+            <li>Kohei Shimizu (B4) Total synthesis of naphthalene glycosides</li>
+            <li>Kenta Tezuka (B4) Chemical synthesis of enzyme inhibitors</li>
+            <li>Nana Nakamori (B4) Short-step synthesis of polyphenol glycosides</li>
+            <li>Sakiwa Masuda (B4) Chemical synthesis of new vanilloids</li>
+            <li>Ken-ichi Nihei (PI) Contact: nihei98ATcc.utsunomiya-u.ac.jp</li>
+        </ul>
+    </section>
+
+    <section id="newsContainerEN">
+        <h2>News</h2>
+        <div class="news-card" data-date="2025-05-01">
+            <div class="news-header"><span class="arrow">▶</span> Lab News Title</div>
+            <div class="news-content">Details</div>
+        </div>
+    </section>
+
+    <section id="pubContainerEN">
+        <h2>Publications</h2>
+        <div class="publication-item" data-date="2025-05-01">
+            <div class="pub-header"><span class="arrow">▶</span> Horio, K.; Maeda, H.; Nihei, K.* Total synthesis of quasi-symmetric dihydrofuran lignans...</div>
+            <div class="pub-content">Tetrahedron 2025, 181, 134675</div>
+        </div>
+    </section>
 </div>
-</div>
-</div>
-</section>
-
-<section id="members" class="section">
-<h2><i class="fas fa-users"></i> メンバー</h2>
-<div class="cards" id="membersContainer"></div>
-</section>
-
-<section id="alumni" class="section">
-<h2><i class="fas fa-user-graduate"></i> 卒業生</h2>
-<div class="cards" id="alumniContainer"></div>
-</section>
-
-<section id="publications" class="section">
-<h2><i class="fas fa-book-open"></i> 業績</h2>
-<div class="cards" id="publicationsContainer"></div>
-</section>
-
-<footer id="contact">
-<p><i class="fas fa-envelope"></i> 宇都宮大学 二瓶研究室</p>
-<p>Email: nihei98アットcc.utsunomiya-u.ac.jp</p>
-<p>© 2025 NPC Lab</p>
-</footer>
 
 <script>
-// アコーディオン開閉
-document.querySelectorAll('.accordion').forEach(acc => {
-    acc.addEventListener('click', () => { acc.classList.toggle('active'); });
-});
+document.addEventListener('DOMContentLoaded', () => {
+    // 言語切替
+    const jpBtn = document.getElementById('jpBtn');
+    const enBtn = document.getElementById('enBtn');
+    const contentJP = document.getElementById('contentJP');
+    const contentEN = document.getElementById('contentEN');
 
-// 統合検索
-document.getElementById('searchInput').addEventListener('input', function(){
-    const keyword = this.value.toLowerCase();
-    const cards = document.querySelectorAll('.card, .member-card, .alumni-card, .publication-item');
-    cards.forEach(card => {
-        const text = card.innerText.toLowerCase();
-        card.style.display = text.includes(keyword) ? 'block' : 'none';
+    function setupAccordion(cards, headerClass, contentClass) {
+        cards.forEach(card => {
+            const header = card.querySelector(headerClass);
+            const content = card.querySelector(contentClass);
+            const arrow = header.querySelector('.arrow');
+
+            header.addEventListener('click', () => {
+                content.classList.toggle('open');
+                arrow.style.transform = content.classList.contains('open') ? 'rotate(90deg)' : 'rotate(0deg)';
+            });
+        });
+    }
+
+    function highlightLatest(cards) {
+        cards.forEach(card => card.classList.remove('latest'));
+        const visibleCards = cards.filter(card => card.style.display !== 'none');
+        visibleCards.slice(0,3).forEach(card => card.classList.add('latest'));
+    }
+
+    // JPコンテンツ
+    const newsCardsJP = Array.from(contentJP.querySelectorAll('.news-card'));
+    const pubCardsJP = Array.from(contentJP.querySelectorAll('.publication-item'));
+    setupAccordion(newsCardsJP, '.news-header', '.news-content');
+    setupAccordion(pubCardsJP, '.pub-header', '.pub-content');
+    highlightLatest(newsCardsJP);
+    highlightLatest(pubCardsJP);
+
+    // ENコンテンツ
+    const newsCardsEN = Array.from(contentEN.querySelectorAll('.news-card'));
+    const pubCardsEN = Array.from(contentEN.querySelectorAll('.publication-item'));
+    setupAccordion(newsCardsEN, '.news-header', '.news-content');
+    setupAccordion(pubCardsEN, '.pub-header', '.pub-content');
+    highlightLatest(newsCardsEN);
+    highlightLatest(pubCardsEN);
+
+    // 言語切替イベント
+    jpBtn.addEventListener('click', () => {
+        contentJP.style.display = 'block';
+        contentEN.style.display = 'none';
+        highlightLatest(newsCardsJP);
+        highlightLatest(pubCardsJP);
     });
-});
+    enBtn.addEventListener('click', () => {
+        contentJP.style.display = 'none';
+        contentEN.style.display = 'block';
+        highlightLatest(newsCardsEN);
+        highlightLatest(pubCardsEN);
+    });
 
-// メンバー
-const membersData = [
-{ name:"Kae Horio", degree:"D3", info:"高度対称性ポリフェノールの全合成" },
-{ name:"Mizuki Makita", degree:"M2", info:"希少糖を含む天然物の全合成" },
-{ name:"Mao Okamura", degree:"M1", info:"環状リグナンの全合成" },
-{ name:"Yuta Chohnan", degree:"M1", info:"生長調節物質の化学合成" },
-{ name:"Kotomi Tsukamoto", degree:"M1", info:"樹液成分の全合成" },
-{ name:"Kohei Shimizu", degree:"B4", info:"ナフタレン配糖体の全合成" },
-{ name:"Kenta Tezuka", degree:"B4", info:"酵素阻害剤の化学合成" },
-{ name:"Nana Nakamori", degree:"B4", info:"ポリフェノール配糖体の短段階合成" },
-{ name:"Sakiwa Masuda", degree:"B4", info:"新規バニロイドの化学合成" },
-{ name:"Ken-ichi Nihei", degree:"PI", info:"お問い合わせはnihei98アットcc.utsunomiya-u.ac.jp" }
-];
-const membersContainer = document.getElementById('membersContainer');
-membersData.forEach(m=>{
-    const div = document.createElement('div');
-    div.className = "member-card accordion";
-    div.innerHTML = `<h4><i class="fas fa-user"></i> ${m.name} (${m.degree})</h4><div class="accordion-content"><p>${m.info}</p></div>`;
-    membersContainer.appendChild(div);
-});
+    // 検索機能 JP
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', () => {
+        const query = searchInput.value.toLowerCase();
+        function filterCards(cards) {
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                card.style.display = text.includes(query) ? 'block' : 'none';
+            });
+            const visibleCards = cards.filter(card => card.style.display !== 'none');
+            highlightLatest(visibleCards);
+        }
+        filterCards(newsCardsJP);
+        filterCards(pubCardsJP);
+    });
 
-// 卒業生
-const alumniData = [
-{ name:"KS", degree:"学士", info:"化粧品つくってる" },
-{ name:"MU", degree:"修士", info:"北海のシーサン" },
-{ name:"SS", degree:"修士", info:"試薬うってる" },
-{ name:"YT", degree:"修士", info:"北北東で合成" },
-{ name:"AA", degree:"学士", info:"関東圏で販売" },
-{ name:"RI", degree:"学士", info:"乳化剤ヒロイン二代目" },
-{ name:"CE", degree:"学士", info:"東洋で分析" },
-{ name:"SI", degree:"修士", info:"初代乳化剤ヒロイン" },
-{ name:"MK", degree:"学士", info:"湿布づくりの天使" },
-{ name:"MI", degree:"学士", info:"ハイテクの韋駄天" },
-{ name:"YN", degree:"修士", info:"香料開発の巨星(寿)" },
-{ name:"KH", degree:"修士", info:"試薬研究のホープ(寿)" },
-{ name:"SAK", degree:"学士", info:"化粧品製造のキー" },
-{ name:"RS", degree:"修士", info:"ハワイ近くで研究" },
-{ name:"MWT", degree:"修士", info:"インド洋で奮闘" },
-{ name:"YG", degree:"学士", info:"日本海から首都圏" },
-{ name:"YY", degree:"学士", info:"マヨドレ製造中" },
-{ name:"HS", degree:"修士", info:"外資系で活躍(寿)" },
-{ name:"TAM", degree:"修士", info:"分析のヒーロー" },
-{ name:"KI", degree:"学士", info:"事務職の妖精" },
-{ name:"NA", degree:"修士", info:"ピグメント開発中" },
-{ name:"WI", degree:"博士", info:"化粧品開発中(寿)" },
-{ name:"KK", degree:"学士", info:"電力つくってる" },
-{ name:"URT", degree:"修士", info:"製薬会社で研究中" },
-{ name:"HR", degree:"学士", info:"香料作ってます" },
-{ name:"MIT", degree:"修士", info:"有機合成研究職(寿)" },
-{ name:"AM", degree:"修士", info:"関東で蒸留中" },
-{ name:"SH", degree:"修士", info:"有機合成の社会人" },
-{ name:"JL", degree:"学士", info:"続薬学系大学院へ" },
-{ name:"TI", degree:"博士", info:"研究チームのお頭(寿)" },
-{ name:"CO", degree:"修士", info:"市役所の星" },
-{ name:"TM", degree:"修士", info:"酒類分析のスター" },
-{ name:"MS", degree:"学士", info:"湖畔でがんばる" },
-{ name:"KM", degree:"学士", info:"薬学系大学院へ" },
-{ name:"MO", degree:"学士", info:"惣菜開発のプロ(寿)" },
-{ name:"CM", degree:"学士", info:"小中学校の要" },
-{ name:"YO", degree:"修士", info:"珈琲の鉄人" },
-{ name:"SO", degree:"修士", info:"研究職です(寿)" },
-{ name:"SK", degree:"学士", info:"台湾に行きます" },
-{ name:"YK", degree:"学士", info:"技術職してます" },
-{ name:"TAK", degree:"学士", info:"県庁の稼ぎ頭" },
-{ name:"JK", degree:"修士", info:"JAの賢人" },
-{ name:"TN", degree:"修士", info:"肥料の神様" },
-{ name:"HK", degree:"学士", info:"種苗の鬼(寿)" },
-{ name:"UT", degree:"学士", info:"薬屋で働いてます" },
-{ name:"MM", degree:"学士", info:"スーパー幹部候補" },
-{ name:"KT", degree:"修士", info:"薬の分析してます" },
-{ name:"AK", degree:"学士", info:"抗体博士(寿)" },
-{ name:"YH", degree:"学士", info:"医薬学術業務" },
-{ name:"RK", degree:"学士", info:"市役所の良識" },
-{ name:"CG", degree:"学士", info:"茨城にいます" },
-{ name:"EN", degree:"学士", info:"製薬会社勤務" },
-{ name:"RT", degree:"修士", info:"関東にいます" },
-{ name:"SM", degree:"修士", info:"研究開発中" },
-{ name:"RT600", degree:"学士", info:"薬つくってます" }
-];
-const alumniContainer = document.getElementById('alumniContainer');
-alumniData.forEach(a=>{
-    const div = document.createElement('div');
-    div.className = "alumni-card accordion";
-    div.innerHTML = `<h4><i class="fas fa-user"></i> ${a.name} (${a.degree})</h4><div class="accordion-content"><p>${a.info}</p></div>`;
-    alumniContainer.appendChild(div);
-});
+    // トップページ自動スクロール
+    function scrollToElement(element) {
+        if (!element) return;
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        element.style.transition = 'background-color 0.5s ease';
+        element.style.backgroundColor = '#fff5f5';
+        setTimeout(() => { element.style.backgroundColor = ''; }, 2000);
+    }
 
-// 論文
-const publicationData = [
-"Horio, K.; Maeda, H.; Horie, K.; Nanashima, N.; Nihei, K.* Total synthesis of quasi-symmetric dihydrofuran lignans (−)-ribesin A and B isolated from Ribes nigrum leaves. Tetrahedron 2025, 181, 134675.",
-"Makita, M.; Nihei, K.* Total synthesis of nepodin and torachrysone glucosides: Evidence for naturally occurring L-glucosides. Tetrahedron Lett. 2024, 146, 155191.",
-"Shimakage, R.; Iwadate, T.; Nihei, K.* A natural diphenolic glucoside, sonnerphenolic C: Chemical synthesis, structural revision, redox transformation, and identification as an antioxidant. Tetrahedron 2024, 158, 134001.",
-"Horio, K.; Nihei, K.* Total synthesis of (-)-ribesin B and its structural revision. Tetrahedron Lett. 2023, 114, 154285.",
-"Ishioka, W.; Nihei, K.* Chemical synthesis and tyrosinase inhibitory activity of resorcinol alkyl glucosides, hydroxyalkyl resorcinols, and alkyl resorcinols. J. Mol. Struct. 2023, 1272, 134074."
-];
-const pubContainer = document.getElementById('publicationsContainer');
-publicationData.forEach(p=>{
-    const div = document.createElement('div');
-    div.className = "publication-item accordion";
-    div.innerHTML = `<h4><i class="fas fa-file-alt"></i> 論文タイトル</h4><div class="accordion-content"><p>${p}</p></div>`;
-    pubContainer.appendChild(div);
+    const latestNews = newsCardsJP.find(c => c.classList.contains('latest'));
+    const latestPub = pubCardsJP.find(c => c.classList.contains('latest'));
+    if (latestNews) scrollToElement(latestNews);
+    else if (latestPub) scrollToElement(latestPub);
 });
 </script>
-
 </body>
 </html>
