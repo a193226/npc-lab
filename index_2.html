@@ -1,208 +1,216 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>宇都宮大学 NPC研究室</title>
-
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>宇都宮大学 NPC研究室（test）</title>
 <style>
-/* --------------------
-共通デザイン
--------------------- */
-body {
-    background: #ffffff;
-    color: #333;
-    font-family: Arial, sans-serif;
-    margin: 0;
-}
-h1, h2 {
-    margin-top: 0;
+/* --- 共通レイアウト（index と他ページと統一） --- */
+:root{--accent:#007ACC;--accent-dark:#005EA3;--muted:#f4f4f4;--text:#222;}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:#fff;line-height:1.6;}
+header{background:var(--accent);color:#fff;padding:0.75rem 1rem;position:sticky;top:0;z-index:20}
+.header-inner{max-width:1000px;margin:0 auto;display:flex;align-items:center;gap:1rem}
+.brand{font-weight:700}
+.nav{margin-left:auto;display:flex;align-items:center;gap:0.5rem}
+.nav a,.nav button{background:var(--accent-dark);color:#fff;padding:0.38rem 0.7rem;border-radius:5px;text-decoration:none;border:0;cursor:pointer}
+.hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer}
+.hamburger div{width:26px;height:3px;background:#fff;border-radius:2px}
+
+/* mobile */
+@media (max-width:820px){
+  .nav{display:none;position:absolute;left:0;top:56px;width:100%;flex-direction:column;background:var(--accent);padding:0.75rem;gap:0.6rem}
+  .nav.active{display:flex}
+  .hamburger{display:flex}
 }
 
-/* --------------------
-ナビゲーション（PC）
--------------------- */
-nav {
-    background: #007ACC;
-    padding: 0.6rem 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-nav .menu {
-    display: flex;
-    gap: 1rem;
-}
-nav a, nav button {
-    color: white;
-    text-decoration: none;
-    background: #005EA3;
-    padding: 0.4rem 0.8rem;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-}
+/* container */
+.container{max-width:1000px;margin:1.25rem auto;padding:0 1rem}
 
-/* --------------------
-ハンバーガーメニュー（スマホ）
--------------------- */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-}
-.hamburger div {
-    width: 28px;
-    height: 3px;
-    background: white;
-}
+/* section styling */
+h1{font-size:1.5rem;margin:0 0 0.25rem}
+h2{font-size:1.05rem;margin:0 0 0.75rem;color:#333}
+p{margin:0 0 0.85rem}
+.card{background:#fff;border-radius:8px;padding:1rem;box-shadow:0 1px 3px rgba(0,0,0,0.05);border:1px solid #eee}
 
-@media (max-width: 768px) {
-    nav .menu {
-        display: none;
-        flex-direction: column;
-        background: #007ACC;
-        width: 100%;
-        padding: 1rem 0;
-    }
-    nav .menu.active {
-        display: flex;
-    }
-    .hamburger {
-        display: flex;
-    }
-}
+/* news list — scrollable content so full abstracts/lines can be read */
+#news-container{background:var(--muted);border-radius:8px;padding:0.75rem;height:220px;overflow:auto}
+#news-container ul{list-style:none;margin:0;padding:0}
+#news-container li{padding:0.5rem 0;border-bottom:1px dashed #e0e0e0}
+.news-title{font-weight:600;margin-bottom:0.25rem}
+.news-actions{margin-top:0.4rem;display:flex;gap:0.5rem;flex-wrap:wrap}
+.badge{display:inline-block;background:var(--accent-dark);color:#fff;padding:0.2rem 0.45rem;border-radius:4px;font-size:0.85rem}
 
-/* --------------------
-ページ幅
--------------------- */
-.container {
-    max-width: 1000px;
-    margin: auto;
-    padding: 1.5rem;
-}
+/* footer */
+footer{margin-top:2rem;padding:1rem 0;text-align:center;color:#666}
 
-/* --------------------
-ニュース枠（縦スクロール）
--------------------- */
-#news-container {
-    background: #f4f4f4;
-    padding: 1rem;
-    border-radius: 6px;
-    height: 180px;
-    overflow-y: scroll;
-}
-#news-container ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-#news-container li {
-    margin-bottom: 0.8rem;
+/* small screens */
+@media (max-width:480px){
+  h1{font-size:1.2rem}
+  #news-container{height:200px}
 }
 </style>
 </head>
 <body>
 
-<!-- -----------------------------------
-ナビゲーション
------------------------------------- -->
-<nav>
-    <div class="hamburger" onclick="toggleMenu()">
-        <div></div><div></div><div></div>
+<header>
+  <div class="header-inner">
+    <div class="brand">Natural Products Chemistry — 宇都宮大学</div>
+
+    <!-- ハンバーガー -->
+    <div class="hamburger" id="hamb" onclick="toggleMenu()" aria-label="menu" title="menu">
+      <div></div><div></div><div></div>
     </div>
 
-    <div class="menu" id="menu">
-        <a href="index.html">HOME</a>
-        <a href="overview.html">概要</a>
-        <a href="members.html">メンバー</a>
-        <a href="publications.html">業績</a>
-        <button onclick="switchLang('ja')">日本語</button>
-        <button onclick="switchLang('en')">English</button>
-    </div>
-</nav>
+    <!-- ナビ（共通） -->
+    <nav class="nav" id="navMenu">
+      <a href="index_2.html">HOME</a>
+      <a href="overview.html">概要</a>
+      <a href="members.html">メンバー</a>
+      <a href="publications.html">業績</a>
+      <button type="button" onclick="switchLang('ja')">日本語</button>
+      <button type="button" onclick="switchLang('en')">English</button>
+    </nav>
+  </div>
+</header>
 
-
-<div class="container">
-
-<!-- -----------------------------------
-HOME 日本語
------------------------------------- -->
-<section data-lang="ja">
-    <h1>宇都宮大学農学部応用生命化学科</h1>
+<main class="container">
+  <!-- HOME（日本語） -->
+  <section class="card" data-lang="ja">
+    <h1>宇都宮大学農学部 応用生命化学科</h1>
     <h2>Natural Products Chemistry</h2>
-
     <p>有機化学を通して、天然物の可能性を探る。</p>
-    <p>当分野では、天然有機化合物の有機合成、誘導体合成、構造解析および生理活性評価により、化粧品、農薬や医薬品などに利用できる新しい機能性分子の開発を目指しています。</p>
-
+    <p>当研究室では、有機合成、誘導体合成、構造解析および生理活性評価を通じて、化粧品・農薬・医薬品などに利用できる新しい機能性分子の創出を目指しています。</p>
     <p>詳しくは nihei98アットcc.utsunomiya-u.ac.jp までお問い合わせください。</p>
-</section>
+  </section>
 
-<!-- -----------------------------------
-HOME 英語
------------------------------------- -->
-<section data-lang="en" style="display:none;">
-    <h1>Utsunomiya University - Applied Life Chemistry</h1>
+  <!-- HOME（English） -->
+  <section class="card" data-lang="en" style="display:none">
+    <h1>Utsunomiya University — Applied Life Chemistry</h1>
     <h2>Natural Products Chemistry</h2>
-
     <p>Exploring the potential of natural products through organic chemistry.</p>
-    <p>We work on organic synthesis, derivative synthesis, structural analysis and biological evaluation of natural compounds, aiming to develop new functional molecules useful for cosmetics, agrochemicals, and pharmaceuticals.</p>
+    <p>We work on organic synthesis, derivative synthesis, structural determination and biological evaluation aiming to develop new functional molecules useful for cosmetics, agrochemicals and pharmaceuticals.</p>
+    <p>For inquiries, please contact nihei98アットcc.utsunomiya-u.ac.jp</p>
+  </section>
 
-    <p>For inquiries, please contact nihei98アットcc.utsunomiya-u.ac.jp.</p>
-</section>
+  <!-- ニュースセクション（リストは日本語/英語双方あり、クリックで外部へ・内部詳細へ） -->
+  <section class="card" aria-labelledby="newsHeading">
+    <h2 id="newsHeading" data-lang="ja">最新ニュース・論文</h2>
+    <h2 data-lang="en" style="display:none">Latest News & Publications</h2>
 
-
-<!-- -----------------------------------
-最新ニュース・論文
------------------------------------- -->
-<h2 data-lang="ja">最新ニュース・論文</h2>
-<h2 data-lang="en" style="display:none;">Latest News & Publications</h2>
-
-<div id="news-container">
-    <ul>
-        <!-- ---------- 日本語ニュース ---------- -->
+    <div id="news-container" class="card">
+      <ul>
+        <!-- item 1 -->
         <li data-lang="ja">
-            堀尾ら：Ribes nigrum葉由来のジヒドロフランリグナン(−)-ribesin A/Bの全合成（Tetrahedron 2025）
+          <div class="news-title">堀尾ら：Ribes nigrum葉由来のジヒドロフランリグナン (−)-ribesin A/B の全合成</div>
+          <div>雑誌: Tetrahedron 2025, 181, 134675</div>
+          <div class="news-actions">
+            <a class="badge" href="https://www.utsunomiya-u.ac.jp/topics/research/011461.php" target="_blank" rel="noopener">外部記事を開く</a>
+            <a class="badge" href="publication_1.html">詳細を見る（内部ページ）</a>
+          </div>
         </li>
+
         <li data-lang="ja">
-            蒔田：NepodinおよびTorachrysone配糖体の全合成（Tetrahedron Lett. 2024）
+          <div class="news-title">蒔田：Nepodin および Torachrysone 配糖体の全合成</div>
+          <div>雑誌: Tetrahedron Lett. 2024, 146, 155191</div>
+          <div class="news-actions">
+            <a class="badge" href="https://www.utsunomiya-u.ac.jp/topics/research/011163.php" target="_blank" rel="noopener">外部記事を開く</a>
+            <a class="badge" href="publication_2.html">詳細を見る（内部ページ）</a>
+          </div>
         </li>
+
         <li data-lang="ja">
-            島影ら：天然ジフェノール配糖体Sonnerphenolic Cの構造改訂と合成（Tetrahedron 2024）
+          <div class="news-title">島影ら：天然ジフェノール配糖体 Sonnerphenolic C の構造改訂と合成</div>
+          <div>雑誌: Tetrahedron 2024, 158, 134001</div>
+          <div class="news-actions">
+            <a class="badge" href="https://www.utsunomiya-u.ac.jp/topics/research/010201.php" target="_blank" rel="noopener">外部記事を開く</a>
+            <a class="badge" href="publication_3.html">詳細を見る（内部ページ）</a>
+          </div>
         </li>
 
-        <!-- ---------- English News ---------- -->
-        <li data-lang="en" style="display:none;">
-            Horio et al.: Total synthesis of (−)-ribesin A/B from Ribes nigrum leaves (Tetrahedron 2025)
+        <li data-lang="ja">
+          <div class="news-title">Nihei ら：（研究トピック紹介）</div>
+          <div>（その他の研究紹介）</div>
+          <div class="news-actions">
+            <a class="badge" href="https://www.utsunomiya-u.ac.jp/topics/research/009898.php" target="_blank" rel="noopener">外部記事を開く</a>
+            <a class="badge" href="publication_4.html">詳細を見る（内部ページ）</a>
+          </div>
         </li>
-        <li data-lang="en" style="display:none;">
-            Makita: Total synthesis of nepodin and torachrysone glucosides (Tetrahedron Lett. 2024)
+
+        <!-- English versions (same order). Initially hidden -->
+        <li data-lang="en" style="display:none">
+          <div class="news-title">Horio et al.: Total synthesis of quasi-symmetric dihydrofuran lignans (−)-ribesin A and B</div>
+          <div>Journal: Tetrahedron 2025, 181, 134675</div>
+          <div class="news-actions">
+            <a class="badge" href="https://www.utsunomiya-u.ac.jp/topics/research/011461.php" target="_blank" rel="noopener">Open external</a>
+            <a class="badge" href="publication_1.html">View details (internal)</a>
+          </div>
         </li>
-        <li data-lang="en" style="display:none;">
-            Shimakage et al.: Structural revision and synthesis of sonnerphenolic C (Tetrahedron 2024)
+
+        <li data-lang="en" style="display:none">
+          <div class="news-title">Makita: Total synthesis of nepodin and torachrysone glucosides</div>
+          <div>Journal: Tetrahedron Lett. 2024, 146, 155191</div>
+          <div class="news-actions">
+            <a class="badge" href="https://www.utsunomiya-u.ac.jp/topics/research/011163.php" target="_blank" rel="noopener">Open external</a>
+            <a class="badge" href="publication_2.html">View details (internal)</a>
+          </div>
         </li>
-    </ul>
-</div>
 
-</div>
+        <li data-lang="en" style="display:none">
+          <div class="news-title">Shimakage et al.: Structural revision and synthesis of sonnerphenolic C</div>
+          <div>Journal: Tetrahedron 2024, 158, 134001</div>
+          <div class="news-actions">
+            <a class="badge" href="https://www.utsunomiya-u.ac.jp/topics/research/010201.php" target="_blank" rel="noopener">Open external</a>
+            <a class="badge" href="publication_3.html">View details (internal)</a>
+          </div>
+        </li>
 
+        <li data-lang="en" style="display:none">
+          <div class="news-title">Nihei et al.: Research topic (see external link)</div>
+          <div>(other research introduction)</div>
+          <div class="news-actions">
+            <a class="badge" href="https://www.utsunomiya-u.ac.jp/topics/research/009898.php" target="_blank" rel="noopener">Open external</a>
+            <a class="badge" href="publication_4.html">View details (internal)</a>
+          </div>
+        </li>
 
-<!-- -----------------------------------
-JavaScript（言語切替 & ハンバーガー）
------------------------------------- -->
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div style="max-width:1000px;margin:0 auto;padding:1rem;color:#666;text-align:center;font-size:0.95rem">
+    宇都宮大学大学院　地域創生科学研究科
+  </div>
+</footer>
+
 <script>
-// 言語切替
-function switchLang(lang) {
-    document.querySelectorAll("[data-lang]").forEach(el => {
-        el.style.display = (el.getAttribute("data-lang") === lang) ? "" : "none";
-    });
+/* ハンバーガー操作 */
+function toggleMenu(){
+  document.getElementById('navMenu').classList.toggle('active');
 }
 
-// ハンバーガー
-function toggleMenu() {
-    document.getElementById("menu").classList.toggle("active");
+/* 多言語切替（ページ内の data-lang 属性で制御） */
+function switchLang(lang){
+  // all elements with data-lang attribute
+  document.querySelectorAll('[data-lang]').forEach(el=>{
+    if(el.getAttribute('data-lang')===lang){
+      el.style.display = '';
+    } else {
+      el.style.display = 'none';
+    }
+  });
+  // close mobile menu after switching (if open)
+  const nav = document.getElementById('navMenu');
+  if(nav.classList.contains('active')) nav.classList.remove('active');
 }
+
+/* 初期化：日本語表示 */
+document.addEventListener('DOMContentLoaded', ()=> {
+  switchLang('ja');
+});
 </script>
 
 </body>
