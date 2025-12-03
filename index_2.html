@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宇都宮大学 NPC研究室</title>
+
+<style>
+/* --------------------
+共通デザイン
+-------------------- */
+body {
+    background: #ffffff;
+    color: #333;
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+h1, h2 {
+    margin-top: 0;
+}
+
+/* --------------------
+ナビゲーション（PC）
+-------------------- */
+nav {
+    background: #007ACC;
+    padding: 0.6rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav .menu {
+    display: flex;
+    gap: 1rem;
+}
+nav a, nav button {
+    color: white;
+    text-decoration: none;
+    background: #005EA3;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+}
+
+/* --------------------
+ハンバーガーメニュー（スマホ）
+-------------------- */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+.hamburger div {
+    width: 28px;
+    height: 3px;
+    background: white;
+}
+
+@media (max-width: 768px) {
+    nav .menu {
+        display: none;
+        flex-direction: column;
+        background: #007ACC;
+        width: 100%;
+        padding: 1rem 0;
+    }
+    nav .menu.active {
+        display: flex;
+    }
+    .hamburger {
+        display: flex;
+    }
+}
+
+/* --------------------
+ページ幅
+-------------------- */
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 1.5rem;
+}
+
+/* --------------------
+ニュース枠（縦スクロール）
+-------------------- */
+#news-container {
+    background: #f4f4f4;
+    padding: 1rem;
+    border-radius: 6px;
+    height: 180px;
+    overflow-y: scroll;
+}
+#news-container ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#news-container li {
+    margin-bottom: 0.8rem;
+}
+</style>
+</head>
+<body>
+
+<!-- -----------------------------------
+ナビゲーション
+------------------------------------ -->
+<nav>
+    <div class="hamburger" onclick="toggleMenu()">
+        <div></div><div></div><div></div>
+    </div>
+
+    <div class="menu" id="menu">
+        <a href="index.html">HOME</a>
+        <a href="overview.html">概要</a>
+        <a href="members.html">メンバー</a>
+        <a href="publications.html">業績</a>
+        <button onclick="switchLang('ja')">日本語</button>
+        <button onclick="switchLang('en')">English</button>
+    </div>
+</nav>
+
+
+<div class="container">
+
+<!-- -----------------------------------
+HOME 日本語
+------------------------------------ -->
+<section data-lang="ja">
+    <h1>宇都宮大学農学部応用生命化学科</h1>
+    <h2>Natural Products Chemistry</h2>
+
+    <p>有機化学を通して、天然物の可能性を探る。</p>
+    <p>当分野では、天然有機化合物の有機合成、誘導体合成、構造解析および生理活性評価により、化粧品、農薬や医薬品などに利用できる新しい機能性分子の開発を目指しています。</p>
+
+    <p>詳しくは nihei98アットcc.utsunomiya-u.ac.jp までお問い合わせください。</p>
+</section>
+
+<!-- -----------------------------------
+HOME 英語
+------------------------------------ -->
+<section data-lang="en" style="display:none;">
+    <h1>Utsunomiya University - Applied Life Chemistry</h1>
+    <h2>Natural Products Chemistry</h2>
+
+    <p>Exploring the potential of natural products through organic chemistry.</p>
+    <p>We work on organic synthesis, derivative synthesis, structural analysis and biological evaluation of natural compounds, aiming to develop new functional molecules useful for cosmetics, agrochemicals, and pharmaceuticals.</p>
+
+    <p>For inquiries, please contact nihei98アットcc.utsunomiya-u.ac.jp.</p>
+</section>
+
+
+<!-- -----------------------------------
+最新ニュース・論文
+------------------------------------ -->
+<h2 data-lang="ja">最新ニュース・論文</h2>
+<h2 data-lang="en" style="display:none;">Latest News & Publications</h2>
+
+<div id="news-container">
+    <ul>
+        <!-- ---------- 日本語ニュース ---------- -->
+        <li data-lang="ja">
+            堀尾ら：Ribes nigrum葉由来のジヒドロフランリグナン(−)-ribesin A/Bの全合成（Tetrahedron 2025）
+        </li>
+        <li data-lang="ja">
+            蒔田：NepodinおよびTorachrysone配糖体の全合成（Tetrahedron Lett. 2024）
+        </li>
+        <li data-lang="ja">
+            島影ら：天然ジフェノール配糖体Sonnerphenolic Cの構造改訂と合成（Tetrahedron 2024）
+        </li>
+
+        <!-- ---------- English News ---------- -->
+        <li data-lang="en" style="display:none;">
+            Horio et al.: Total synthesis of (−)-ribesin A/B from Ribes nigrum leaves (Tetrahedron 2025)
+        </li>
+        <li data-lang="en" style="display:none;">
+            Makita: Total synthesis of nepodin and torachrysone glucosides (Tetrahedron Lett. 2024)
+        </li>
+        <li data-lang="en" style="display:none;">
+            Shimakage et al.: Structural revision and synthesis of sonnerphenolic C (Tetrahedron 2024)
+        </li>
+    </ul>
+</div>
+
+</div>
+
+
+<!-- -----------------------------------
+JavaScript（言語切替 & ハンバーガー）
+------------------------------------ -->
+<script>
+// 言語切替
+function switchLang(lang) {
+    document.querySelectorAll("[data-lang]").forEach(el => {
+        el.style.display = (el.getAttribute("data-lang") === lang) ? "" : "none";
+    });
+}
+
+// ハンバーガー
+function toggleMenu() {
+    document.getElementById("menu").classList.toggle("active");
+}
+</script>
+
+</body>
+</html>
