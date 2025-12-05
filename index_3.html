@@ -1,316 +1,58 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>宇都宮大学 NPC研究室 — index_2</title>
-<style>
-  :root{
-    --accent-1:#0b7496;
-    --accent-2:#2fb8b8;
-    --bg:#f7fbfc;
-    --card:#ffffff;
-    --muted:#f1f6f8;
-    --text:#17202a;
-    --badge:#ff7f50;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;font-family:Inter, "Helvetica Neue", Arial, sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
-  /* ---- chemical-pattern background using inline SVG tiled as data-uri ---- */
-  html{background-image:
-    radial-gradient(circle at 15% 15%, rgba(47,184,184,0.06) 0%, rgba(47,184,184,0.00) 30%),
-    radial-gradient(circle at 85% 85%, rgba(11,116,150,0.06) 0%, rgba(11,116,150,0.00) 30%),
-    url('data:image/svg+xml;utf8,\
-      <svg xmlns="http://www.w3.org/2000/svg" width=\"200\" height=\"200\" viewBox=\"0 0 200 200\">\
-        <g fill=\"none\" stroke=\"rgba(0,0,0,0.03)\" stroke-width=\"1\">\
-          <path d=\"M40 100 L60 70 L100 70 L120 100 L100 130 L60 130 Z\"/>\
-          <circle cx=\"60\" cy=\"70\" r=\"2\" fill=\"rgba(47,184,184,0.08)\"/>\
-          <circle cx=\"100\" cy=\"70\" r=\"2\" fill=\"rgba(11,116,150,0.08)\"/>\
-          <circle cx=\"120\" cy=\"100\" r=\"2\" fill=\"rgba(47,184,184,0.08)\"/>\
-          <circle cx=\"100\" cy=\"130\" r=\"2\" fill=\"rgba(11,116,150,0.08)\"/>\
-          <circle cx=\"60\" cy=\"130\" r=\"2\" fill=\"rgba(47,184,184,0.08)\"/>\
-        </g>\
-      </svg>');
-  background-repeat: repeat;
-  background-color: var(--bg);}
+<!-- Apigenin (簡易フラボノイド構造) -->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 380 160"
+     width="380" height="160"
+     role="img" aria-label="Apigenin structure (simplified)"
+     style="max-width:100%;height:auto;display:block;">
+  <defs>
+    <style>
+      .bond { fill:none; stroke:var(--accent-1, #0b7496); stroke-width:3; stroke-linecap:round; stroke-linejoin:round; }
+      .atom { font-family: Arial, Helvetica, sans-serif; font-size:12px; fill:#07333a; }
+      .oh { font-family: Arial, Helvetica, sans-serif; font-size:11px; fill:#07333a; font-weight:700; }
+      .mark { fill:var(--accent-2, #2fb8b8); stroke:none; opacity:0.95; }
+    </style>
+  </defs>
 
-  header{background:linear-gradient(90deg,var(--accent-1),var(--accent-2));color:#fff;padding:12px 18px;position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
-  .header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:12px}
-  .brand {display:flex;align-items:center;gap:10px;font-weight:700}
-  .brand svg{width:44px;height:44px;flex-shrink:0}
-  nav{margin-left:auto;display:flex;align-items:center;gap:8px}
-  nav a, nav button{background:rgba(255,255,255,0.12);color:#fff;border:0;padding:8px 12px;border-radius:8px;text-decoration:none;cursor:pointer;font-weight:600}
-  nav a:hover, nav button:hover{background:rgba(255,255,255,0.2)}
-  /* hamburger always visible */
-  .hamburger{display:flex;flex-direction:column;gap:3px;width:42px;cursor:pointer;padding:6px;border-radius:8px;background:rgba(255,255,255,0.08)}
-  .hamburger span{display:block;height:3px;background:#fff;border-radius:3px}
-  /* menu links container (for toggling on mobile) */
-  .nav-links{display:flex;gap:8px;align-items:center}
-  .nav-links.hidden{display:none}
+  <!-- 左側ベンゼン環 (A環) -->
+  <g transform="translate(40,30)">
+    <polygon class="bond" points="0,25 25,0 75,0 100,25 75,50 25,50" />
+    <!-- OH群 (5,7位に見立てて配置) -->
+    <circle class="mark" cx="-8" cy="12" r="5"/>
+    <text class="oh" x="-18" y="18">OH</text>
+    <circle class="mark" cx="52" cy="-12" r="5"/>
+    <text class="oh" x="42" y="-6">OH</text>
+  </g>
 
-  /* main layout */
-  main{max-width:1100px;margin:20px auto;padding:0 18px 60px}
-  .hero{
-    background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.85));
-    border-radius:10px;
-    padding:18px;
-    display:flex;gap:18px;align-items:center;box-shadow:0 6px 18px rgba(15,40,50,0.06);
-    margin-bottom:18px;
-    position:relative;
-    overflow:hidden;
-  }
-  .hero-illustration{width:160px;height:120px;flex-shrink:0;border-radius:8px;background:linear-gradient(135deg,#e6fbff,#d6f8ff);display:flex;align-items:center;justify-content:center;box-shadow:inset 0 -6px 18px rgba(0,0,0,0.02)}
-  .hero-illustration svg{width:120px;height:80px;opacity:0.95}
-  .hero h1{margin:0;font-size:1.28rem}
-  .hero p{margin:8px 0 0;color:#28343a}
+  <!-- 中央ピラノン環 (C環: フラノン様の簡易表現) -->
+  <g transform="translate(120,20)">
+    <!-- 6員環（酸素を含む） -->
+    <path class="bond" d="M0,25 L25,0 L75,0 L100,25 L75,50 L25,50 Z" />
+    <!-- 酸素 (O) を上の右に表記 -->
+    <text class="atom" x="78" y="-6">O</text>
+    <!-- ケト基 (=O) を下に表記 -->
+    <line class="bond" x1="50" y1="50" x2="50" y2="72" />
+    <circle cx="50" cy="80" r="6" fill="#fff" stroke="rgba(0,0,0,0.06)"/>
+    <text class="atom" x="46" y="84">O</text>
+  </g>
 
-  /* content cards */
-  .grid{display:grid;grid-template-columns:2fr 1fr;gap:16px}
-  .card{background:var(--card);padding:14px;border-radius:10px;border:1px solid #eef6f7}
-  .muted{color:#6b7d82;font-size:0.95rem}
+  <!-- 右側ベンゼン環 (B環) -->
+  <g transform="translate(230,30)">
+    <polygon class="bond" points="0,25 25,0 75,0 100,25 75,50 25,50" />
+    <!-- パラ位のOH (4'位) -->
+    <circle class="mark" cx="110" cy="12" r="5"/>
+    <text class="oh" x="100" y="18">OH</text>
+  </g>
 
-  /* NEWS area: user scroll (no auto) */
-  #news-wrap{display:flex;flex-direction:column;gap:10px}
-  #news-controls{display:flex;gap:8px;align-items:center}
-  .btn{background:var(--accent-1);color:#fff;padding:8px 10px;border-radius:8px;border:0;cursor:pointer;font-weight:600}
-  .btn.secondary{background:#e6f7f6;color:var(--accent-1);font-weight:700}
-  #news-container{height:220px;overflow-y:auto;padding-right:6px;border-radius:8px;background:linear-gradient(180deg,var(--muted),#fff);border:1px solid #e6f6f6}
-  #news-list{list-style:none;margin:0;padding:10px}
-  .news-item{padding:10px;border-bottom:1px dashed #e9f2f2;display:flex;flex-direction:column;gap:6px}
-  .news-item:last-child{border-bottom:none}
-  .news-title{font-weight:700;color:#054b56}
-  .news-meta{font-size:0.9rem;color:#6e8084}
-  .icon-pill{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,var(--accent-2),#7fe2d8);padding:6px 8px;border-radius:999px;color:#053841;font-weight:700;font-size:0.9rem}
+  <!-- 環のつなぎ（結合） -->
+  <g>
+    <!-- A環右上 -> C環左上 -->
+    <line class="bond" x1="85" y1="40" x2="120" y2="35" />
+    <!-- C環右上 -> B環左上 -->
+    <line class="bond" x1="200" y1="35" x2="230" y2="35" />
+    <!-- A-B の位置関係を示す短い結合（雰囲気） -->
+    <line class="bond" x1="95" y1="15" x2="150" y2="10" stroke-dasharray="4 6" opacity="0.6"/>
+  </g>
 
-  /* small screens */
-  @media (max-width:900px){
-    .grid{grid-template-columns:1fr; }
-    .hero{flex-direction:column;align-items:flex-start}
-    .hero-illustration{width:100%;height:140px}
-  }
-
-  /* focus/outline */
-  a:focus, button:focus{outline:3px solid rgba(11,116,150,0.18);outline-offset:2px}
-</style>
-</head>
-<body>
-
-<header>
-  <div class="header-inner">
-    <div class="brand">
-      <!-- small molecule icon (stylized glucose + phenol) -->
-      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <defs>
-          <linearGradient id="g1" x1="0" x2="1">
-            <stop offset="0" stop-color="#2fb8b8"/><stop offset="1" stop-color="#0b7496"/>
-          </linearGradient>
-        </defs>
-        <!-- hexagon (glucose-like) -->
-        <g transform="translate(4,4)" fill="none" stroke="url(#g1)" stroke-width="2">
-          <path d="M18 2 L32 2 L40 14 L32 26 L18 26 L10 14 Z"/>
-        </g>
-        <!-- phenol small ring -->
-        <g transform="translate(28,32)" fill="none" stroke="url(#g1)" stroke-width="1.6">
-          <circle cx="8" cy="8" r="6"/>
-          <line x1="8" y1="2" x2="8" y2="14"/>
-        </g>
-      </svg>
-      NPC Lab
-    </div>
-
-    <div class="nav-links" id="navLinks">
-      <a href="index_2.html">HOME</a>
-      <a href="overview.html">概要</a>
-      <a href="members.html">メンバー</a>
-      <a href="publications.html">業績</a>
-    </div>
-
-    <div style="display:flex;align-items:center;gap:8px">
-      <button class="btn" onclick="switchLang('ja')">日本語</button>
-      <button class="btn" onclick="switchLang('en')">English</button>
-      <!-- hamburger always visible -->
-      <div class="hamburger" id="hamb" role="button" aria-label="メニュー" title="メニュー" onclick="toggleMenu()">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-  </div>
-</header>
-
-<main>
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="hero-illustration" aria-hidden="true">
-      <!-- stylized flavone / apigenin-like drawing -->
-      <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
-        <g transform="translate(10,10)" fill="none" stroke="#0b7496" stroke-width="2">
-          <!-- phenyl rings -->
-          <circle cx="30" cy="40" r="16" stroke-opacity="0.6"/>
-          <circle cx="70" cy="20" r="14" stroke-opacity="0.6"/>
-          <circle cx="110" cy="40" r="14" stroke-opacity="0.6"/>
-          <!-- connecting lines -->
-          <path d="M46 40 L60 28" stroke-opacity="0.5"/>
-          <path d="M84 28 L98 40" stroke-opacity="0.5"/>
-        </g>
-      </svg>
-    </div>
-
-    <div>
-      <h1 id="hero-title" data-lang="ja">宇都宮大学 農学部 応用生命化学科</h1>
-      <h1 data-lang="en" style="display:none">Utsunomiya University — Applied Life Chemistry</h1>
-      <p class="muted" data-lang="ja">有機化学を通して、天然物の可能性を探る研究をしています。詳しくは nihei98アットcc.utsunomiya-u.ac.jp へ。</p>
-      <p class="muted" data-lang="en" style="display:none">Exploring potential of natural products via organic chemistry. Contact: nihei98アットcc.utsunomiya-u.ac.jp.</p>
-      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
-        <div class="icon-pill" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="rgba(5,75,86,0.08)"/></svg>有機合成</div>
-        <div class="icon-pill" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3" fill="rgba(47,184,184,0.08)"/></svg>構造解析</div>
-      </div>
-    </div>
-  </section>
-
-  <div class="grid">
-    <div class="card">
-      <h2 data-lang="ja">最新ニュース・論文</h2>
-      <h2 data-lang="en" style="display:none">Latest News & Publications</h2>
-
-      <div id="news-wrap">
-        <div id="news-controls" style="justify-content:space-between">
-          <div style="display:flex;gap:8px;align-items:center">
-            <button class="btn" onclick="scrollNewsBy(-1)" aria-label="上へスクロール">▲</button>
-            <button class="btn" onclick="scrollNewsBy(1)" aria-label="下へスクロール">▼</button>
-            <span style="margin-left:8px" class="muted" data-lang="ja">マウスまたはボタンでスクロールしてください</span>
-            <span style="margin-left:8px;display:none" class="muted" data-lang="en">Use buttons or scroll to navigate</span>
-          </div>
-          <div>
-            <a class="btn secondary" href="publications.html" data-lang="ja">すべての業績</a>
-            <a class="btn secondary" href="publications.html" data-lang="en" style="display:none">All publications</a>
-          </div>
-        </div>
-
-        <div id="news-container" tabindex="0" aria-label="最新ニュースリスト">
-          <ul id="news-list">
-            <!-- 1 -->
-            <li class="news-item" data-lang="ja">
-              <div class="news-title">左ききのグルコースも自然界に存在する？</div>
-              <div class="news-meta">宇都宮大学トピックス • <a href="https://www.utsunomiya-u.ac.jp/topics/research/011461.php" target="_blank" rel="noopener">外部記事を開く</a></div>
-            </li>
-            <li class="news-item" data-lang="ja">
-              <div class="news-title">メグスリノキ抽出物に含まれる抗酸化性天然物の構造が明らかに</div>
-              <div class="news-meta">宇都宮大学トピックス • <a href="https://www.utsunomiya-u.ac.jp/topics/research/011163.php" target="_blank" rel="noopener">外部記事を開く</a></div>
-            </li>
-            <li class="news-item" data-lang="ja">
-              <div class="news-title">カシスに含まれる対称性ポリフェノールの全合成に成功</div>
-              <div class="news-meta">宇都宮大学トピックス • <a href="https://www.utsunomiya-u.ac.jp/topics/research/010201.php" target="_blank" rel="noopener">外部記事を開く</a></div>
-            </li>
-            <li class="news-item" data-lang="ja">
-              <div class="news-title">親水性チロシナーゼ阻害剤の開発に成功 ― 酵素的褐変の効率的制御が可能に ―</div>
-              <div class="news-meta">宇都宮大学トピックス • <a href="https://www.utsunomiya-u.ac.jp/topics/research/009898.php" target="_blank" rel="noopener">外部記事を開く</a></div>
-            </li>
-
-            <!-- English versions -->
-            <li class="news-item" data-lang="en" style="display:none">
-              <div class="news-title">Left-handed glucose also exists in nature?</div>
-              <div class="news-meta">Utsunomiya Univ. Topics • <a href="https://www.utsunomiya-u.ac.jp/topics/research/011461.php" target="_blank" rel="noopener">Open external</a></div>
-            </li>
-            <li class="news-item" data-lang="en" style="display:none">
-              <div class="news-title">Structure of antioxidant natural products in Megusuri-no-ki extract clarified</div>
-              <div class="news-meta">Utsunomiya Univ. Topics • <a href="https://www.utsunomiya-u.ac.jp/topics/research/011163.php" target="_blank" rel="noopener">Open external</a></div>
-            </li>
-            <li class="news-item" data-lang="en" style="display:none">
-              <div class="news-title">Total synthesis of symmetric polyphenols contained in blackcurrant achieved</div>
-              <div class="news-meta">Utsunomiya Univ. Topics • <a href="https://www.utsunomiya-u.ac.jp/topics/research/010201.php" target="_blank" rel="noopener">Open external</a></div>
-            </li>
-            <li class="news-item" data-lang="en" style="display:none">
-              <div class="news-title">Successful development of hydrophilic tyrosinase inhibitors — Efficient enzymatic browning control —</div>
-              <div class="news-meta">Utsunomiya Univ. Topics • <a href="https://www.utsunomiya-u.ac.jp/topics/research/009898.php" target="_blank" rel="noopener">Open external</a></div>
-            </li>
-
-            <!-- existing publications (example entries, extend as needed) -->
-            <li class="news-item" data-lang="ja">
-              <div class="news-title">Makita, M.; Nihei, K.* Nepodin と torachrysone グルコシドの全合成 (Tetrahedron Lett. 2024)</div>
-              <div class="news-meta">論文 • 詳細は publications ページへ</div>
-            </li>
-            <li class="news-item" data-lang="en" style="display:none">
-              <div class="news-title">Makita, M.; Nihei, K.* Total synthesis of nepodin and torachrysone glucosides (Tetrahedron Lett. 2024)</div>
-              <div class="news-meta">Publication • See publications page</div>
-            </li>
-
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <aside class="card">
-      <h3 data-lang="ja">コンタクト</h3>
-      <h3 data-lang="en" style="display:none">Contact</h3>
-      <p class="muted" data-lang="ja">宇都宮大学大学院　地域創生科学研究科<br>工農総合科学専攻　農芸化学プログラム</p>
-      <p data-lang="ja">nihei98アットcc.utsunomiya-u.ac.jp</p>
-
-      <p class="muted" data-lang="en" style="display:none">Graduate School, Utsunomiya University<br>nihei98アットcc.utsunomiya-u.ac.jp</p>
-
-      <hr style="border:none;border-top:1px solid #eef6f6;margin:12px 0">
-
-      <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <a class="btn secondary" href="members.html" data-lang="ja">メンバー</a>
-        <a class="btn secondary" href="members.html" data-lang="en" style="display:none">Members</a>
-        <a class="btn secondary" href="publications.html" data-lang="ja">業績</a>
-        <a class="btn secondary" href="publications.html" data-lang="en" style="display:none">Publications</a>
-      </div>
-    </aside>
-  </div>
-</main>
-
-<footer style="text-align:center;padding:18px 8px;color:#6c7b7d;font-size:0.95rem">
-  © 宇都宮大学大学院　地域創生科学研究科
-</footer>
-
-<script>
-/* ---- toggle nav links (hamburger) ---- */
-function toggleMenu(){
-  const el = document.getElementById('navLinks');
-  if(!el) return;
-  el.classList.toggle('hidden');
-}
-/* support both id used in header */
-function toggleMenu(){
-  const el = document.getElementById('navLinks');
-  if(el) el.classList.toggle('hidden');
-  // fallback: toggle anchor display
-  document.querySelectorAll('.nav-links a, .nav-links').forEach(n=>{
-    if(n.style) n.style.display = (n.style.display === 'block') ? '' : 'block';
-  });
-}
-
-/* ---- language switch: hide/show by [data-lang] attribute ---- */
-function switchLang(lang){
-  document.querySelectorAll('[data-lang]').forEach(el=>{
-    if(el.getAttribute('data-lang') === lang){
-      el.style.display = '';
-    } else {
-      el.style.display = 'none';
-    }
-  });
-}
-
-/* initialize Japanese */
-document.addEventListener('DOMContentLoaded', ()=> {
-  switchLang('ja');
-
-  // attach keyboard support for news container scrolling
-  const nc = document.getElementById('news-container');
-  if(nc){
-    nc.addEventListener('keydown', (e)=>{
-      if(e.key === 'ArrowDown') { nc.scrollBy({top:40,behavior:'smooth'}); e.preventDefault(); }
-      if(e.key === 'ArrowUp') { nc.scrollBy({top:-40,behavior:'smooth'}); e.preventDefault(); }
-    });
-  }
-});
-
-/* ---- news scroll by button: positive -> down, negative -> up ---- */
-function scrollNewsBy(dir){
-  const nc = document.getElementById('news-container');
-  if(!nc) return;
-  const amount = 100 * dir; // px per click
-  nc.scrollBy({top:amount,behavior:'smooth'});
-}
-</script>
-
-</body>
-</html>
+  <!-- ラベル -->
+  <text class="atom" x="10" y="150">Apigenin (simplified)</text>
+</svg>
