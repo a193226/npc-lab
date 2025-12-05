@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宇都宮大学 Natural Products Chemistry</title>
+
+<style>
+/* 全体背景に化学構造の薄いパターン画像 */
+body {
+    margin:0;
+    font-family: Arial, sans-serif;
+    background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+}
+
+/* ▼ ナビゲーション */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-image: url('https://images.unsplash.com/photo-1581091012184-5c7b1f37f44b?auto=format&fit=crop&w=1400&q=80');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 0.5rem 1rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 1rem;
+    font-weight: bold;
+}
+
+/* 言語ボタン */
+nav button {
+    margin-left: 0.5rem;
+    background: rgba(0,0,0,0.4);
+    border: none;
+    color: #fff;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* ▼ ハンバーガーアイコン（SVG画像使用） */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    width: 30px;
+}
+.hamburger img {
+    width: 30px;
+    filter: brightness(0) invert(1);
+}
+
+/* スマホでメニュー非表示 */
+@media (max-width: 768px) {
+    nav a { display: none; }
+}
+
+/* ▼ トップの大きなヘッダー画像 */
+.header-image {
+    width: 100%;
+    height: 250px;
+    background-image: url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1b3?auto=format&fit=crop&w=1400&q=80');
+    background-size: cover;
+    background-position: center;
+}
+
+/* コンテンツエリア */
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 1.5rem;
+    background: rgba(255,255,255,0.9);
+    border-radius: 8px;
+    margin-top: -40px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+}
+
+/* ニュース */
+#news {
+    margin-top: 2rem;
+}
+#news-container {
+    height: 3em;
+    overflow: hidden;
+    position: relative;
+}
+#news-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+#news-list li {
+    padding: 0.5rem 0;
+    cursor: pointer;
+    color: #003366;
+}
+#news-list li:hover {
+    text-decoration: underline;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="hamburger" onclick="toggleNav()">
+        <img src="https://www.svgrepo.com/show/506800/menu.svg">
+    </div>
+
+    <div>
+        <a href="index.html">HOME</a>
+        <a href="overview.html">概要</a>
+        <a href="members.html">メンバー</a>
+        <a href="publications.html">業績</a>
+    </div>
+
+    <div>
+        <button onclick="switchLang('ja')">日本語</button>
+        <button onclick="switchLang('en')">English</button>
+    </div>
+</nav>
+
+<!-- トップ画像 -->
+<div class="header-image"></div>
+
+<div class="container">
+
+<!-- 日本語 -->
+<section data-lang="ja">
+    <h1>宇都宮大学 農学部 応用生命化学科</h1>
+    <h2>Natural Products Chemistry（天然物化学研究室）</h2>
+    <p>有機化学の力で、天然物が持つ可能性を切り拓く研究を行っています。</p>
+    <p>天然有機化合物の合成・構造解析・生理活性評価を通して、化粧品・農薬・医薬品などに利用可能な新規分子の開発を目指しています。</p>
+</section>
+
+<!-- 英語 -->
+<section data-lang="en" style="display:none;">
+    <h1>Utsunomiya University - Natural Products Chemistry</h1>
+    <h2>Exploring the Potential of Natural Products via Organic Chemistry</h2>
+    <p>We develop new functional molecules through organic synthesis, derivative synthesis, structural analysis, and biological evaluation.</p>
+</section>
+
+<!-- ニュース -->
+<section id="news">
+    <h2>最新ニュース・論文</h2>
+
+    <div id="news-container">
+        <ul id="news-list">
+            <li onclick="window.open('https://www.utsunomiya-u.ac.jp/topics/research/011461.php')">左ききのグルコースも自然界に存在する？</li>
+            <li onclick="window.open('https://www.utsunomiya-u.ac.jp/topics/research/011163.php')">メグスリノキ抽出物に含まれる抗酸化性天然物の構造を解明</li>
+            <li onclick="window.open('https://www.utsunomiya-u.ac.jp/topics/research/010201.php')">カシスに含まれる対称性ポリフェノールの全合成に成功</li>
+            <li onclick="window.open('https://www.utsunomiya-u.ac.jp/topics/research/009898.php')">親水性チロシナーゼ阻害剤の開発に成功</li>
+        </ul>
+    </div>
+</section>
+
+</div>
+
+<script>
+function toggleNav(){
+    const links = document.querySelectorAll('nav a');
+    links.forEach(link => {
+        if(link.style.display === 'block'){ link.style.display='none'; }
+        else { link.style.display='block'; }
+    });
+}
+
+function switchLang(lang){
+    document.querySelectorAll('[data-lang]').forEach(sec=>{
+        sec.style.display = sec.getAttribute('data-lang')===lang ? 'block' : 'none';
+    });
+}
+
+const newsList = document.getElementById('news-list');
+let topPos = 0;
+const itemH = 40;
+const total = newsList.children.length;
+
+function scrollNews(){
+    topPos -= 1;
+    if(-topPos >= itemH * total) topPos = 0;
+    newsList.style.top = topPos + 'px';
+}
+setInterval(scrollNews, 50);
+</script>
+
+</body>
+</html>
