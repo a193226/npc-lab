@@ -1,1 +1,23 @@
-<img src="https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/smiles/O%3DC2c1ccc(O)cc1OCC2c3ccc(O)cc3/PNG?image_size=400x400" alt="structure (PNG)">
+<!-- フラボノイド抽象アイコン（2芳香環 + Cリング）-->
+<svg width="120" height="70" viewBox="0 0 120 70" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block; margin:auto;">
+  <style>
+    .ring-line {
+      stroke: var(--accent-1);
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  </style>
+
+  <!-- 左側芳香環（六角形） -->
+  <polygon class="ring-line"
+    points="20,35 30,20 50,20 60,35 50,50 30,50" />
+
+  <!-- 右側芳香環（六角形） -->
+  <polygon class="ring-line"
+    points="70,35 80,20 100,20 110,35 100,50 80,50" />
+
+  <!-- 中央 C リングの結合線（抽象化）-->
+  <line class="ring-line" x1="50" y1="35" x2="70" y2="35"/>
+  <line class="ring-line" x1="48" y1="32" x2="72" y2="32"/>
+</svg>
