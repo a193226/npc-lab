@@ -1,58 +1,8 @@
-<!-- Apigenin (簡易フラボノイド構造) -->
-<svg xmlns="http://www.w3.org/2000/svg"
-     viewBox="0 0 380 160"
-     width="380" height="160"
-     role="img" aria-label="Apigenin structure (simplified)"
-     style="max-width:100%;height:auto;display:block;">
-  <defs>
-    <style>
-      .bond { fill:none; stroke:var(--accent-1, #0b7496); stroke-width:3; stroke-linecap:round; stroke-linejoin:round; }
-      .atom { font-family: Arial, Helvetica, sans-serif; font-size:12px; fill:#07333a; }
-      .oh { font-family: Arial, Helvetica, sans-serif; font-size:11px; fill:#07333a; font-weight:700; }
-      .mark { fill:var(--accent-2, #2fb8b8); stroke:none; opacity:0.95; }
-    </style>
-  </defs>
-
-  <!-- 左側ベンゼン環 (A環) -->
-  <g transform="translate(40,30)">
-    <polygon class="bond" points="0,25 25,0 75,0 100,25 75,50 25,50" />
-    <!-- OH群 (5,7位に見立てて配置) -->
-    <circle class="mark" cx="-8" cy="12" r="5"/>
-    <text class="oh" x="-18" y="18">OH</text>
-    <circle class="mark" cx="52" cy="-12" r="5"/>
-    <text class="oh" x="42" y="-6">OH</text>
-  </g>
-
-  <!-- 中央ピラノン環 (C環: フラノン様の簡易表現) -->
-  <g transform="translate(120,20)">
-    <!-- 6員環（酸素を含む） -->
-    <path class="bond" d="M0,25 L25,0 L75,0 L100,25 L75,50 L25,50 Z" />
-    <!-- 酸素 (O) を上の右に表記 -->
-    <text class="atom" x="78" y="-6">O</text>
-    <!-- ケト基 (=O) を下に表記 -->
-    <line class="bond" x1="50" y1="50" x2="50" y2="72" />
-    <circle cx="50" cy="80" r="6" fill="#fff" stroke="rgba(0,0,0,0.06)"/>
-    <text class="atom" x="46" y="84">O</text>
-  </g>
-
-  <!-- 右側ベンゼン環 (B環) -->
-  <g transform="translate(230,30)">
-    <polygon class="bond" points="0,25 25,0 75,0 100,25 75,50 25,50" />
-    <!-- パラ位のOH (4'位) -->
-    <circle class="mark" cx="110" cy="12" r="5"/>
-    <text class="oh" x="100" y="18">OH</text>
-  </g>
-
-  <!-- 環のつなぎ（結合） -->
-  <g>
-    <!-- A環右上 -> C環左上 -->
-    <line class="bond" x1="85" y1="40" x2="120" y2="35" />
-    <!-- C環右上 -> B環左上 -->
-    <line class="bond" x1="200" y1="35" x2="230" y2="35" />
-    <!-- A-B の位置関係を示す短い結合（雰囲気） -->
-    <line class="bond" x1="95" y1="15" x2="150" y2="10" stroke-dasharray="4 6" opacity="0.6"/>
-  </g>
-
-  <!-- ラベル -->
-  <text class="atom" x="10" y="150">Apigenin (simplified)</text>
-</svg>
+<!-- SVG を直接埋め込む（外部取得） -->
+<object type="image/svg+xml"
+        data="https://cactus.nci.nih.gov/chemical/structure/O%3DC2c1ccc(O)cc1OCC2c3ccc(O)cc3/svg"
+        aria-label="Apigenin-like structure (from SMILES)"
+        style="width:100%; max-width:420px; height:auto; display:block;">
+  <!-- ブラウザが object を表示できない場合の代替 -->
+  <img src="https://cactus.nci.nih.gov/chemical/structure/O%3DC2c1ccc(O)cc1OCC2c3ccc(O)cc3/png" alt="chemical structure" />
+</object>
