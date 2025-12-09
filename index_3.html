@@ -1,197 +1,124 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>宇都宮大学 NPC研究室</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Flavonoid Effects Demo</title>
 <style>
-:root{
-  --accent-1:#0b7496;
-  --accent-2:#2fb8b8;
-  --bg:#f7fbfc;
-  --card:#ffffff;
-  --muted:#f1f6f8;
-  --text:#17202a;
-  --badge:#ff7f50;
-}
-  
-body { margin:0; font-family:sans-serif; background:var(--bg); color:var(--text);}
-nav { display:flex; justify-content:space-between; align-items:center; padding:0.5rem 1rem; background:var(--card); position:relative; z-index:3; box-shadow:0 1px 5px rgba(0,0,0,0.08);}
-nav a { text-decoration:none; color:var(--text); margin:0 0.5rem; font-weight:600;}
-nav button { margin-left:0.5rem; padding:0.2rem 0.6rem; border:none; background:var(--accent-2); color:white; border-radius:4px; cursor:pointer;}
+  :root{
+    --accent-1:#0b7496;
+    --accent-2:#2fb8b8;
+    --bg:#f7fbfc;
+    --card:#ffffff;
+    --muted:#f1f6f8;
+    --text:#17202a;
+    --badge:#ff7f50;
+  }
+  body{
+    margin:0;
+    background:var(--bg);
+    font-family: sans-serif;
+    color:var(--text);
+  }
 
-nav .nav-items { display:flex; align-items:center; gap:0.5rem; transition:max-height 0.3s ease; overflow:hidden; }
-nav .nav-items.closed { max-height:0; }
+  /* ====== 2) アクセントカラー2色のグラデ版アイコン ====== */
+  .icon-gradient{
+    width:160px;
+    aspect-ratio:1/1;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--accent-1),var(--accent-2));
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow:0 6px 20px rgba(0,0,0,0.18);
+  }
+  .icon-gradient svg{
+    width:60%;
+    opacity:0.9;
+    fill:white;
+  }
 
-.hamburger { display:flex; flex-direction:column; justify-content:space-around; width:28px; height:22px; cursor:pointer; }
-.hamburger span { display:block; height:3px; background:var(--text); border-radius:2px; }
+  /* ====== 4) サイト背景の透かしパターン ====== */
+  .watermark{
+    position:fixed;
+    inset:0;
+    background-image:url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEwMCAxOC44Yy0xNy44IDAtMzIuMiAxNC40LTMyLjIgMzIuMnMxNC40IDMyLjIgMzIuMiAzMi4yIDMyLjItMTQuNCAzMi4yLTMyLjJTMTE3LjggMTguOCAxMDAgMTguOHptMCA1OC42Yy0xNC40IDAtMjYuNC0xMi0yNi40LTI2LjRzMTItMjYuNCAyNi40LTI2LjQgMjYuNCAxMiAyNi40IDI2LjRTMTE0LjQgNzcuNCAxMDAgNzcuNHoiIGZpbGw9IiMwMDc4OTYiIG9wYWNpdHk9IjAuMDgiLz48L3N2Zz4=');
+    background-size:260px;
+    background-repeat:repeat;
+    pointer-events:none;
+    opacity:0.18;
+  }
 
-.container { max-width:960px; margin:auto; padding:1rem; position:relative; z-index:2; }
+  /* ====== 6) Hero背景に敷く大型版（回転アニメ付き） ====== */
+  .hero{
+    position:relative;
+    height:45vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    width:480px;
+    height:480px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--accent-1),var(--accent-2));
+    opacity:0.25;
+    animation:spin 40s linear infinite;
+    top:50%; left:50%; transform:translate(-50%,-50%);
+    filter:blur(12px);
+  }
+  @keyframes spin{
+    from{transform:translate(-50%,-50%) rotate(0deg);}    
+    to{transform:translate(-50%,-50%) rotate(360deg);}    
+  }
 
-/* ====== Hero & Flavonoid SVG ====== */
-.icon-small { width:28px; height:28px; display:inline-block; vertical-align:middle; }
-.icon-medium { width:64px; height:40px; display:block; }
-.icon-large { width:240px; height:auto; display:block; }
-.icon-glow { filter: drop-shadow(0 6px 18px rgba(11,116,150,0.14)); }
-svg .stroke-main { stroke: var(--accent-1); }
-svg .stroke-grad { stroke: url(#gradStroke); }
+  .hero h1{
+    position:relative;
+    font-size:2.8rem;
+    letter-spacing:1.5px;
+    z-index:2;
+  }
 
-@keyframes pulseGlow {
-  0% { opacity:0.9; transform:scale(1); filter: blur(0px); }
-  50% { opacity:1; transform:scale(1.02); filter: blur(0.2px); }
-  100% { opacity:0.9; transform:scale(1); filter: blur(0px); }
-}
-.hero-svg-wrap { position:absolute; inset:0; pointer-events:none; display:flex; align-items:center; justify-content:center; z-index:0; }
-
-#flav-pattern-wrap { position:fixed; inset:0; z-index:0; pointer-events:none; opacity:0.10; mix-blend-mode: normal; }
-main, header, footer, .container { position:relative; z-index:2; }
-
-/* スクロール可能ニュースリスト */
-#news-container { max-height:12em; overflow-y:auto; padding-right:0.5rem; }
-
-/* responsive */
-@media(max-width:720px){
-  .icon-large { width:160px; }
-  #flav-pattern-wrap { opacity:0.08; }
-  nav .nav-items { flex-direction:column; align-items:flex-start; }
-}
+  .section{
+    padding:40px 20px;
+    max-width:900px;
+    margin:auto;
+  }
+  h2{ margin-top:0; }
 </style>
-<script>
-function switchLang(lang){
-  document.querySelectorAll('[data-lang]').forEach(el=>{
-    el.style.display = (el.getAttribute('data-lang')===lang)?'block':'none';
-  });
-}
-
-function toggleMenu(){
-  document.querySelector('.nav-items').classList.toggle('closed');
-}
-</script>
 </head>
 <body>
 
-<div id="flav-pattern-wrap" aria-hidden="true">
-  <svg width="100%" height="100%" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" >
-    <defs>
-      <pattern id="flavPattern" patternUnits="userSpaceOnUse" width="160" height="120">
-        <g transform="translate(10,20)" stroke="var(--accent-1)" stroke-opacity="0.08" fill="none" stroke-width="1.2">
-          <polygon points="0,25 20,10 60,10 80,25 60,40 20,40" />
-        </g>
-        <g transform="translate(80,20)" stroke="var(--accent-2)" stroke-opacity="0.06" fill="none" stroke-width="1.2">
-          <polygon points="0,25 20,10 60,10 80,25 60,40 20,40" />
-        </g>
-      </pattern>
-    </defs>
-    <rect width="100%" height="100%" fill="url(#flavPattern)"></rect>
-  </svg>
-</div>
+<!-- 4) 透かしパターン背景 -->
+<div class="watermark"></div>
 
-<header>
-<nav>
-  <div style="display:flex; align-items:center; gap:8px;">
-    <div class="hamburger" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
-    </div>
-    <span id="flav-logo">
-      <svg class="icon-small icon-glow" viewBox="0 0 120 70" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="g-accent" x1="0" x2="1">
-            <stop offset="0" stop-color="var(--accent-1)"/>
-            <stop offset="1" stop-color="var(--accent-2)"/>
-          </linearGradient>
-          <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="2.2" result="b"/>
-            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-          </filter>
-        </defs>
-        <polygon points="10,35 18,22 34,22 42,35 34,48 18,48" fill="none" stroke="url(#g-accent)" stroke-width="2.2" stroke-linejoin="round"/>
-        <polygon points="62,35 70,22 86,22 94,35 86,48 70,48" fill="none" stroke="url(#g-accent)" stroke-width="2.2" stroke-linejoin="round"/>
-        <line x1="34" y1="35" x2="62" y2="35" stroke="url(#g-accent)" stroke-width="2"/>
-        <line x1="32" y1="32" x2="64" y2="32" stroke="rgba(255,255,255,0.18)" stroke-width="0.9" />
-        <g filter="url(#softGlow)" opacity="0.95">
-          <circle cx="48" cy="35" r="2.5" fill="url(#g-accent)" opacity="0.9"/>
-        </g>
-      </svg>
-    </span>
-  </div>
-  <div class="nav-items closed">
-    <a href="index.html">HOME</a>
-    <a href="overview.html">概要</a>
-    <a href="members.html">メンバー</a>
-    <a href="publications.html">業績</a>
-    <button onclick="switchLang('ja')">日本語</button>
-    <button onclick="switchLang('en')">English</button>
-  </div>
-</nav>
-</header>
+<!-- 6) Heroセクション 大型フラボノイド背景 -->
+<section class="hero">
+  <h1>Flavonoid Visual System</h1>
+</section>
 
-<section class="hero" style="position:relative; min-height:360px; display:flex; align-items:center; justify-content:center;">
-  <div class="hero-svg-wrap" aria-hidden="true">
-    <svg class="icon-large" viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-      <defs>
-        <linearGradient id="heroGrad" x1="0" x2="1">
-          <stop offset="0" stop-color="var(--accent-1)" stop-opacity="0.14"></stop>
-          <stop offset="1" stop-color="var(--accent-2)" stop-opacity="0.10"></stop>
-        </linearGradient>
-        <radialGradient id="heroGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0" stop-color="var(--accent-2)" stop-opacity="0.35"></stop>
-          <stop offset="1" stop-color="var(--accent-1)" stop-opacity="0.00"></stop>
-        </radialGradient>
-        <pattern id="heroPattern" width="220" height="160" patternUnits="userSpaceOnUse">
-          <g stroke="var(--accent-1)" stroke-opacity="0.03" fill="none" stroke-width="1">
-            <polygon points="10,60 30,45 70,45 90,60 70,75 30,75"></polygon>
-          </g>
-        </pattern>
-        <linearGradient id="strokeGrad" x1="0" x2="1">
-          <stop offset="0" stop-color="var(--accent-1)"/>
-          <stop offset="1" stop-color="var(--accent-2)"/>
-        </linearGradient>
-        <filter id="bigGlow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="18" result="g1"/>
-          <feMerge>
-            <feMergeNode in="g1"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
-        </filter>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#heroGrad)"></rect>
-      <rect width="100%" height="100%" fill="url(#heroPattern)" opacity="0.25"></rect>
-      <g transform="translate(360,160)" filter="url(#bigGlow)">
-        <polygon points="-220,0 -200,-15 -160,-15 -140,0 -160,15 -200,15" fill="none" stroke="url(#strokeGrad)" stroke-width="6" stroke-linejoin="round"/>
-        <polygon points="-40,0 -20,-15 20,-15 40,0 20,15 -20,15" fill="none" stroke="url(#strokeGrad)" stroke-width="6" stroke-linejoin="round"/>
-        <line x1="-160" y1="0" x2="-40" y2="0" stroke="url(#strokeGrad)" stroke-width="5"/>
-        <circle cx="-100" cy="-6" r="10" fill="url(#heroGlow)" opacity="0.9"></circle>
-      </g>
+<section class="section">
+  <h2>2) アクセントカラーのグラデアイコン</h2>
+  <div class="icon-gradient">
+    <!-- フラボノイドの簡略SVG（抽象化） -->
+    <svg viewBox="0 0 100 100">
+      <path d="M20 50 L40 20 L70 20 L80 50 L60 80 L30 80 Z" />
     </svg>
   </div>
 </section>
 
-<div class="container">
-<section data-lang="ja">
-  <h1>宇都宮大学農学部応用生命化学科天然物有機化学研究室</h1>
-  <h2>Natural Products Chemistry</h2>
-  <p>有機化学を通して天然物の可能性を探る研究をしています。<br>詳しくは mc236700アットs.utsunomiya-u.ac.jp までお問い合わせください。</p>
-</section>
-<section data-lang="en" style="display:none;">
-  <h1>Utsunomiya University, Faculty of Agriculture</h1>
-  <h2>Natural Products Chemistry</h2>
-  <p>We explore the potential of natural products through organic chemistry.<br>For details, please contact mc236700アットs.utsunomiya-u.ac.jp.</p>
+<section class="section">
+  <h2>4) 背景透かしパターン</h2>
+  <p>ページ全体に薄く敷かれています（青系の抽象化分子パターン）。</p>
 </section>
 
-<section id="news" style="padding:1rem; background:var(--card); border-radius:8px; margin-top:1rem;">
-  <h2 data-lang="ja">最新ニュース・論文</h2>
-  <h2 data-lang="en" style="display:none;">Latest News & Publications</h2>
-  <div id="news-container">
-    <ul style="list-style:none; padding-left:0;">
-      <li><a href="https://www.utsunomiya-u.ac.jp/topics/research/011461.php" target="_blank">左ききのグルコースも自然界に存在する？</a></li>
-      <li><a href="https://www.utsunomiya-u.ac.jp/topics/research/011163.php" target="_blank">メグスリノキ抽出物に含まれる抗酸化性天然物の構造が明らかに</a></li>
-      <li><a href="https://www.utsunomiya-u.ac.jp/topics/research/010201.php" target="_blank">カシスに含まれる対称性ポリフェノールの全合成に成功</a></li>
-      <li><a href="https://www.utsunomiya-u.ac.jp/topics/research/009898.php" target="_blank">親水性チロシナーゼ阻害剤の開発に成功 ― 酵素的褐変の効率的制御が可能に―</a></li>
-      <!-- この下に既存の論文リスト（スクロールするやつ）を続けてOK -->
-    </ul>
-  </div>
+<section class="section">
+  <h2>6) Hero背景の大型版</h2>
+  <p>上部のHeroに、ゆっくり回転するフラボノイド抽象背景が適用されています。</p>
 </section>
-</div>
 
 </body>
 </html>
