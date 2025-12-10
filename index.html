@@ -1,178 +1,172 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>宇都宮大学農学部応用生命化学科 NPC研究室</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>宇都宮大学 NPC研究室</title>
 <link rel="stylesheet" href="css/style.css">
-<script src="js/main.js" defer></script>
-<style>
-/* HOMEページ用に背景と文字色を調整 */
-body {
-    background: #ffffff;
-    color: #333333;
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-}
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 1rem;
-}
-nav a, nav button {
-    margin-right: 1rem;
-    text-decoration: none;
-    padding: 0.3rem 0.6rem;
-    border: none;
-    background: #007ACC;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-}
-nav button {
-    background: #555555;
-}
-section {
-    margin-bottom: 2rem;
-}
-#news-container {
-    background: #f8f8f8;
-    padding: 1rem;
-    border-radius: 6px;
-    overflow: hidden;
-    height: 120px;
-    position: relative;
-}
-#news-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    position: absolute;
-    top: 0;
-    width: 100%;
-}
-#news-list li {
-    padding: 0.5rem 0;
-}
-</style>
 </head>
 <body>
-    
-<nav>
-    <a href="index.html">HOME</a>
-    <a href="overview.html">概要</a>
-    <a href="members.html">メンバー</a>
-    <a href="publications.html">業績</a>
-    <button onclick="switchLang('ja')">日本語</button>
-    <button onclick="switchLang('en')">English</button>
-</nav>
 
-<div class="container">
-
-<!-- 日本語 -->
-<section data-lang="ja">
-    <h1>宇都宮大学農学部応用生命化学科</h1>
-    <h2>Natural Products Chemistry</h2>
-    <p>有機化学を通して，天然物の可能性を探る</p>
-    <p>当分野では，天然有機化合物の有機合成，誘導体合成，構造解析および生理活性評価により，化粧品，農薬や医薬品などに利用できる新しい機能性分子の開発を目指し，スパイラル型の研究を行っています．</p>
-    <p>詳しくは nihei98アットcc.utsunomiya-u.ac.jp までお問い合わせください．</p>
-</section>
-
-<!-- 英語 -->
-<section data-lang="en" style="display:none;">
-    <h1>Utsunomiya University, Faculty of Agriculture</h1>
-    <h2>Natural Products Chemistry</h2>
-    <p>Exploring the potential of natural products through organic chemistry.</p>
-    <p>Our unit focuses on the development of new functional molecules, useful in cosmetics, agricultural chemicals, and pharmaceuticals, through organic synthesis, derivative synthesis, structural analysis, and biological evaluation.</p>
-    <p>For details, please contact nihei98ATcc.utsunomiya-u.ac.jp.</p>
-</section>
-
-<!-- 最新ニュース・論文 -->
-<section id="news">
-    <h2 data-lang="ja">最新ニュース・論文</h2>
-    <h2 data-lang="en" style="display:none;">Latest News & Publications</h2>
-    <div id="news-container">
-        <ul id="news-list">
-            <!-- 日本語版全文 -->
-            <li class="ja">Horio, K.; Maeda, H.; Horie, K.; Nanashima, N.; Nihei, K.* Ribes nigrum 葉から単離された quasi-symmetric dihydrofuran リグナン (−)-ribesin A および B の全合成. Tetrahedron 2025, 181, 134675.</li>
-            <li class="ja">Makita, M.; Nihei, K.* nepodin および torachrysone グルコシドの全合成: 自然界に存在する L-グルコシドの証拠. Tetrahedron Lett. 2024, 146, 155191.</li>
-            <li class="ja">Shimakage, R.; Iwadate, T.; Nihei, K.* 天然のジフェノール性グルコシド sonnerphenolic C: 化学合成，構造修正，酸化還元変換，抗酸化物質としての同定. Tetrahedron 2024, 158, 134001.</li>
-            <li class="ja">Horio, K.; Nihei, K.* (-)-ribesin B の全合成および構造修正. Tetrahedron Lett. 2023, 114, 154285.</li>
-            <li class="ja">Ishioka, W.; Nihei, K.* レゾルシノールアルキルグルコシド，ヒドロキシアルキルレゾルシノールおよびアルキルレゾルシノールの化学合成とチロシナーゼ阻害活性. J. Mol. Struct. 2022, 1268, 133668.</li>
-            <li class="ja">Shimakage, R.; Nihei, K.* Homalium stenophyllum 由来と考えられる phloretin-4-O-β-D-glucopyranoside の合成，構造修正，およびチロシナーゼ阻害活性評価. Nat. Prod. Res. 2022, 36, 1803-1811.</li>
-            <li class="ja">Nihei, K.; Peigneur, S.; Tytgat, J.; Lange, A.B.; Konno, K.* 単独スフェシッドスズメバチ毒の FMRFamide-like ペプチドの単離と同定. Peptides 2021, 142, 170575.</li>
-            <li class="ja">Matsumoto, T.; Harima, S.; Weng, J.; Nihei, K.* Arabidopyrone の化学合成に向けた体系的アプローチ. Synth. Commun. 2020, 50, 2981-2987.</li>
-            <li class="ja">Nihei, K.*; Kubo, I. 電子吸引基を持つ 4-置換ベンズアルデヒドによるチロシナーゼ阻害. Appl. Biochem. Biotechnol. 2020, 191, 1711-1716.</li>
-            <li class="ja">Asebi, N.; Nihei, K.* アピオスイソフラボンの全合成とチロシナーゼ阻害活性の評価. Tetrahedron 2019, 75, 130589.</li>
-            <li class="ja">Nihei, K.*; Kubo, I. ベンズニトリルによるチロシナーゼ阻害（ハイパーボリック阻害様式）. Int. J. Biol. Macromol. 2019, 133, 929-932.</li>
-            <li class="ja">Ishioka, W.; Oonuki, S.; Iwadate, T.; Nihei, K.* レゾルシノールアルキルグルコシドのチロシナーゼ阻害活性. Bioorg. Med. Chem. Lett. 2019, 29, 313-316.</li>
-            <li class="ja">Tanaka, Y.; Suzuki, M.; Kodachi, Y.; Nihei, K.* 天然ジヒドロオキシレズベラトロール骨格に基づく高親水性チロシナーゼ阻害剤の分子設計. Carbohydr. Res. 2019, 472, 42-49.</li>
-            <li class="ja">Matsumoto, T.; Nakajima, T.; Iwadate, T.; Nihei, K.* isotachioside および関連グリコシドの化学合成とチロシナーゼ阻害活性. Carbohydr. Res. 2018, 465, 22-28.</li>
-            <li class="ja">Iwadate, T.; Nihei, K.* Sonnerphenolic C の化学合成，酸化還元変換および抗酸化物質としての同定. Bioorg. Med. Chem. Lett. 2017, 27, 1799-1802.</li>
-            <li class="ja">Nihei, K.*; Kubo, I. ベンズアルデヒドの置換基がチロシナーゼ阻害に与える影響. Plant Physiol. Biochem. 2017, 112, 278-282.</li>
-            <li class="ja">Oode, C.; Shimada, W.; Yokota, M.; Yamada, Y.; Nihei, K.* ジヒドロレスベラトロールセルロビオシドおよびキシロビオシドのメラノゲネシス活性. Carbohydr. Res. 2016, 436, 45-49.</li>
-            <li class="ja">Iwadate, T.; Nihei, K.* Rhododendrol グリコシドの立体特異的チロシナーゼ阻害. Bioorg. Med. Chem. 2015, 23, 6650-6658.</li>
-            <li class="ja">Oode, C.; Shimada, W.; Izutsu, Y.; Yokota, M.; Iwadate, T.; Nihei, K.* ジヒドロレスベラトロールグリコシドの合成と B16F0 メラノーマ細胞に対する活性評価. Eur. J. Med. Chem. 2014, 87, 862-867.</li>
-            <li class="ja">Kamatani, J.; Iwadate, T.; Tajima, R.; Kimoto, H.; Yamada, Y.; Masuoka, N.; Kubo, I.; Nihei, K.* Inuloidin の立体化学的解析および全合成. Tetrahedron 2014, 70, 3141-3145.</li>
-            <li class="ja">Iwadate, T.; Kashiwakura, Y.; Masuoka, N.; Yamada, Y.; Nihei, K.* Rhododendrol グリコシドの化学合成とチロシナーゼ阻害活性評価. Bioorg. Med. Chem. Lett. 2014, 24, 122-125.</li>
-            <li class="ja">Tajima, R.; Oozeki, H.; Muraoka, S.; Tanaka, S.; Motegi, Y.; Nihei, H.; Yamada, Y.; Masuoka, N.; Nihei, K.* Bibenzyl グリコシドの合成とチロシナーゼ阻害活性評価. Eur. J. Med. Chem. 2011, 46, 1374-1381.</li>
-            <li class="ja">Oozeki, H.; Tajima, R.; Nihei, K.* Bibenzyl 骨格を持つ高活性チロシナーゼ阻害剤の分子設計. Bioorg. Med. Chem. Lett. 2008, 18, 5252-5254.</li>
-
-            <!-- 英語版全文 -->
-            <li class="en" style="display:none;">Horio, K.; Maeda, H.; Horie, K.; Nanashima, N.; Nihei, K.* Total synthesis of quasi-symmetric dihydrofuran lignans (−)-ribesin A and B isolated from Ribes nigrum leaves. Tetrahedron 2025, 181, 134675.</li>
-            <li class="en" style="display:none;">Makita, M.; Nihei, K.* Total synthesis of nepodin and torachrysone glucosides: Evidence for naturally occurring L-glucosides. Tetrahedron Lett. 2024, 146, 155191.</li>
-            <li class="en" style="display:none;">Shimakage, R.; Iwadate, T.; Nihei, K.* A natural diphenolic glucoside, sonnerphenolic C: Chemical synthesis, structural revision, redox transformation, and identification as an antioxidant. Tetrahedron 2024, 158, 134001.</li>
-            <li class="en" style="display:none;">Horio, K.; Nihei, K.* Total synthesis of (-)-ribesin B and its structural revision. Tetrahedron Lett. 2023, 114, 154285.</li>
-            <li class="en" style="display:none;">Ishioka, W.; Nihei, K.* Chemical synthesis and tyrosinase inhibitory activity of resorcinol alkyl glucosides, hydroxyalkyl resorcinols, and alkyl resorcinols. J. Mol. Struct. 2022, 1268, 133668.</li>
-            <li class="en" style="display:none;">Shimakage, R.; Nihei, K.* Chemical synthesis, structural revision, and tyrosinase inhibitory activity of proposed phloretin-4-O-β-D-glucopyranoside from Homalium stenophyllum. Nat. Prod. Res. 2022, 36, 1803-1811.</li>
-            <li class="en" style="display:none;">Nihei, K.; Peigneur, S.; Tytgat, J.; Lange, A.B.; Konno, K.* Isolation and characterization of FMRFamide-like peptides in the venoms of solitary sphecid wasps. Peptides 2021, 142, 170575.</li>
-            <li class="en" style="display:none;">Matsumoto, T.; Harima, S.; Weng, J.; Nihei, K.* Systematic approach to the chemical synthesis of arabidopyrones, the unique α-pyrones of Arabidopsis metabolites. Synth. Commun. 2020, 50, 2981-2987.</li>
-            <li class="en" style="display:none;">Nihei, K.*; Kubo, I. Tyrosinase inhibition by 4-substituted benzaldehydes with electron-withdrawing groups. Appl. Biochem. Biotechnol. 2020, 191, 1711-1716.</li>
-            <li class="en" style="display:none;">Asebi, N.; Nihei, K.* Total synthesis of apios isoflavones and investigation of their tyrosinase inhibitory activity. Tetrahedron 2019, 75, 130589.</li>
-            <li class="en" style="display:none;">Nihei, K.*; Kubo, I. Benzonitriles as tyrosinase inhibitors with hyperbolic inhibition manner. Int. J. Biol. Macromol. 2019, 133, 929-932.</li>
-            <li class="en" style="display:none;">Ishioka, W.; Oonuki, S.; Iwadate, T.; Nihei, K.* Resorcinol alkyl glucosides as potent tyrosinase inhibitors. Bioorg. Med. Chem. Lett. 2019, 29, 313-316.</li>
-            <li class="en" style="display:none;">Tanaka, Y.; Suzuki, M.; Kodachi, Y.; Nihei, K.* Molecular design of potent, hydrophilic tyrosinase inhibitors based on the natural dihydrooxyresveratrol skeleton. Carbohydr. Res. 2019, 472, 42-49.</li>
-            <li class="en" style="display:none;">Matsumoto, T.; Nakajima, T.; Iwadate, T.; Nihei, K.* Chemical synthesis and tyrosinase-inhibitory activity of isotachioside and its related glycosides. Carbohydr. Res. 2018, 465, 22-28.</li>
-            <li class="en" style="display:none;">Iwadate, T.; Nihei, K.* Chemical synthesis, redox transformation, and identification of sonnerphenolic C, an antioxidant in Acer nikoense. Bioorg. Med. Chem. Lett. 2017, 27, 1799-1802.</li>
-            <li class="en" style="display:none;">Nihei, K.*; Kubo, I. Substituent effect of benzaldehydes on tyrosinase inhibition. Plant Physiol. Biochem. 2017, 112, 278-282.</li>
-            <li class="en" style="display:none;">Oode, C.; Shimada, W.; Yokota, M.; Yamada, Y.; Nihei, K.* Dihydroresveratrol cellobioside and xylobioside as effective melanogenesis activators. Carbohydr. Res. 2016, 436, 45-49.</li>
-            <li class="en" style="display:none;">Iwadate, T.; Nihei, K.* Rhododendrol glycosides as stereospecific tyrosinase inhibitors. Bioorg. Med. Chem. 2015, 23, 6650-6658.</li>
-            <li class="en" style="display:none;">Oode, C.; Shimada, W.; Izutsu, Y.; Yokota, M.; Iwadate, T.; Nihei, K.* Synthesis of dihydroresveratrol glycosides and evaluation of their activity against melanogenesis in B16F0 melanoma cells. Eur. J. Med. Chem. 2014, 87, 862-867.</li>
-            <li class="en" style="display:none;">Kamatani, J.; Iwadate, T.; Tajima, R.; Kimoto, H.; Yamada, Y.; Masuoka, N.; Kubo, I.; Nihei, K.* Stereochemical investigation and total synthesis of inuloidin, a biologically active sesquiterpenoid from Heterotheca inuloides. Tetrahedron 2014, 70, 3141-3145.</li>
-            <li class="en" style="display:none;">Iwadate, T.; Kashiwakura, Y.; Masuoka, N.; Yamada, Y.; Nihei, K.* Chemical synthesis and tyrosinase inhibitory activity of rhododendrol glycosides. Bioorg. Med. Chem. Lett. 2014, 24, 122-125.</li>
-            <li class="en" style="display:none;">Tajima, R.; Oozeki, H.; Muraoka, S.; Tanaka, S.; Motegi, Y.; Nihei, H.; Yamada, Y.; Masuoka, N.; Nihei, K.* Synthesis and evaluation of bibenzyl glycosides as potent tyrosinase inhibitors. Eur. J. Med. Chem. 2011, 46, 1374-1381.</li>
-            <li class="en" style="display:none;">Oozeki, H.; Tajima, R.; Nihei, K.* Molecular design of potent tyrosinase inhibitors having the bibenzyl skeleton. Bioorg. Med. Chem. Lett. 2008, 18, 5252-5254.</li>
-        </ul>
-    </div>
-</section>
-
+<!-- 透かしパターン -->
+<div id="flav-pattern-wrap" aria-hidden="true">
+  <svg width="100%" height="100%" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" >
+    <defs>
+      <pattern id="flavPattern" patternUnits="userSpaceOnUse" width="160" height="120">
+        <g transform="translate(10,20)" stroke="var(--accent-1)" stroke-opacity="0.08" fill="none" stroke-width="1.2">
+          <polygon points="0,25 20,10 60,10 80,25 60,40 20,40" />
+        </g>
+        <g transform="translate(80,20)" stroke="var(--accent-2)" stroke-opacity="0.06" fill="none" stroke-width="1.2">
+          <polygon points="0,25 20,10 60,10 80,25 60,40 20,40" />
+        </g>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#flavPattern)"></rect>
+  </svg>
 </div>
 
-<script>
-// 言語切替
-function switchLang(lang) {
-    document.querySelectorAll('[data-lang]').forEach(el => {
-        if(el.getAttribute('data-lang') === lang){
-            el.style.display = '';
-        } else {
-            el.style.display = 'none';
-        }
-    });
-}
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <!-- small molecule icon -->
+      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="var(--accent-2)"/><stop offset="1" stop-color="var(--accent-1)"/></linearGradient></defs>
+        <g transform="translate(4,4)" fill="none" stroke="url(#g1)" stroke-width="2">
+          <path d="M18 2 L32 2 L40 14 L32 26 L18 26 L10 14 Z"/>
+        </g>
+      </svg>
+      NPC Lab
+    </div>
 
-// ニュース自動スクロール
-const newsList = document.getElementById('news-list');
-let top = 0;
-const itemHeight = 40; // liの高さ(px)
-const totalItems = newsList.children.length;
+    <div class="nav-links" id="navLinks">
+      <a href="index_2.html">HOME</a>
+      <a href="overview.html">概要</a>
+      <a href="members.html">メンバー</a>
+      <a href="publications.html">業績</a>
+      <button onclick="switchLang('ja')">日本語</button>
+      <button onclick="switchLang('en')">English</button>
+    </div>
 
-function scrollNews() {
-    top -= 1;
-    if (-top >= itemHeight * totalItems) top = 0;
-    newsList.style.top = top + 'px';
-}
-setInterval(scrollNews, 50);
-</script>
+    <div style="display:flex;align-items:center;gap:8px">
+      <div class="hamburger" onclick="toggleMenu()" aria-label="menu" title="menu">
+        <span></span><span></span><span></span>
+      </div>
+      <!-- small gradient logo next to hamburger -->
+      <span style="display:inline-block;margin-left:8px">
+        <svg viewBox="0 0 120 70" xmlns="http://www.w3.org/2000/svg" class="icon-small" aria-hidden="true">
+          <defs><linearGradient id="g-accent" x1="0" x2="1"><stop offset="0" stop-color="var(--accent-1)"/><stop offset="1" stop-color="var(--accent-2)"/></linearGradient></defs>
+          <polygon points="10,35 18,22 34,22 42,35 34,48 18,48" fill="none" stroke="url(#g-accent)" stroke-width="2.2" stroke-linejoin="round"/>
+          <polygon points="62,35 70,22 86,22 94,35 86,48 70,48" fill="none" stroke="url(#g-accent)" stroke-width="2.2" stroke-linejoin="round"/>
+          <line x1="34" y1="35" x2="62" y2="35" stroke="url(#g-accent)" stroke-width="2"/>
+        </svg>
+      </span>
+    </div>
+  </div>
+</header>
 
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-svg-wrap" aria-hidden="true">
+      <!-- large decorative svg background -->
+      <svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="heroGrad" x1="0" x2="1"><stop offset="0" stop-color="var(--accent-1)" stop-opacity="0.14"/><stop offset="1" stop-color="var(--accent-2)" stop-opacity="0.10"/></linearGradient>
+          <radialGradient id="heroGlow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="var(--accent-2)" stop-opacity="0.35"/><stop offset="1" stop-color="var(--accent-1)" stop-opacity="0.00"/></radialGradient>
+          <pattern id="heroPattern" width="220" height="160" patternUnits="userSpaceOnUse">
+            <g stroke="var(--accent-1)" stroke-opacity="0.03" fill="none" stroke-width="1"><polygon points="10,60 30,45 70,45 90,60 70,75 30,75"/></g>
+          </pattern>
+          <linearGradient id="strokeGrad" x1="0" x2="1"><stop offset="0" stop-color="var(--accent-1)"/><stop offset="1" stop-color="var(--accent-2)"/></linearGradient>
+          <filter id="bigGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="18" result="g1"/><feMerge><feMergeNode in="g1"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#heroGrad)"></rect>
+        <rect width="100%" height="100%" fill="url(#heroPattern)" opacity="0.25"></rect>
+        <g transform="translate(360,160)" filter="url(#bigGlow)">
+          <polygon points="-220,0 -200,-15 -160,-15 -140,0 -160,15 -200,15" fill="none" stroke="url(#strokeGrad)" stroke-width="6" stroke-linejoin="round"/>
+          <polygon points="-40,0 -20,-15 20,-15 40,0 20,15 -20,15" fill="none" stroke="url(#strokeGrad)" stroke-width="6" stroke-linejoin="round"/>
+          <line x1="-160" y1="0" x2="-40" y2="0" stroke="url(#strokeGrad)" stroke-width="5"/>
+          <circle cx="-100" cy="-6" r="10" fill="url(#heroGlow)" opacity="0.9"></circle>
+        </g>
+      </svg>
+    </div>
+
+    <div class="hero-content" id="hero-content">
+      <h1 id="hero-title" data-lang="ja">宇都宮大学農学部 応用生命化学科 天然物有機化学研究室</h1>
+      <h1 data-lang="en" style="display:none">Utsunomiya University — Natural Products Chemistry</h1>
+      <p class="muted" data-lang="ja">有機化学を通して天然物の可能性を探る研究をしています。<br>詳しくは mc236700アットs.utsunomiya-u.ac.jp までお問い合わせください。</p>
+      <p class="muted" data-lang="en" style="display:none">Exploring the potential of natural products via organic chemistry.<br>For details, please contact mc236700アットs.utsunomiya-u.ac.jp.</p>
+    </div>
+  </section>
+
+  <div class="grid">
+    <div class="card">
+      <h2 data-lang="ja">最新ニュース・論文</h2>
+      <h2 data-lang="en" style="display:none">Latest News & Publications</h2>
+
+      <div id="news-container" tabindex="0" aria-label="最新ニュースリスト">
+        <ul id="news-list">
+          <li class="news-item" data-lang="ja">
+            <div class="news-title">左ききのグルコースも自然界に存在する？</div>
+            <div class="news-meta"><a href="https://www.utsunomiya-u.ac.jp/topics/research/011461.php" target="_blank" rel="noopener">外部記事を開く</a></div>
+          </li>
+          <li class="news-item" data-lang="ja">
+            <div class="news-title">メグスリノキ抽出物に含まれる抗酸化性天然物の構造が明らかに</div>
+            <div class="news-meta"><a href="https://www.utsunomiya-u.ac.jp/topics/research/011163.php" target="_blank" rel="noopener">外部記事を開く</a></div>
+          </li>
+          <li class="news-item" data-lang="ja">
+            <div class="news-title">カシスに含まれる対称性ポリフェノールの全合成に成功</div>
+            <div class="news-meta"><a href="https://www.utsunomiya-u.ac.jp/topics/research/010201.php" target="_blank" rel="noopener">外部記事を開く</a></div>
+          </li>
+          <li class="news-item" data-lang="ja">
+            <div class="news-title">親水性チロシナーゼ阻害剤の開発に成功 ― 酵素的褐変の効率的制御が可能に ―</div>
+            <div class="news-meta"><a href="https://www.utsunomiya-u.ac.jp/topics/research/009898.php" target="_blank" rel="noopener">外部記事を開く</a></div>
+          </li>
+
+          <!-- English versions -->
+          <li class="news-item" data-lang="en" style="display:none">
+            <div class="news-title">Left-handed glucose also exists in nature?</div>
+            <div class="news-meta"><a href="https://www.utsunomiya-u.ac.jp/topics/research/011461.php" target="_blank" rel="noopener">Open external</a></div>
+          </li>
+          <li class="news-item" data-lang="en" style="display:none">
+            <div class="news-title">Structure of antioxidant natural products in Megusuri-no-ki extract clarified</div>
+            <div class="news-meta"><a href="https://www.utsunomiya-u.ac.jp/topics/research/011163.php" target="_blank" rel="noopener">Open external</a></div>
+          </li>
+          <li class="news-item" data-lang="en" style="display:none">
+            <div class="news-title">Total synthesis of symmetric polyphenols contained in blackcurrant achieved</div>
+            <div class="news-meta"><a href="https://www.utsunomiya-u.ac.jp/topics/research/010201.php" target="_blank" rel="noopener">Open external</a></div>
+          </li>
+          <li class="news-item" data-lang="en" style="display:none">
+            <div class="news-title">Successful development of hydrophilic tyrosinase inhibitors — Efficient enzymatic browning control —</div>
+            <div class="news-meta"><a href="https://www.utsunomiya-u.ac.jp/topics/research/009898.php" target="_blank" rel="noopener">Open external</a></div>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+
+    <aside class="card aside">
+      <h3 data-lang="ja">コンタクト</h3>
+      <h3 data-lang="en" style="display:none">Contact</h3>
+      <p class="muted" data-lang="ja">宇都宮大学農学部 応用生命化学科 天然物有機化学研究室</p>
+      <p data-lang="ja">mc236700アットs.utsunomiya-u.ac.jp</p>
+
+      <p class="muted" data-lang="en" style="display:none">Graduate School, Utsunomiya University — Natural Products Chemistry</p>
+      <p data-lang="en" style="display:none">mc236700アットs.utsunomiya-u.ac.jp</p>
+
+      <hr style="border:none;border-top:1px solid #eef6f6;margin:12px 0">
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <a class="btn secondary" href="members.html" data-lang="ja">メンバー</a>
+        <a class="btn secondary" href="members.html" data-lang="en" style="display:none">Members</a>
+        <a class="btn secondary" href="publications.html" data-lang="ja">業績</a>
+        <a class="btn secondary" href="publications.html" data-lang="en" style="display:none">Publications</a>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer>
+  © 宇都宮大学大学院　地域創生科学研究科
+</footer>
+
+<script src="js/main.js"></script>
 </body>
 </html>
