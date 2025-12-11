@@ -1,27 +1,247 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>業績 — NPC Lab</title>
-<link rel="stylesheet" href="css/style.css"></head>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>業績 — Natural Products Chemistry, 宇都宮大学</title>
+<style>
+:root{
+  --accent-1:#0b7496;
+  --accent-2:#2fb8b8;
+  --bg:#f7fbfc;
+  --card:#ffffff;
+  --muted:#f1f6f8;
+  --text:#17202a;
+  --badge:#ff7f50;
+}
+
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter, "Helvetica Neue", Arial, sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+header{background:linear-gradient(90deg,var(--accent-1),var(--accent-2));color:#fff;padding:12px 18px;position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700}
+.brand svg{width:44px;height:44px;flex-shrink:0}
+nav{margin-left:auto;display:flex;align-items:center;gap:8px}
+nav a, nav button{background:rgba(255,255,255,0.12);color:#fff;border:0;padding:8px 12px;border-radius:8px;text-decoration:none;cursor:pointer;font-weight:600}
+nav a:hover, nav button:hover{background:rgba(255,255,255,0.2)}
+.hamburger{display:flex;flex-direction:column;gap:3px;width:42px;cursor:pointer;padding:6px;border-radius:8px;background:rgba(255,255,255,0.08)}
+.hamburger span{display:block;height:3px;background:#fff;border-radius:3px}
+
+/* nav-links */
+.nav-links{display:flex;gap:8px;align-items:center}
+.nav-links.hidden{display:none}
+
+/* main */
+main{max-width:1100px;margin:20px auto;padding:0 18px 60px}
+.container{background:var(--card);padding:20px;border-radius:10px;box-shadow:0 6px 18px rgba(15,40,50,0.04);border:1px solid #eef6f7}
+h1{margin:0 0 8px;font-size:1.4rem}
+h2{margin:0 0 12px;font-size:1.05rem;color:#054b56}
+p.muted{color:#6b7d82}
+
+/* publications list */
+.pub-list{margin:18px 0 0;padding:0;list-style:none}
+.pub-list li{padding:10px 0;border-bottom:1px dashed #eef6f6}
+.pub-auth{font-weight:700}
+.pub-meta{color:#6e8084;font-size:0.95rem;margin-top:4px}
+
+/* responsive */
+@media (max-width:900px){
+  .header-inner{padding:0 12px}
+  main{padding:0 12px}
+}
+</style>
+
+<script>
+/* ハンバーガー開閉 */
+function toggleMenu(){
+  const el = document.getElementById('navLinks');
+  if(el) el.classList.toggle('hidden');
+}
+
+/* 言語切替（日本語/英語は見出し等） */
+function switchLang(lang){
+  document.querySelectorAll('[data-lang]').forEach(el=>{
+    el.style.display = (el.getAttribute('data-lang') === lang) ? '' : 'none';
+  });
+}
+
+/* 初期は日本語表示 */
+document.addEventListener('DOMContentLoaded', ()=>{ switchLang('ja'); });
+</script>
+</head>
 <body>
+
 <header>
-  <div class="header-inner"><div class="brand">NPC Lab</div><div style="margin-left:auto"><div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div></div></div>
+  <div class="header-inner">
+    <div class="brand" aria-hidden="true">
+      <!-- simple molecule icon -->
+      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="g1" x1="0" x2="1">
+            <stop offset="0" stop-color="#2fb8b8"/><stop offset="1" stop-color="#0b7496"/>
+          </linearGradient>
+        </defs>
+        <g transform="translate(4,4)" fill="none" stroke="url(#g1)" stroke-width="2">
+          <path d="M18 2 L32 2 L40 14 L32 26 L18 26 L10 14 Z"/>
+        </g>
+      </svg>
+      NPC Lab
+    </div>
+
+    <div id="navLinks" class="nav-links hidden" role="navigation">
+      <a href="index_2.html">HOME</a>
+      <a href="overview.html">概要</a>
+      <a href="members.html">メンバー</a>
+      <a href="publications.html">業績</a>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:8px">
+      <button onclick="switchLang('ja')">日本語</button>
+      <button onclick="switchLang('en')">English</button>
+      <div class="hamburger" onclick="toggleMenu()" aria-label="menu" title="menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
 </header>
 
-<main class="container">
-  <section>
-    <h1>Selected Publications</h1>
-    <div class="card">
-      <ul>
-        <li>Horio, K.; Maeda, H.; Horie, K.; Nanashima, N.; Nihei, K.* Total synthesis of quasi-symmetric dihydrofuran lignans (−)-ribesin A and B. Tetrahedron 2025, 181, 134675. <a href="publication_1.html">詳細</a></li>
-        <li>Makita, M.; Nihei, K.* Total synthesis of nepodin and torachrysone glucosides. Tetrahedron Lett. 2024, 146, 155191. <a href="publication_2.html">詳細</a></li>
-        <li>Shimakage, R.; Iwadate, T.; Nihei, K.* A natural diphenolic glucoside, sonnerphenolic C. Tetrahedron 2024, 158, 134001. <a href="publication_3.html">詳細</a></li>
-        <li>…（残りの業績もここに同様に全件掲載してください）</li>
+<main>
+  <div class="container" role="main">
+
+    <section>
+      <h1 data-lang="ja">Selected Publications（業績）</h1>
+      <h1 data-lang="en" style="display:none">Selected Publications</h1>
+      <p class="muted" data-lang="ja">以下は当研究室の代表的な業績（抜粋）です。詳細や追加の論文情報はお問い合わせください。</p>
+      <p class="muted" data-lang="en" style="display:none">The following are selected publications from our research unit. For details and additional publications, please contact us.</p>
+    </section>
+
+    <section aria-labelledby="pub-list">
+      <ul id="pub-list" class="pub-list">
+        <li>
+          <div class="pub-auth">Horio, K.; Maeda, H.; Horie, K.; Nanashima, N.; Nihei, K.*</div>
+          <div>Total synthesis of quasi-symmetric dihydrofuran lignans (−)-ribesin A and B isolated from Ribes nigrum leaves. Tetrahedron 2025, 181, 134675.</div>
+        </li>
+
+        <li>
+          <div class="pub-auth">Makita, M.; Nihei, K.*</div>
+          <div>Total synthesis of nepodin and torachrysone glucosides: Evidence for naturally occurring L-glucosides. Tetrahedron Lett. 2024, 146, 155191.</div>
+        </li>
+
+        <li>
+          <div class="pub-auth">Shimakage, R.; Iwadate, T.; Nihei, K.*</div>
+          <div>A natural diphenolic glucoside, sonnerphenolic C: Chemical synthesis, structural revision, redox transformation, and identification as an antioxidant. Tetrahedron 2024, 158, 134001.</div>
+        </li>
+
+        <li>
+          <div class="pub-auth">Horio, K.; Nihei, K.*</div>
+          <div>Total synthesis of (-)-ribesin B and its structural revision. Tetrahedron Lett. 2023, 114, 154285.</div>
+        </li>
+
+        <li>
+          <div class="pub-auth">Ishioka, W.; Nihei, K.*</div>
+          <div>Chemical synthesis and tyrosinase inhibitory activity of resorcinol alkyl glucosides, hydroxyalkyl resorcinols, and alkyl resorcinols. J. Mol. Struct. 2022, 1268, 133668.</div>
+        </li>
+
+        <li>
+          <div class="pub-auth">Shimakage, R.; Nihei, K.*</div>
+          <div>Synthesis, structural revision, and tyrosinase inhibitory activity of proposed phloretin-4-O-β-D-glucopyranoside from Homalium stenophyllum. Nat. Prod. Res. 2022, 36, 1803-1811.</div>
+        </li>
+
+        <li>
+          <div class="pub-auth">Nihei, K.; Peigneur, S.; Tytgat, J.; Lange, A.B.; Konno, K.*</div>
+          <div>Isolation and characterization of FMRFamide-like peptides in the venoms of solitary sphecid wasps. Peptides 2021, 142, 170575.</div>
+        </li>
+
+        <li>
+          <div class="pub-auth">Matsumoto, T.; Harima, S.; Weng, J.; Nihei, K.*</div>
+          <div>Systematic approach to the chemical synthesis of arabidopyrones, the unique α-pyrones of Arabidopsis metabolites. Synth. Commun. 2020, 50, 2981-2987.</div>
+        </li>
+
+        <li>
+          <div class="pub-auth">Nihei, K.*; Kubo, I.</div>
+          <div>Tyrosinase inhibition by 4-substituted benzaldehydes with electron-withdrawing groups. Appl. Biochem. Biotechnol. 2020, 191, 1711-1716.</div>
+        </li>
+
+        <li>
+          <div class="pub-auth">Asebi, N.; Nihei, K.*</div>
+          <div>Total synthesis of apios isoflavones and investigation of their tyrosinase inhibitory activity. Tetrahedron 2019, 75, 130589.</div>
+        </li>
+
+        <li>
+          <div class="pub-auth">Nihei, K.*; Kubo, I.</div>
+          <div>Benzonitriles as tyrosinase inhibitors with hyperbolic inhibition manner. Int. J. Biol. Macromol. 2019, 133, 929-932.</div>
+        </li>
+
+        <li>
+          <div class="pub-auth">Ishioka, W.; Oonuki, S.; Iwadate, T.; Nihei, K.*</div>
+          <div>Resorcinol alkyl glucosides as potent tyrosinase inhibitors. Bioorg. Med. Chem. Lett. 2019, 29, 313-316.</div>
+        </li>
+
+        <li>
+          <div class="pub-auth">Tanaka, Y.; Suzuki, M.; Kodachi, Y.; Nihei, K.*</div>
+          <div>Molecular design of potent, hydrophilic tyrosinase inhibitors based on the natural dihydrooxyresveratrol skeleton. Carbohydr. Res. 2019, 472, 42-49.</div>
+        </li>
+
+        <li>
+          <div class="pub-auth">Matsumoto, T.; Nakajima, T.; Iwadate, T.; Nihei, K.*</div>
+          <div>Chemical synthesis and tyrosinase-inhibitory activity of isotachioside and its related glycosides. Carbohydr. Res. 2018, 465, 22-28.</div>
+        </li>
+
+        <li>
+          <div class="pub-auth">Iwadate, T.; Nihei, K.*</div>
+          <div>Chemical synthesis, redox transformation, and identification of sonnerphenolic C, an antioxidant in Acer nikoense. Bioorg. Med. Chem. Lett. 2017, 27, 1799-1802.</div>
+        </li>
+
+        <li>
+          <div class="pub-auth">Nihei, K.*; Kubo, I.</div>
+          <div>Substituent effect of benzaldehydes on tyrosinase inhibition. Plant Physiol. Biochem. 2017, 112, 278-282.</div>
+        </li>
+
+        <li>
+          <div class="pub-auth">Oode, C.; Shimada, W.; Yokota, M.; Yamada, Y.; Nihei, K.*</div>
+          <div>Dihydroresveratrol cellobioside and xylobioside as effective melanogenesis activators. Carbohydr. Res. 2016, 436, 45-49.</div>
+        </li>
+
+        <li>
+          <div class="pub-auth">Iwadate, T.; Nihei, K.*</div>
+          <div>Rhododendrol glycosides as stereospecific tyrosinase inhibitors. Bioorg. Med. Chem. 2015, 23, 6650-6658.</div>
+        </li>
+
+        <li>
+          <div class="pub-auth">Oode, C.; Shimada, W.; Izutsu, Y.; Yokota, M.; Iwadate, T.; Nihei, K.*</div>
+          <div>Synthesis of dihydroresveratrol glycosides and evaluation of their activity against melanogenesis in B16F0 melanoma cells. Eur. J. Med. Chem. 2014, 87, 862-867.</div>
+        </li>
+
+        <li>
+          <div class="pub-auth">Kamatani, J.; Iwadate, T.; Tajima, R.; Kimoto, H.; Yamada, Y.; Masuoka, N.; Kubo, I.; Nihei, K.*</div>
+          <div>Stereochemical investigation and total synthesis of inuloidin, a biologically active sesquiterpenoid from Heterotheca inuloides. Tetrahedron 2014, 70, 3141-3145.</div>
+        </li>
+
+        <li>
+          <div class="pub-auth">Iwadate, T.; Kashiwakura, Y.; Masuoka, N.; Yamada, Y.; Nihei, K.*</div>
+          <div>Chemical synthesis and tyrosinase inhibitory activity of rhododendrol glycosides. Bioorg. Med. Chem. Lett. 2014, 24, 122-125.</div>
+        </li>
+
+        <li>
+          <div class="pub-auth">Tajima, R.; Oozeki, H.; Muraoka, S.; Tanaka, S.; Motegi, Y.; Nihei, H.; Yamada, Y.; Masuoka, N.; Nihei, K.*</div>
+          <div>Synthesis and evaluation of bibenzyl glycosides as potent tyrosinase inhibitors. Eur. J. Med. Chem. 2011, 46, 1374-1381.</div>
+        </li>
+
+        <li>
+          <div class="pub-auth">Oozeki, H.; Tajima, R.; Nihei, K.*</div>
+          <div>Molecular design of potent tyrosinase inhibitors having the bibenzyl skeleton. Bioorg. Med. Chem. Lett. 2008, 18, 5252-5254.</div>
+        </li>
+
       </ul>
-    </div>
-  </section>
+    </section>
+
+  </div>
 </main>
 
-<footer>© 宇都宮大学</footer>
-<script src="js/main.js"></script>
+<footer style="text-align:center;padding:20px 12px;color:#6c7b7d;font-size:0.95rem">
+  宇都宮大学農学部 応用生命化学科 天然物有機化学研究室<br>
+  Contact: nihei98アットcc.utsunomiya-u.ac.jp
+</footer>
+
 </body>
 </html>
