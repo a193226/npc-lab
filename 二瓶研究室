@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>二瓶研究室 - Natural Products Chemistry | 宇都宮大学</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+    /* --- 基本設定 --- */
+    :root {
+        --primary-color: #556B2F; /* オリーブグリーン */
+        --accent-color: #8FBC8F; /* ライトグリーン */
+        --bg-color: #FDFCF5; /* クリーム色背景 */
+        --text-color: #333;
+        --card-bg: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: 'Noto Sans JP', 'Yu Gothic', sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; }
+
+    /* --- ヘッダー --- */
+    header {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 15px 30px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .logo {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    /* PC用ナビゲーション */
+    .nav-pc { display: flex; gap: 25px; }
+    .nav-pc a { font-weight: 500; color: var(--primary-color); position: relative; }
+    .nav-pc a::after {
+        content: ''; position: absolute; bottom: -5px; left: 0; width: 0%; height: 2px;
+        background: var(--primary-color); transition: 0.3s;
+    }
+    .nav-pc a:hover::after { width: 100%; }
+
+    /* スマホ用ハンバーガーメニュー */
+    .menu-toggle { display: none; font-size: 1.5rem; color: var(--primary-color); cursor: pointer; }
+    
+    /* --- ヒーローセクション --- */
+    .hero {
+        background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1350') center/cover;
+        height: 60vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+    .hero h1 { font-size: 2.5rem; margin-bottom: 10px; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+    .hero p { font-size: 1.1rem; max-width: 600px; }
+    .hero .sub-info { margin-top: 15px; font-size: 0.9rem; opacity: 0.9; }
+
+    /* --- 共通セクション設定 --- */
+    .container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+    .section-title {
+        text-align: center;
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-bottom: 40px;
+        position: relative;
+    }
+    .section-title::after {
+        content: ''; display: block; width: 60px; height: 3px;
+        background: var(--accent-color); margin: 10px auto 0;
+    }
+
+    /* --- 検索バー --- */
+    .search-wrapper {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .search-input {
+        width: 100%;
+        max-width: 500px;
+        padding: 12px 20px;
+        border: 2px solid #ddd;
+        border-radius: 30px;
+        font-size: 1rem;
+        outline: none;
+        transition: 0.3s;
+    }
+    .search-input:focus { border-color: var(--primary-color); }
+
+    /* --- カードレイアウト --- */
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+    }
+    .card {
+        background: var(--card-bg);
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        transition: transform 0.3s, box-shadow 0.3s;
+        border-top: 4px solid var(--accent-color);
+    }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
+    .card h3 { color: var(--primary-color); margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+    
+    /* --- メンバー・卒業生特有 --- */
+    .member-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    .member-card h4 { color: #333; margin-bottom: 5px; font-size: 1.1rem; }
+    .member-card .role { font-size: 0.85rem; color: #888; font-weight: bold; margin-bottom: 5px; display: block; }
+    
+    /* 卒業生リスト（スクロール対応） */
+    .alumni-container {
+        max-height: 500px;
+        overflow-y: auto;
+        padding: 10px;
+        background: #fff;
+        border-radius: 10px;
+        border: 1px solid #eee;
+        /* スクロールバーのデザイン */
+        scrollbar-width: thin;
+        scrollbar-color: var(--accent-color) #f0f0f0;
+    }
+    .alumni-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+    }
+    .alumni-item {
+        background: #f9f9f9;
+        padding: 10px 15px;
+        border-radius: 8px;
+        border-left: 3px solid #ccc;
+        font-size: 0.9rem;
+    }
+    .alumni-item h5 { color: var(--primary-color); display: inline-block; margin-right: 5px; }
+    .alumni-item span { color: #666; font-size: 0.8rem; }
+    .alumni-item p { margin-top: 3px; font-size: 0.85rem; }
+
+    /* --- 業績リスト --- */
+    .publication-item {
+        background: #fff;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        font-size: 0.95rem;
+    }
+    .publication-item:hover { background-color: #f0f8ff; }
+
+    /* --- フッター --- */
+    footer {
+        background: var(--primary-color);
+        color: white;
+        text-align: center;
+        padding: 40px 20px;
+        margin-top: 50px;
+    }
+    .footer-content h3 { margin-bottom: 15px; }
+    .footer-content p { margin-bottom: 5px; }
+
+    /* --- スマホ対応 (Media Queries) --- */
+    @media (max-width: 768px) {
+        .nav-pc { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; width: 100%; background: white; padding: 20px; box-shadow: 0 5px 10px rgba(0,0,0,0.1); }
+        .nav-pc.active { display: flex; }
+        .menu-toggle { display: block; }
+        .hero h1 { font-size: 1.8rem; }
+        .section-title { font-size: 1.5rem; }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <i class="fas fa-flask"></i> 二瓶研究室 NPC Lab
+    </div>
+    <div class="menu-toggle" id="mobile-menu">
+        <i class="fas fa-bars"></i>
+    </div>
+    <nav class="nav-pc" id="nav-menu">
+        <a href="#home">HOME</a>
+        <a href="#research">研究概要</a>
+        <a href="#members">メンバー</a>
+        <a href="#alumni">卒業生</a>
+        <a href="#publications">業績</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section id="home" class="hero">
+    <h1>宇都宮大学 農学部<br>応用生命化学科</h1>
+    <p>有機化学を通して、天然物の可能性を探る</p>
+    <div class="sub-info">
+        <p><i class="far fa-clock"></i> 2025.5 更新</p>
+        <p><a href="#" style="text-decoration: underline;">日本語</a> / <a href="#" style="opacity: 0.7;">English</a></p>
+    </div>
+</section>
+
+<div class="container" style="padding-bottom: 0;">
+    <div class="search-wrapper">
+        <input type="text" id="site-search" class="search-input" placeholder="キーワードで検索 (例: 糖, 香料, メンバー名...)">
+    </div>
+</div>
+
+<section id="research" class="container">
+    <h2 class="section-title"><i class="fas fa-microscope"></i> 研究室の概要</h2>
+    <div class="grid">
+        <div class="card searchable-item">
+            <h3><i class="fas fa-atom"></i> 研究について</h3>
+            <p>天然物有機化学分野では、有機化学を通して天然物の可能性を探ることを目的に、天然物の有機合成と生理活性評価を中心に研究活動を行っています。有機合成は化合物を人工的に作り出す学問です。地方の国立大学農学部で有機合成を行っている研究室は希少ですが、生物、自然や環境をより身近に感じながら研究できるのが特徴です。</p>
+        </div>
+        <div class="card searchable-item">
+            <h3><i class="fas fa-chalkboard-teacher"></i> 教育について</h3>
+            <p>平日の日中は研究に集中すること。当分野ではTLC、HPLC、NMRおよびMSなどの分析手法を日常的に使用し、有機化合物の合成、検出、精製や構造解析などの化学実験の進め方を習得できます。</p>
+        </div>
+        <div class="card searchable-item">
+            <h3><i class="fas fa-user-graduate"></i> 進路について</h3>
+            <p>大学院に進学する学生が多く、博士・修士課程の修了生は主に研究・開発職に就いています。化粧品、香料、製薬や試薬など関連する化学メーカーに就職したり、公務員になったりしています。</p>
+        </div>
+    </div>
+</section>
+
+<section id="members" class="container">
+    <h2 class="section-title"><i class="fas fa-users"></i> メンバー</h2>
+    <div class="grid member-grid">
+        <div class="card member-card searchable-item" style="border-top-color: var(--primary-color);">
+            <span class="role">PI (主宰)</span>
+            <h4>Ken-ichi Nihei</h4>
+            <p>お問い合わせは nihei98アットcc.utsunomiya-u.ac.jp</p>
+        </div>
+        <div class="card member-card searchable-item"><span class="role">D3</span><h4>Kae Horio</h4><p>高度対称性ポリフェノールの全合成</p></div>
+        <div class="card member-card searchable-item"><span class="role">M2</span><h4>Mizuki Makita</h4><p>希少糖を含む天然物の全合成</p></div>
+        <div class="card member-card searchable-item"><span class="role">M1</span><h4>Mao Okamura</h4><p>環状リグナンの全合成</p></div>
+        <div class="card member-card searchable-item"><span class="role">M1</span><h4>Yuta Chohnan</h4><p>生長調節物質の化学合成</p></div>
+        <div class="card member-card searchable-item"><span class="role">M1</span><h4>Kotomi Tsukamoto</h4><p>樹液成分の全合成</p></div>
+        <div class="card member-card searchable-item"><span class="role">B4</span><h4>Kohei Shimizu</h4><p>ナフタレン配糖体の全合成</p></div>
+        <div class="card member-card searchable-item"><span class="role">B4</span><h4>Kenta Tezuka</h4><p>酵素阻害剤の化学合成</p></div>
+        <div class="card member-card searchable-item"><span class="role">B4</span><h4>Nana Nakamori</h4><p>ポリフェノール配糖体の短段階合成</p></div>
+        <div class="card member-card searchable-item"><span class="role">B4</span><h4>Sakiwa Masuda</h4><p>新規バニロイドの化学合成</p></div>
+    </div>
+</section>
+
+<section id="alumni" class="container">
+    <h2 class="section-title"><i class="fas fa-user-tie"></i> 卒業生</h2>
+    <p style="text-align:center; margin-bottom:20px; font-size:0.9rem;">(スクロールして表示)</p>
+    <div class="alumni-container">
+        <div class="alumni-list">
+            <div class="alumni-item searchable-item"><h5>KS</h5><span>(学士)</span><p>化粧品つくってる</p></div>
+            <div class="alumni-item searchable-item"><h5>MU</h5><span>(修士)</span><p>北海のシーサン</p></div>
+            <div class="alumni-item searchable-item"><h5>SS</h5><span>(修士)</span><p>試薬うってる</p></div>
+            <div class="alumni-item searchable-item"><h5>YT</h5><span>(修士)</span><p>北北東で合成</p></div>
+            <div class="alumni-item searchable-item"><h5>AA</h5><span>(学士)</span><p>関東圏で販売</p></div>
+            <div class="alumni-item searchable-item"><h5>RI</h5><span>(学士)</span><p>乳化剤ヒロイン二代目</p></div>
+            <div class="alumni-item searchable-item"><h5>CE</h5><span>(学士)</span><p>東洋で分析</p></div>
+            <div class="alumni-item searchable-item"><h5>SI</h5><span>(修士)</span><p>初代乳化剤ヒロイン</p></div>
+            <div class="alumni-item searchable-item"><h5>MK</h5><span>(学士)</span><p>湿布づくりの天使</p></div>
+            <div class="alumni-item searchable-item"><h5>MI</h5><span>(学士)</span><p>ハイテクの韋駄天</p></div>
+            <div class="alumni-item searchable-item"><h5>YN</h5><span>(修士)</span><p>香料開発の巨星(寿)</p></div>
+            <div class="alumni-item searchable-item"><h5>KH</h5><span>(修士)</span><p>試薬研究のホープ(寿)</p></div>
+            <div class="alumni-item searchable-item"><h5>SAK</h5><span>(学士)</span><p>化粧品製造のキー</p></div>
+            <div class="alumni-item searchable-item"><h5>RS</h5><span>(修士)</span><p>ハワイ近くで研究</p></div>
+            <div class="alumni-item searchable-item"><h5>MWT</h5><span>(修士)</span><p>インド洋で奮闘</p></div>
+            <div class="alumni-item searchable-item"><h5>YG</h5><span>(学士)</span><p>日本海から首都圏</p></div>
+            <div class="alumni-item searchable-item"><h5>YY</h5><span>(学士)</span><p>マヨドレ製造中</p></div>
+            <div class="alumni-item searchable-item"><h5>HS</h5><span>(修士)</span><p>外資系で活躍(寿)</p></div>
+            <div class="alumni-item searchable-item"><h5>TAM</h5><span>(修士)</span><p>分析のヒーロー</p></div>
+            <div class="alumni-item searchable-item"><h5>KI</h5><span>(学士)</span><p>事務職の妖精</p></div>
+            <div class="alumni-item searchable-item"><h5>NA</h5><span>(修士)</span><p>ピグメント開発中</p></div>
+            <div class="alumni-item searchable-item"><h5>WI</h5><span>(博士)</span><p>化粧品開発中(寿)</p></div>
+            <div class="alumni-item searchable-item"><h5>KK</h5><span>(学士)</span><p>電力つくってる</p></div>
+            <div class="alumni-item searchable-item"><h5>URT</h5><span>(修士)</span><p>製薬会社で研究中</p></div>
+            <div class="alumni-item searchable-item"><h5>HR</h5><span>(学士)</span><p>香料作ってます</p></div>
+            <div class="alumni-item searchable-item"><h5>MIT</h5><span>(修士)</span><p>有機合成研究職(寿)</p></div>
+            <div class="alumni-item searchable-item"><h5>AM</h5><span>(修士)</span><p>関東で蒸留中</p></div>
+            <div class="alumni-item searchable-item"><h5>SH</h5><span>(修士)</span><p>有機合成の社会人</p></div>
+            <div class="alumni-item searchable-item"><h5>JL</h5><span>(学士)</span><p>続薬学系大学院へ</p></div>
+            <div class="alumni-item searchable-item"><h5>TI</h5><span>(博士)</span><p>研究チームのお頭(寿)</p></div>
+            <div class="alumni-item searchable-item"><h5>CO</h5><span>(修士)</span><p>市役所の星</p></div>
+            <div class="alumni-item searchable-item"><h5>TM</h5><span>(修士)</span><p>酒類分析のスター</p></div>
+            <div class="alumni-item searchable-item"><h5>MS</h5><span>(学士)</span><p>湖畔でがんばる</p></div>
+            <div class="alumni-item searchable-item"><h5>KM</h5><span>(学士)</span><p>薬学系大学院へ</p></div>
+            <div class="alumni-item searchable-item"><h5>MO</h5><span>(学士)</span><p>惣菜開発のプロ(寿)</p></div>
+            <div class="alumni-item searchable-item"><h5>CM</h5><span>(学士)</span><p>小中学校の要</p></div>
+            <div class="alumni-item searchable-item"><h5>YO</h5><span>(修士)</span><p>珈琲の鉄人</p></div>
+            <div class="alumni-item searchable-item"><h5>SO</h5><span>(修士)</span><p>研究職です(寿)</p></div>
+            <div class="alumni-item searchable-item"><h5>SK</h5><span>(学士)</span><p>台湾に行きます</p></div>
+            <div class="alumni-item searchable-item"><h5>YK</h5><span>(学士)</span><p>技術職してます</p></div>
+            <div class="alumni-item searchable-item"><h5>TAK</h5><span>(学士)</span><p>県庁の稼ぎ頭</p></div>
+            <div class="alumni-item searchable-item"><h5>JK</h5><span>(修士)</span><p>JAの賢人</p></div>
+            <div class="alumni-item searchable-item"><h5>TN</h5><span>(修士)</span><p>肥料の神様</p></div>
+            <div class="alumni-item searchable-item"><h5>HK</h5><span>(学士)</span><p>種苗の鬼(寿)</p></div>
+            <div class="alumni-item searchable-item"><h5>UT</h5><span>(学士)</span><p>薬屋で働いてます</p></div>
+            <div class="alumni-item searchable-item"><h5>MM</h5><span>(学士)</span><p>スーパー幹部候補</p></div>
+            <div class="alumni-item searchable-item"><h5>KT</h5><span>(修士)</span><p>薬の分析してます</p></div>
+            <div class="alumni-item searchable-item"><h5>AK</h5><span>(学士)</span><p>抗体博士(寿)</p></div>
+            <div class="alumni-item searchable-item"><h5>YH</h5><span>(学士)</span><p>医薬学術業務</p></div>
+            <div class="alumni-item searchable-item"><h5>RK</h5><span>(学士)</span><p>市役所の良識</p></div>
+            <div class="alumni-item searchable-item"><h5>CG</h5><span>(学士)</span><p>茨城にいます</p></div>
+            <div class="alumni-item searchable-item"><h5>EN</h5><span>(学士)</span><p>製薬会社勤務</p></div>
+            <div class="alumni-item searchable-item"><h5>RT</h5><span>(修士)</span><p>関東にいます</p></div>
+            <div class="alumni-item searchable-item"><h5>SM</h5><span>(修士)</span><p>研究開発中</p></div>
+            <div class="alumni-item searchable-item"><h5>RT600</h5><span>(学士)</span><p>薬つくってます</p></div>
+        </div>
+    </div>
+</section>
+
+<section id="publications" class="container">
+    <h2 class="section-title"><i class="fas fa-file-alt"></i> 主要な業績</h2>
+    <div id="pub-list">
+        <div class="publication-item searchable-item">Horio, K.; Maeda, H.; Horie, K.; Nanashima, N.; Nihei, K.* Total synthesis of quasi-symmetric dihydrofuran lignans (−)-ribesin A and B isolated from Ribes nigrum leaves. <i>Tetrahedron</i> <b>2025</b>, <i>181</i>, 134675.</div>
+        <div class="publication-item searchable-item">Makita, M.; Nihei, K.* Total synthesis of nepodin and torachrysone glucosides: Evidence for naturally occurring L-glucosides. <i>Tetrahedron Lett.</i> <b>2024</b>, <i>146</i>, 155191.</div>
+        <div class="publication-item searchable-item">Shimakage, R.; Iwadate, T.; Nihei, K.* A natural diphenolic glucoside, sonnerphenolic C: Chemical synthesis, structural revision, redox transformation, and identification as an antioxidant. <i>Tetrahedron</i> <b>2024</b>, <i>158</i>, 134001.</div>
+        <div class="publication-item searchable-item">Horio, K.; Nihei, K.* Total synthesis of (-)-ribesin B and its structural revision. <i>Tetrahedron Lett.</i> <b>2023</b>, <i>114</i>, 154285.</div>
+        <div class="publication-item searchable-item">Ishioka, W.; Nihei, K.* Chemical synthesis and tyrosinase inhibitory activity of resorcinol alkyl glucosides, hydroxyalkyl resorcinols, and alkyl resorcinols. <i>J. Mol. Struct.</i> <b>2022</b>, <i>1268</i>, 133668.</div>
+        <div class="publication-item searchable-item">Shimakage, R.; Nihei, K.* Synthesis, structural revision, and tyrosinase inhibitory activity of proposed phloretin-4-O-β-D-glucopyranoside from Homalium stenophyllum. <i>Nat. Prod. Res.</i> <b>2022</b>, <i>36</i>, 1803-1811.</div>
+        <div class="publication-item searchable-item">Nihei, K.; Peigneur, S.; Tytgat, J.; Lange, A.B.; Konno, K.* Isolation and characterization of FMRFamide-like peptides in the venoms of solitary sphecid wasps. <i>Peptides</i> <b>2021</b>, <i>142</i>, 170575.</div>
+        <div class="publication-item searchable-item">Matsumoto, T.; Harima, S.; Weng, J.; Nihei, K.* Systematic approach to the chemical synthesis of arabidopyrones, the unique α-pyrones of Arabidopsis metabolites. <i>Synth. Commun.</i> <b>2020</b>, <i>50</i>, 2981-2987.</div>
+    </div>
+</section>
+
+<footer id="contact">
+    <div class="footer-content">
+        <h3>宇都宮大学 二瓶研究室</h3>
+        <p><i class="fas fa-envelope"></i> nihei98アットcc.utsunomiya-u.ac.jp</p>
+        <p><i class="fas fa-map-marker-alt"></i> 宇都宮大学 農学部 応用生命化学科</p>
+        <p style="margin-top:20px; font-size:0.8rem;">© 2025 NPC Lab. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script>
+    // ハンバーガーメニューの開閉
+    const menuToggle = document.getElementById('mobile-menu');
+    const navMenu = document.getElementById('nav-menu');
+
+    menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
+
+    // 検索機能
+    const searchInput = document.getElementById('site-search');
+    const searchableItems = document.querySelectorAll('.searchable-item');
+
+    searchInput.addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase();
+
+        searchableItems.forEach(item => {
+            const text = item.textContent.toLowerCase();
+            if(text.includes(term)) {
+                item.style.display = ""; // 表示
+                // 親要素がgridなどの場合、レイアウトが崩れないようにdisplay制御
+                // （このコードではカード自体を非表示にするシンプルな実装です）
+            } else {
+                item.style.display = "none"; // 非表示
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
